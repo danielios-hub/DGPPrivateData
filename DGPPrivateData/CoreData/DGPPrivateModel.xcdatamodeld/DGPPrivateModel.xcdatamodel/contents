@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="icon" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="entrys" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="relationCategory" inverseEntity="Entry"/>
+    </entity>
+    <entity name="Entry" representedClassName="Entry" syncable="YES">
+        <attribute name="expires" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="icon" attributeType="String" defaultValueString="default_icon"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="relationCategory" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="entrys" inverseEntity="Category"/>
+    </entity>
+    <entity name="MasterUser" representedClassName="MasterUser" syncable="YES">
+        <attribute name="masterHash" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Entry" positionX="-54" positionY="9" width="128" height="149"/>
+        <element name="MasterUser" positionX="-63" positionY="63" width="128" height="44"/>
+    </elements>
+</model>
