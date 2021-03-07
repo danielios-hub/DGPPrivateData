@@ -100,7 +100,6 @@
                                             <constraint firstItem="ZHu-YN-qFm" firstAttribute="leading" secondItem="XiC-gr-pEQ" secondAttribute="leading" id="KFl-st-hzB"/>
                                             <constraint firstItem="XiC-gr-pEQ" firstAttribute="top" secondItem="fZV-OB-7pM" secondAttribute="top" constant="40" id="MpI-xL-91F"/>
                                             <constraint firstAttribute="trailing" secondItem="XiC-gr-pEQ" secondAttribute="trailing" constant="10" id="NaV-kE-bc6"/>
-                                            <constraint firstItem="9td-OB-Dkh" firstAttribute="trailing" secondItem="XiC-gr-pEQ" secondAttribute="trailing" id="Oyi-zB-GTA"/>
                                             <constraint firstItem="9td-OB-Dkh" firstAttribute="leading" secondItem="XiC-gr-pEQ" secondAttribute="leading" id="VSJ-r8-FAp"/>
                                             <constraint firstItem="XiC-gr-pEQ" firstAttribute="leading" secondItem="fZV-OB-7pM" secondAttribute="leading" constant="10" id="YJJ-EV-4Nh"/>
                                             <constraint firstAttribute="bottom" secondItem="VRN-0X-suH" secondAttribute="bottom" constant="15" id="aPR-ma-oyZ"/>
@@ -110,6 +109,7 @@
                                             <constraint firstItem="9td-OB-Dkh" firstAttribute="top" secondItem="Z70-ep-tgU" secondAttribute="bottom" constant="15" id="l65-wJ-EDJ"/>
                                             <constraint firstItem="9td-OB-Dkh" firstAttribute="height" secondItem="XiC-gr-pEQ" secondAttribute="height" id="mdu-w5-aun"/>
                                             <constraint firstItem="VRN-0X-suH" firstAttribute="top" secondItem="OTm-SO-2P0" secondAttribute="bottom" constant="15" id="nQ8-dg-bd6"/>
+                                            <constraint firstItem="9td-OB-Dkh" firstAttribute="trailing" secondItem="XiC-gr-pEQ" secondAttribute="trailing" id="neS-hL-9ZR"/>
                                             <constraint firstItem="Z70-ep-tgU" firstAttribute="height" secondItem="XiC-gr-pEQ" secondAttribute="height" id="oQ4-sW-oG1"/>
                                             <constraint firstItem="ZHu-YN-qFm" firstAttribute="trailing" secondItem="XiC-gr-pEQ" secondAttribute="trailing" id="puu-He-mxi"/>
                                             <constraint firstItem="OTm-SO-2P0" firstAttribute="leading" secondItem="XiC-gr-pEQ" secondAttribute="leading" id="qCJ-lX-SIk"/>
@@ -153,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIp-6b-RQZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-48" y="120"/>
+            <point key="canvasLocation" x="-49.275362318840585" y="119.86607142857142"/>
         </scene>
         <!--Authentication View Controller-->
         <scene sceneID="BB3-9Q-ggR">

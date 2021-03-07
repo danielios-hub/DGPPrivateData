@@ -97,10 +97,12 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         setPlaceholder()
         loadEditEntry()
         loadCategory()
+        
+        addEntryView.viewPassword.textField.text = PasswordManager.shared.generatePassword()
     }
     
     private func setupView() {
-        addEntryView.setup()
+        addEntryView.setup(target: self, actionEdit: #selector(editPassword))
         navigationItem.title = NSLocalizedString("Add an Item", comment: "title of the add entry screen")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveEntry))
         addEntryView.viewTitle.textField.delegate = self
@@ -210,6 +212,10 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         isSelectingCategory = true
         let picker = DGPPickerView(frame: .zero, viewModel: self)
         picker.show(in: view)
+    }
+    
+    @objc func editPassword() {
+        
     }
     
     //MARK: - Utils

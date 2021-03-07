@@ -29,7 +29,7 @@ public class AddEditEntryView: UIView {
     let titleFont = UIFont.systemFont(ofSize: 14, weight: .medium)
     let valueFont = UIFont.systemFont(ofSize: 15, weight: .regular)
     
-    public func setup() {
+    public func setup(target: Any, actionEdit: Selector) {
         viewTitle.titleLabel.text = NSLocalizedString("Title", comment: "title of the entry")
         viewTitle.textField.placeholder = NSLocalizedString("Write a title", comment: "placeholder of the title of the entry")
         
@@ -58,6 +58,8 @@ public class AddEditEntryView: UIView {
         
         labelCategoryTitle.font = titleFont
         valueCategory.font = valueFont
+        
+        viewPassword.setButtonsPassword(target: target, actionEdit: actionEdit)
     }
     
     func updateCategory(name: String, icon: String) {

@@ -32,6 +32,7 @@
 		C7331AC525F291D000CDE439 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */; };
 		C7331AC725F2933800CDE439 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331AC625F2933800CDE439 /* AuthenticationView.swift */; };
 		C7B9A1F825F528B400725F3F /* ListEntryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B9A1F725F528B400725F3F /* ListEntryCellViewModel.swift */; };
+		C7B9A1FB25F54F1900725F3F /* PasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B9A1FA25F54F1900725F3F /* PasswordManager.swift */; };
 		C7CA213325E3BF0800EB8ACE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7CA213525E3BF0800EB8ACE /* Localizable.strings */; };
 		C7CA213C25E3D6DC00EB8ACE /* UITextViewPlaceholderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CA213B25E3D6DC00EB8ACE /* UITextViewPlaceholderProtocol.swift */; };
 		C7CA214125E4146300EB8ACE /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CA214025E4146300EB8ACE /* Storyboarded.swift */; };
@@ -99,6 +100,7 @@
 		C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInteractor.swift; sourceTree = "<group>"; };
 		C7331AC625F2933800CDE439 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		C7B9A1F725F528B400725F3F /* ListEntryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryCellViewModel.swift; sourceTree = "<group>"; };
+		C7B9A1FA25F54F1900725F3F /* PasswordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManager.swift; sourceTree = "<group>"; };
 		C7CA213425E3BF0800EB8ACE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C7CA213625E3BF4600EB8ACE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C7CA213B25E3D6DC00EB8ACE /* UITextViewPlaceholderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholderProtocol.swift; sourceTree = "<group>"; };
@@ -206,6 +208,14 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		C7B9A1F925F54EFF00725F3F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C7B9A1FA25F54F1900725F3F /* PasswordManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		C7CA213A25E3D6CA00EB8ACE /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +275,7 @@
 		C7EB5CED25DE72A800FB1AE8 /* DGPPrivateData */ = {
 			isa = PBXGroup;
 			children = (
+				C7B9A1F925F54EFF00725F3F /* Managers */,
 				C710204D25F12AEF0085535B /* Scenes */,
 				C7F6FBAF25E52DBB00CB42BB /* Library */,
 				C7CA213A25E3D6CA00EB8ACE /* Protocol */,
@@ -445,6 +456,7 @@
 				C7D03C8B25DE8491008303C6 /* ListEntryView.swift in Sources */,
 				C710205625F12B320085535B /* ListEntryWorker.swift in Sources */,
 				C710205925F12B320085535B /* ListEntryViewController.swift in Sources */,
+				C7B9A1FB25F54F1900725F3F /* PasswordManager.swift in Sources */,
 				C710205525F12B320085535B /* ListEntryPresenter.swift in Sources */,
 				C710205A25F12B320085535B /* ListEntryInteractor.swift in Sources */,
 				C7EB5D2125DE7BA100FB1AE8 /* Category+CoreDataProperties.swift in Sources */,
