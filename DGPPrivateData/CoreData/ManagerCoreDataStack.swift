@@ -37,8 +37,12 @@ public class ManagerCoreDataStack {
         let url = self.applicationDocumentsDirectory.appendingPathComponent("\(nameModel).sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: [NSMigratePersistentStoresAutomaticallyOption: true,
-                NSInferMappingModelAutomaticallyOption: true])
+            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType,
+                                                configurationName: nil,
+                                                at: url,
+                                                options: [NSMigratePersistentStoresAutomaticallyOption: true,
+                                                          NSInferMappingModelAutomaticallyOption: true,
+                                                          NSPersistentStoreFileProtectionKey : FileProtectionType.complete])
         } catch var error1 as NSError {
             coordinator = nil
             let dict = NSMutableDictionary()

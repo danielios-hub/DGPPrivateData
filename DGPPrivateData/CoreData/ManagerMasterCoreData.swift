@@ -10,14 +10,22 @@ import CoreData
 
 public protocol MasterDataSource {
     func getAllCategories() -> [Category]
+    func getAllCategories(completionHandler: ([Category]) -> Void)
     func getAllEntrys() -> [Entry]
-    func createEntry(title: String?, username: String?, password: String?, notes: String?, category: Category?) -> Entry?
+    func getAllEntrys(completionHandler: ([Entry]) -> Void)
+    func createEntry(with title: String?, username: String?, password: String?, notes: String?, category: Category?) throws -> Entry
     func getDefaultCategory() -> Category?
 }
 
 public class ManagerMasterCoreData: MasterDataSource {
     
+    enum CoreDataError: Error {
+        case errorSaving(String)
+    }
+    
     static let sharedInstance = ManagerMasterCoreData()
+    
+    static let defaultCategoryIndex: Int = 0
     
     let nameCategories = [
         "General",
@@ -37,14 +45,10 @@ public class ManagerMasterCoreData: MasterDataSource {
         "creditcard"
     ]
     
-    private init() {}
-
-    public func isDatabaseCreated() -> Bool {
-        return false
-    }
-    
-    public func checkMasterHash(_ hash: String) {
-        
+    private init() {
+        if getAllCategories().isEmpty {
+            createDefaultData()
+        }
     }
     
     public func getAllEntrys() -> [Entry] {
@@ -59,6 +63,16 @@ public class ManagerMasterCoreData: MasterDataSource {
         }
         
         return result
+    }
+    
+    public func getAllEntrys(completionHandler: ([Entry]) -> Void) {
+        let entrys = getAllEntrys()
+        completionHandler(entrys)
+    }
+    
+    public func getAllCategories(completionHandler: ([Category]) -> Void) {
+        let categories = getAllCategories()
+        completionHandler(categories)
     }
     
     public func getAllCategories() -> [Category] {
@@ -77,7 +91,7 @@ public class ManagerMasterCoreData: MasterDataSource {
     }
     
     public func getDefaultCategory() -> Category? {
-        let name = nameCategories[0]
+        let name = nameCategories[ManagerMasterCoreData.defaultCategoryIndex]
         
         guard let context = ManagerCoreDataStack.sharedInstance.managedObjectContext else {
             return nil
@@ -114,13 +128,17 @@ public class ManagerMasterCoreData: MasterDataSource {
         }
     }
     
-    public func createEntry(title: String? = nil, username: String? = nil, password: String? = nil, notes: String? = nil, category: Category? = nil) -> Entry? {
+    public func createEntry(with title: String? = nil,
+                            username: String? = nil,
+                            password: String? = nil,
+                            notes: String? = nil,
+                            category: Category? = nil) throws -> Entry {
         guard let context = ManagerCoreDataStack.sharedInstance.managedObjectContext else {
-            return nil
+            throw CoreDataError.errorSaving("")
         }
         
         guard let selectedCategory = category ?? getDefaultCategory() else {
-            return nil
+            throw CoreDataError.errorSaving("")
         }
         
         let entry = Entry(title: title ?? "Default title", username: username, password: password, notes: notes, category: selectedCategory, context: context)
@@ -129,7 +147,35 @@ public class ManagerMasterCoreData: MasterDataSource {
             return entry
         } catch {
             print(error)
-            return nil
+            throw CoreDataError.errorSaving("")
         }
     }
+    
+    public func updateEntry(_ entry: Entry) throws {
+        do {
+            try ManagerCoreDataStack.sharedInstance.saveContext()
+        } catch {
+            print(error)
+            throw CoreDataError.errorSaving("")
+        }
+    }
+    
+//    public func createEntry(title: String? = nil, username: String? = nil, password: String? = nil, notes: String? = nil, category: Category? = nil) -> Entry? {
+//        guard let context = ManagerCoreDataStack.sharedInstance.managedObjectContext else {
+//            return nil
+//        }
+//
+//        guard let selectedCategory = category ?? getDefaultCategory() else {
+//            return nil
+//        }
+//
+//        let entry = Entry(title: title ?? "Default title", username: username, password: password, notes: notes, category: selectedCategory, context: context)
+//        do {
+//            try ManagerCoreDataStack.sharedInstance.saveContext()
+//            return entry
+//        } catch {
+//            print(error)
+//            return nil
+//        }
+//    }
 }

@@ -18,5 +18,9 @@ class ListEntryView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    public func setup() {
+        tableView.tableFooterView = UIView(frame: .zero)
+    }
 
 }
