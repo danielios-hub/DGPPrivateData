@@ -18,6 +18,9 @@ protocol AddEditEntryBusinessLogic {
     func updateEntry(request: AddEditEntryScene.Save.Request)
     func showEntryToEdit(request: AddEditEntryScene.Edit.Request)
     func updatedCategory(request: AddEditEntryScene.UpdateCategory.Request)
+    func updatePassword(request: AddEditEntryScene.UpdatePassword.Request)
+    func copyText(request: AddEditEntryScene.Copy.Request)
+    func toggleIsFavorite(request: AddEditEntryScene.UpdateFavorite.Request)
     var entryToEdit: Entry? { get set }
     var title: String { get set }
     var username: String { get set }
@@ -33,6 +36,7 @@ protocol AddEditEntryDataStore {
     var username: String { get set }
     var password: String { get set }
     var notes: String { get set }
+    var isFavorite: Bool { get set }
     var isValid: Bool { get }
     var selectedIndex: Int { get set }
 }
@@ -46,6 +50,7 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     var username: String = ""
     var password: String = ""
     var notes: String = ""
+    var isFavorite: Bool = false
     
     var categories = [Category]()
     var selectedIndex: Int = 0
@@ -105,6 +110,7 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
         if let entryToEdit = entryToEdit,
            let category = entryToEdit.relationCategory {
             selectedIndex = categories.firstIndex(of: category) ?? 0
+            isFavorite = entryToEdit.favorite
             let response = AddEditEntryScene.Edit.Response(entry: entryToEdit)
             self.presenter?.presentEntryToEdit(response: response)
             
@@ -117,6 +123,22 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
         self.presenter?.presentSelectedCategory(response: response)
     }
     
+    func updatePassword(request: AddEditEntryScene.UpdatePassword.Request) {
+        let response = AddEditEntryScene.UpdatePassword.Response(password: password)
+        presenter?.presentUpdatePassword(response: response)
+    }
+    
+    func toggleIsFavorite(request: AddEditEntryScene.UpdateFavorite.Request) {
+        self.isFavorite.toggle()
+        let response = AddEditEntryScene.UpdateFavorite.Response(isfavorite: self.isFavorite)
+        presenter?.presentUpdateFavorite(response: response)
+    }
+    
+    func copyText(request: AddEditEntryScene.Copy.Request) {
+        UIPasteboard.general.string = request.text
+        presenter?.presentCopySuccess(response: AddEditEntryScene.Copy.Response())
+    }
+    
     //MARK: - Utils
     
     private func buildEntryFromFields(entity: Entry, fields: AddEditEntryScene.EntryFormFields, category: Category) -> Entry {
@@ -124,6 +146,7 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
         entity.username = fields.username
         entity.password = fields.password
         entity.notes = fields.notes
+        entity.favorite = fields.favorite
         entity.relationCategory = category
         return entity
     }

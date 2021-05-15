@@ -2,7 +2,7 @@
 //  Category+CoreDataProperties.swift
 //  DGPPrivateData
 //
-//  Created by Daniel Gallego Peralta on 18/2/21.
+//  Created by Daniel Gallego Peralta on 15/5/21.
 //
 //
 
@@ -16,8 +16,8 @@ extension Category {
         return NSFetchRequest<Category>(entityName: "Category")
     }
 
-    @NSManaged public var name: String
     @NSManaged public var icon: String
+    @NSManaged public var name: String
     @NSManaged public var entrys: NSSet?
 
 }

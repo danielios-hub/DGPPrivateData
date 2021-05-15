@@ -14,14 +14,14 @@ import UIKit
 
 class AddEditEntryWorker {
     func fetchCategories(completionHandler: @escaping (([Category]) -> Void)) {
-        ManagerMasterCoreData.sharedInstance.getAllCategories { categories in
+        ManagerMasterCoreData.shared.getAllCategories { categories in
             completionHandler(categories)
         }
     }
     
     func createEntry(with formFields: AddEditEntryScene.EntryFormFields, category: Category, completionHandler: @escaping ((Result<Entry, Error>) -> Void)) {
         do {
-            let entry = try ManagerMasterCoreData.sharedInstance.createEntry(with: formFields.title, username: formFields.username, password: formFields.password, notes: formFields.notes, category: category)
+            let entry = try ManagerMasterCoreData.shared.createEntry(with: formFields.title, username: formFields.username, password: formFields.password, notes: formFields.notes, isFavorite: formFields.favorite, category: category)
             completionHandler(.success(entry))
         } catch {
             completionHandler(.failure(error))
@@ -30,7 +30,7 @@ class AddEditEntryWorker {
     
     func editEntry(entry: Entry, completionHandler: @escaping ((Result<Entry, Error>) -> Void)) {
         do {
-            try ManagerMasterCoreData.sharedInstance.updateEntry(entry)
+            try ManagerMasterCoreData.shared.updateEntry(entry)
             completionHandler(.success(entry))
         } catch {
             completionHandler(.failure(error))

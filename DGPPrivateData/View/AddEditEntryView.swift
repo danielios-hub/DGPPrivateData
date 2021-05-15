@@ -23,13 +23,14 @@ public class AddEditEntryView: UIView {
     @IBOutlet var iconCategory: UIImageView!
     @IBOutlet var valueCategory: UILabel!
     @IBOutlet var buttonCategory: UIButton!
+    @IBOutlet var favoriteButton: UIButton!
     
     //MARK: - Instance properties
     
     let titleFont = UIFont.systemFont(ofSize: 14, weight: .medium)
     let valueFont = UIFont.systemFont(ofSize: 15, weight: .regular)
     
-    public func setup(target: Any, actionEdit: Selector) {
+    public func setup(target: Any, actionEdit: Selector, actionCopy: Selector) {
         viewTitle.titleLabel.text = NSLocalizedString("Title", comment: "title of the entry")
         viewTitle.textField.placeholder = NSLocalizedString("Write a title", comment: "placeholder of the title of the entry")
         
@@ -59,11 +60,21 @@ public class AddEditEntryView: UIView {
         labelCategoryTitle.font = titleFont
         valueCategory.font = valueFont
         
-        viewPassword.setButtonsPassword(target: target, actionEdit: actionEdit)
+        viewPassword.setButtonsPassword(target: target,
+                                        actionEdit: actionEdit,
+                                        actionCopy: actionCopy)
     }
     
     func updateCategory(name: String, icon: String) {
         valueCategory.text = name
         iconCategory.image = UIImage(named: icon)
+    }
+    
+    func updateFavorite(selected: Bool) {
+        if selected {
+            favoriteButton.setImage(UIImage(symbol: .starFill), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(symbol: .star), for: .normal)
+        }
     }
 }

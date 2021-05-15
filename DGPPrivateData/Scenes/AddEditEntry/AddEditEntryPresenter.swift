@@ -18,6 +18,9 @@ protocol AddEditEntryPresentationLogic {
     func presentUpdatedEntry(response: AddEditEntryScene.Save.Response)
     func presentEntryToEdit(response: AddEditEntryScene.Edit.Response)
     func presentSelectedCategory(response: AddEditEntryScene.UpdateCategory.Response)
+    func presentCopySuccess(response: AddEditEntryScene.Copy.Response)
+    func presentUpdatePassword(response: AddEditEntryScene.UpdatePassword.Response)
+    func presentUpdateFavorite(response: AddEditEntryScene.UpdateFavorite.Response)
     func presentError(error: Error)
 }
 
@@ -47,7 +50,8 @@ class AddEditEntryPresenter: AddEditEntryPresentationLogic {
             entryFormFields: AddEditEntryScene.EntryFormFields(title: entry.title,
                                                                username: entry.username ?? "",
                                                                password: entry.password ?? "",
-                                                               notes: entry.notes ?? "")
+                                                               notes: entry.notes ?? "",
+                                                               favorite: entry.favorite)
         )
         viewController?.displayEntryToEdit(viewModel: viewModel)
     }
@@ -58,8 +62,23 @@ class AddEditEntryPresenter: AddEditEntryPresentationLogic {
         viewController?.displaySelectedCategory(viewModel: viewModel)
     }
     
+    func presentUpdatePassword(response: AddEditEntryScene.UpdatePassword.Response){
+        let viewModel = AddEditEntryScene.UpdatePassword.ViewModel(password: response.password)
+        viewController?.displayUpdatePassword(viewModel: viewModel)
+    }
+    
+    func presentUpdateFavorite(response: AddEditEntryScene.UpdateFavorite.Response) {
+        let viewModel = AddEditEntryScene.UpdateFavorite.ViewModel(isFavorite: response.isfavorite)
+        viewController?.displayUpdateFavorite(viewModel: viewModel)
+    }
+    
     func presentError(error: Error) {
         let alertMessage = NSLocalizedString("try_again", comment: "error message something went wrong")
         viewController?.displayError(viewModel: ErrorViewModel(msg: alertMessage))
+    }
+    
+    func presentCopySuccess(response: AddEditEntryScene.Copy.Response) {
+        let message = NSLocalizedString("Copy to clipboard", comment: "message when copy text to clipboard success")
+        viewController?.displayToast(with: message)
     }
 }

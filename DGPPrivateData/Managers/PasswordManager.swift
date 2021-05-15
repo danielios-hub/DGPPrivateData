@@ -14,19 +14,17 @@ protocol PasswordGenerator {
 public class PasswordManager: PasswordGenerator {
     
     public struct PasswordConfig {
-        let digitCount : Int = 2
-        let uppercaseCount: Int = 6
-        let symbolCount: Int = 2
-        let totalCharacterCount: Int = 16
+        var lowercaseCount: Int = 8
+        var uppercaseCount: Int = 6
+        var digitCount : Int = 2
+        var symbolCount: Int = 2
         
-        var totalLowercase: Int {
-            return totalCharacterCount - digitCount - uppercaseCount - symbolCount
-        }
+        static var maximumCharacterForType: Int = 12
     }
     
     //MARK: - Instance properties
     
-    var config = PasswordConfig()
+    private var config = PasswordConfig()
     let chars = "abcdefghijklmnopqrstuvwxyz"
     let digits = "1234567890"
     let symbols = "#$%&*+-.;=@_"
@@ -37,9 +35,15 @@ public class PasswordManager: PasswordGenerator {
     
     static public var shared = PasswordManager()
     
-    private init() {}
+    public convenience init() {
+        self.init(config: PasswordConfig())
+    }
     
     public init(config: PasswordConfig) {
+        self.config = config
+    }
+    
+    func setConfig(_ config: PasswordConfig) {
         self.config = config
     }
     
@@ -56,7 +60,7 @@ public class PasswordManager: PasswordGenerator {
             return charsUpper.randomElement()
         })
         
-        let rndLowercase = String((0..<config.totalLowercase).compactMap { _ in
+        let rndLowercase = String((0..<config.lowercaseCount).compactMap { _ in
             return chars.randomElement()
         })
         
@@ -64,23 +68,3 @@ public class PasswordManager: PasswordGenerator {
         return String(combinedString.shuffled())
     }
 }
-
-//extension RangeReplaceableCollection  {
-//    /// Returns a new collection containing this collection shuffled
-//    var shuffled: Self {
-//        var elements = self
-//        return elements.shuffleInPlace()
-//    }
-//    /// Shuffles this collection in place
-//    @discardableResult
-//    mutating func shuffleInPlace() -> Self  {
-//        indices.forEach {
-//            let subSequence = self[$0...$0]
-//            let index = indices.randomElement()!
-//            replaceSubrange($0...$0, with: self[index...index])
-//            replaceSubrange(index...index, with: subSequence)
-//        }
-//        return self
-//    }
-//    func choose(_ n: Int) -> SubSequence { return shuffled.prefix(n) }
-//}

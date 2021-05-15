@@ -10,7 +10,7 @@ import CoreData
 
 public class ManagerCoreDataStack {
     
-    public static var sharedInstance = ManagerCoreDataStack()
+    public static var shared = ManagerCoreDataStack()
     
     private init() {}
     

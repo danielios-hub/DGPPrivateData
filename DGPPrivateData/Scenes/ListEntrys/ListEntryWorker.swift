@@ -13,8 +13,21 @@
 import UIKit
 
 class ListEntryWorker {
-    func fetchEntrys(completionHandler: ([Entry]) -> Void ) {
-        ManagerMasterCoreData.sharedInstance.getAllEntrys { entrys in
+    
+    var dataStore: StoreDataSource
+    
+    init(dataStore: StoreDataSource) {
+        self.dataStore = dataStore
+    }
+    
+    func fetchEntrys(applyFilters: Bool, completionHandler: ([Entry]) -> Void ) {
+        let filtersName = dataStore.filterList.filter {
+            $0.state
+        }.map {
+            return $0.title
+        }
+        
+        ManagerMasterCoreData.shared.getAllEntrys(filterByCategoryName: filtersName) { entrys in
             completionHandler(entrys)
         }
     }

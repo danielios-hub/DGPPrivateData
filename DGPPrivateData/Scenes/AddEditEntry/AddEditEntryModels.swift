@@ -21,6 +21,7 @@ enum AddEditEntryScene {
         let username: String
         let password: String
         let notes: String
+        let favorite: Bool
     }
     
     enum AddEditError: Error {
@@ -79,6 +80,7 @@ enum AddEditEntryScene {
             let username: String
             let password: String
             let notes: String
+            let favorite: Bool
         }
         struct Response {
             
@@ -109,6 +111,40 @@ enum AddEditEntryScene {
         struct ViewModel {
             var categoryText: String
             var categoryIcon: String
+        }
+    }
+    
+    enum UpdatePassword {
+        struct Request {}
+        struct Response {
+            let password: String
+        }
+        struct ViewModel {
+            let password: String
+        }
+    }
+    
+    enum Copy {
+        struct Request{
+            var text: String
+        }
+        struct Response {
+            
+        }
+        struct ViewModel {
+            
+        }
+    }
+    
+    enum UpdateFavorite {
+        struct Request {
+    
+        }
+        struct Response {
+            let isfavorite: Bool
+        }
+        struct ViewModel {
+            let isFavorite: Bool
         }
     }
     

@@ -22,14 +22,15 @@ protocol ListEntryDataStore {
 
 class ListEntryInteractor: ListEntryBusinessLogic, ListEntryDataStore {
     var presenter: ListEntryPresentationLogic?
-    var worker: ListEntryWorker?
+    
     var entries = [Entry]()
+    var dataStore: StoreDataSource = UserDefaultManager()
+    lazy var worker = ListEntryWorker(dataStore: dataStore)
     
     // MARK: Do something
     
     func doLoadInitialData(request: ListEntryScene.Load.Request) {
-        worker = ListEntryWorker()
-        worker?.fetchEntrys { entrys in
+        worker.fetchEntrys(applyFilters: true) { entrys in
             self.entries = entrys
             let response = ListEntryScene.Load.Response(entrys: entrys)
             self.presenter?.presentInitialData(response: response)

@@ -77,9 +77,17 @@ class AuthenticationViewController: UIViewController, AuthenticationDisplayLogic
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        #if BETA
+            print("beta")
+        router?.routeToListEntry()
+        #endif
+    }
+    
     private func setupView() {
         title = NSLocalizedString("Authentication", comment: "title for authentication screen")
-        navigationController?.navigationBar.barTintColor = UIColor.lavender_tea
+        navigationController?.navigationBar.barTintColor = UIColor.lavenderTea
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white

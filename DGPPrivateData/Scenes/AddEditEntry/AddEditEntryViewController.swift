@@ -18,7 +18,10 @@ protocol AddEditEntryDisplayLogic: class {
     func displayEntryCreated(viewModel: AddEditEntryScene.Save.ViewModel)
     func displayEntryToEdit(viewModel: AddEditEntryScene.Edit.ViewModel)
     func displaySelectedCategory(viewModel: AddEditEntryScene.UpdateCategory.ViewModel)
+    func displayUpdatePassword(viewModel: AddEditEntryScene.UpdatePassword.ViewModel)
+    func displayUpdateFavorite(viewModel: AddEditEntryScene.UpdateFavorite.ViewModel)
     func displayError(viewModel: ErrorViewModel)
+    func displayToast(with message: String)
 }
 
 class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, Storyboarded {
@@ -97,21 +100,27 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         setPlaceholder()
         loadEditEntry()
         loadCategory()
-        
-        addEntryView.viewPassword.textField.text = PasswordManager.shared.generatePassword()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.updatePassword(request: AddEditEntryScene.UpdatePassword.Request())
     }
     
     private func setupView() {
-        addEntryView.setup(target: self, actionEdit: #selector(editPassword))
+        addEntryView.setup(target: self,
+                           actionEdit: #selector(editPassword),
+                           actionCopy: #selector(copyPassword))
         navigationItem.title = NSLocalizedString("Add an Item", comment: "title of the add entry screen")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveEntry))
         addEntryView.viewTitle.textField.delegate = self
         addEntryView.viewUsername.textField.delegate = self
         addEntryView.viewPassword.textField.delegate = self
         addEntryView.textViewNotes.delegate = self
-        isEnabledButton(false)
+        isEnabledButton(true)
         
         addEntryView.buttonCategory.addTarget(self, action: #selector(selectCategory), for: .touchUpInside)
+        addEntryView.favoriteButton.addTarget(self, action: #selector(toggleIsFavorite), for: .touchUpInside)
         
         configureTagView()
         addObserver(addEntryView.viewTitle.textField)
@@ -119,14 +128,14 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         addObserver(addEntryView.viewPassword.textField)
     }
     
-    func configureTagView() {
+    private func configureTagView() {
         addEntryView.viewTitle.textField.tag = TagTextField.title.rawValue
         addEntryView.viewUsername.textField.tag = TagTextField.username.rawValue
         addEntryView.viewPassword.textField.tag = TagTextField.password.rawValue
         addEntryView.textViewNotes.tag = TagTextField.notes.rawValue
     }
     
-    // MARK: Input
+    // MARK: Output
     
     func loadInitialData() {
         let request = AddEditEntryScene.Load.Request()
@@ -142,11 +151,17 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         interactor?.updatedCategory(request: AddEditEntryScene.UpdateCategory.Request())
     }
     
-    //MARK: - Output
+    //MARK: - Input
     
     func displayInitialData(viewModel: AddEditEntryScene.Load.ViewModel) {
         self.viewModel = viewModel
         addEntryView.updateCategory(name: viewModel.categoryText, icon: viewModel.categoryIcon)
+        
+        if interactor?.entryToEdit == nil {
+            interactor?.password = PasswordManager.shared.generatePassword()
+            interactor?.updatePassword(request: AddEditEntryScene.UpdatePassword.Request())
+            addEntryView.viewPassword.textField.text = PasswordManager.shared.generatePassword()
+        }
     }
     
     func displayEntryCreated(viewModel: AddEditEntryScene.Save.ViewModel) {
@@ -159,6 +174,7 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         addEntryView.viewTitle.textField.text = formFields.title
         addEntryView.viewUsername.textField.text = formFields.username
         addEntryView.viewPassword.textField.text = formFields.password
+        addEntryView.updateFavorite(selected: formFields.favorite)
         
         if !formFields.notes.isEmpty {
             addEntryView.textViewNotes.text = formFields.notes
@@ -170,8 +186,20 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         addEntryView.updateCategory(name: viewModel.categoryText, icon: viewModel.categoryIcon)
     }
     
+    func displayUpdatePassword(viewModel: AddEditEntryScene.UpdatePassword.ViewModel) {
+        addEntryView.viewPassword.textField.text = viewModel.password
+    }
+    
+    func displayUpdateFavorite(viewModel: AddEditEntryScene.UpdateFavorite.ViewModel) {
+        addEntryView.updateFavorite(selected: viewModel.isFavorite)
+    }
+    
     func displayError(viewModel: ErrorViewModel) {
         view.makeToast(viewModel.msg, position: .bottom)
+    }
+    
+    func displayToast(with message: String) {
+        view.makeToast(message, position: .center)
     }
     
     //MARK: - Actions
@@ -181,6 +209,7 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         let username = addEntryView.viewUsername.textField.text!
         let password = addEntryView.viewPassword.textField.text!
         var notes = addEntryView.textViewNotes.text!
+        let isFavorite = self.router?.dataStore?.isFavorite ?? false
         
         if notes == textPlaceholder {
             notes = ""
@@ -190,13 +219,15 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
             let request = AddEditEntryScene.Save.Request(entryFormFields: AddEditEntryScene.EntryFormFields(title: title,
                                                                                                                    username: username,
                                                                                                                    password: password,
-                                                                                                                   notes: notes))
+                                                                                                                   notes: notes,
+                                                                                                                   favorite: isFavorite))
             interactor?.updateEntry(request: request)
         } else {
             let request = AddEditEntryScene.Save.Request(entryFormFields: AddEditEntryScene.EntryFormFields(title: title,
                                                                                                             username: username,
                                                                                                             password: password,
-                                                                                                            notes: notes)
+                                                                                                            notes: notes,
+                                                                                                            favorite: isFavorite)
                                                         )
             interactor?.saveEntry(request: request)
         }
@@ -215,7 +246,18 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     }
     
     @objc func editPassword() {
-        
+        interactor?.password = addEntryView.viewPassword.textField.text!
+        router?.routeToPasswordGenerator()
+    }
+    
+    @objc func copyPassword() {
+        let request = AddEditEntryScene.Copy.Request(text: addEntryView.viewPassword.textField.text!)
+        interactor?.copyText(request: request)
+    }
+    
+    @objc func toggleIsFavorite() {
+        let request = AddEditEntryScene.UpdateFavorite.Request()
+        interactor?.toggleIsFavorite(request: request)
     }
     
     //MARK: - Utils

@@ -38,7 +38,7 @@ public class Category: NSManagedObject {
         self.init(entity: entity!, insertInto: managedObjectContext)
     }
     
-    convenience init(name: String, icon: String, context: NSManagedObjectContext) {
+    convenience init(name: String, icon: String, selected: Bool, context: NSManagedObjectContext) {
         self.init(managedObjectContext: context)
         self.name = name
         self.icon = icon

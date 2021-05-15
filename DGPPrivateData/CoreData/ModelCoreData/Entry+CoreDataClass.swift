@@ -24,6 +24,10 @@ public class Entry: NSManagedObject {
 
     //MARK: - Class methods
     
+    @nonobjc public class func entryFetchRequest() -> NSFetchRequest<Entry> {
+        return NSFetchRequest<Entry>(entityName: "Entry")
+    }
+    
     class func entityName() -> String {
         return "Entry"
     }
@@ -50,6 +54,7 @@ public class Entry: NSManagedObject {
                      notes: String? = nil,
                      icon: String? = nil,
                      expires: Date? = nil,
+                     isFavorite: Bool,
                      category: Category,
                      context: NSManagedObjectContext) {
         self.init(managedObjectContext: context)
@@ -58,7 +63,7 @@ public class Entry: NSManagedObject {
         self.password = password
         self.url = url
         self.notes = notes
-
+        self.favorite = isFavorite
         self.expires = expires
         self.relationCategory = category
         

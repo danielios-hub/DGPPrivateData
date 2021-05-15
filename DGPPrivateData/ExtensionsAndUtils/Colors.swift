@@ -9,16 +9,16 @@ import UIKit
 
 extension UIColor {
     
-    static let emerald = UIColor(hex: 0x009B77)
-    static let emeraldDark = UIColor(hex: 0x2D7F77)
+    static let emerald = UIColor(named: "emerald")
+    static let emeraldDark = UIColor(named: "emeraldDark")
     
-    static let lightGray = UIColor(hex: 0xecf0f1)
-    static let silver = UIColor(hex: 0xbdc3c7)
+    static let lightGray = UIColor(named: "lightGray")
+    static let silver = UIColor(named: "silver")
     
-    static let mimosa = UIColor(hex: 0xEFC050)
-    static let red_fluorescent = UIColor(hex: 0xff5252)
-    
-    static let lavender_tea = UIColor(hex: 0xD980FA)
+    static let mimosa = UIColor(named: "mimosa")
+    static let lavenderTea = UIColor(named: "lavenderTea")
+    static let grayDark = UIColor(named: "grayDark")
+    static let redFluorescent = UIColor(named: "redFluorescent")
    
     
     // Create a UIColor from RGB

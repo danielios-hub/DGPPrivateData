@@ -80,7 +80,8 @@ public class FieldEntryView: UIView {
     }
     
     func setButtonsPassword(target: Any?,
-                            actionEdit: Selector) {
+                            actionEdit: Selector,
+                            actionCopy: Selector) {
         widthStack?.constant = 100
         let buttonEdit = UIButton()
         buttonEdit.setImage(UIImage(symbol: .pencilCircleFill), for: .normal)
@@ -95,17 +96,13 @@ public class FieldEntryView: UIView {
         stackButtonView?.addArrangedSubview(buttonShow)
         stackButtonView?.addArrangedSubview(buttonCopy)
         
-        buttonEdit.tintColor = .lavender_tea
-        buttonShow.tintColor = .lavender_tea
-        buttonCopy.tintColor = .lavender_tea
+        buttonEdit.tintColor = .lavenderTea
+        buttonShow.tintColor = .lavenderTea
+        buttonCopy.tintColor = .lavenderTea
         
         buttonEdit.addTarget(target, action: actionEdit, for: .touchUpInside)
         buttonShow.addTarget(self, action: #selector(toggleSecureTextEntry), for: .touchUpInside)
-        buttonCopy.addTarget(self, action: #selector(copyToClipboard), for: .touchUpInside)
-    }
-    
-    @objc func copyToClipboard() {
-        UIPasteboard.general.string = textField.text!
+        buttonCopy.addTarget(target, action: actionCopy, for: .touchUpInside)
     }
     
     @objc func toggleSecureTextEntry() {

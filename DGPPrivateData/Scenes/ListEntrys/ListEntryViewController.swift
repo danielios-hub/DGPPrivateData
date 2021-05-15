@@ -88,9 +88,13 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
     func setupView() {
         self.title = NSLocalizedString("Entrys", comment: "Title entry list")
         let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createEntry))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(symbol: .lineHorizontal3DecreaseCircleFill),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(filterEntrys))
         navigationItem.rightBarButtonItem = barButton
         navigationItem.hidesBackButton = true 
-        navigationController?.navigationBar.barTintColor = UIColor.lavender_tea
+        navigationController?.navigationBar.barTintColor = UIColor.lavenderTea
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white
@@ -111,10 +115,14 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
         self.listView.tableView.reloadData()
     }
     
-    //MARK: - Action s
+    //MARK: - Actions
     
     @objc func createEntry() {
         router?.routeToAddEntry()
+    }
+    
+    @objc func filterEntrys() {
+        router?.routeToFilters()
     }
 }
 

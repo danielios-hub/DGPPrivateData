@@ -14,6 +14,7 @@ import UIKit
 
 @objc protocol AddEditEntryRoutingLogic {
     func routeToListEntry()
+    func routeToPasswordGenerator()
 }
 
 protocol AddEditEntryDataPassing {
@@ -36,15 +37,30 @@ class AddEditEntryRouter: NSObject, AddEditEntryRoutingLogic, AddEditEntryDataPa
         navigateToListEntry(source: viewController!, destination: destinationVC)
     }
     
+    func routeToPasswordGenerator() {
+        let destinationVC = PasswordGeneratorViewController.instantiate()
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToGeneratePassword(source: dataStore!, destination: &destinationDS)
+        navigateToPasswordGenerator(source: viewController!, destination: destinationVC)
+    }
+    
     // MARK: Navigation
     
     func navigateToListEntry(source: AddEditEntryViewController, destination: ListEntryViewController) {
         source.navigationController?.popViewController(animated: true)
     }
     
+    func navigateToPasswordGenerator(source: AddEditEntryViewController, destination: PasswordGeneratorViewController) {
+        source.show(destination, sender: nil)
+    }
+    
      //MARK: Passing data
     
     func passDataToListEntry(source: AddEditEntryDataStore, destination: inout ListEntryDataStore) {
       
+    }
+    
+    func passDataToGeneratePassword(source: AddEditEntryDataStore, destination: inout PasswordGeneratorDataStore) {
+        destination.password = source.password
     }
 }
