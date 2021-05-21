@@ -44,6 +44,10 @@
 		C7331AC725F2933800CDE439 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331AC625F2933800CDE439 /* AuthenticationView.swift */; };
 		C7501902264EDA98003E34D8 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7501901264EDA98003E34D8 /* UserDefaultManager.swift */; };
 		C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */; };
+		C782163F265166FF00323093 /* NeumorphismButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782163E265166FF00323093 /* NeumorphismButton.swift */; };
+		C78216412651671F00323093 /* NeumorphismExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78216402651671F00323093 /* NeumorphismExtensions.swift */; };
+		C78216432651698000323093 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C78216422651698000323093 /* Media.xcassets */; };
+		C78216452651741C00323093 /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78216442651741C00323093 /* ColorsExtension.swift */; };
 		C7AE5DF925FD1CC400C4C4D7 /* FilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE5DF325FD1CC400C4C4D7 /* FilterPresenter.swift */; };
 		C7AE5DFA25FD1CC400C4C4D7 /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE5DF425FD1CC400C4C4D7 /* FilterWorker.swift */; };
 		C7AE5DFB25FD1CC400C4C4D7 /* FilterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE5DF525FD1CC400C4C4D7 /* FilterRouter.swift */; };
@@ -80,6 +84,7 @@
 		C7EB5D2025DE7BA100FB1AE8 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EB5D1C25DE7BA100FB1AE8 /* Category+CoreDataClass.swift */; };
 		C7EB5D2125DE7BA100FB1AE8 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EB5D1D25DE7BA100FB1AE8 /* Category+CoreDataProperties.swift */; };
 		C7EB5D2525DE7E7200FB1AE8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7EB5D0925DE793B00FB1AE8 /* CoreData.framework */; };
+		C7FD51332655889900FED18E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FD51322655889900FED18E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -135,6 +140,10 @@
 		C7331AC625F2933800CDE439 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		C7501901264EDA98003E34D8 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
+		C782163E265166FF00323093 /* NeumorphismButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphismButton.swift; sourceTree = "<group>"; };
+		C78216402651671F00323093 /* NeumorphismExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphismExtensions.swift; sourceTree = "<group>"; };
+		C78216422651698000323093 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		C78216442651741C00323093 /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
 		C7AE5DF325FD1CC400C4C4D7 /* FilterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPresenter.swift; sourceTree = "<group>"; };
 		C7AE5DF425FD1CC400C4C4D7 /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
 		C7AE5DF525FD1CC400C4C4D7 /* FilterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRouter.swift; sourceTree = "<group>"; };
@@ -170,6 +179,7 @@
 		C7EB5D1B25DE7BA100FB1AE8 /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7EB5D1C25DE7BA100FB1AE8 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C7EB5D1D25DE7BA100FB1AE8 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C7FD51322655889900FED18E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D29935CB78BA360E0C9D9F9D /* Pods-DGPPrivateData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.debug.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.debug.xcconfig"; sourceTree = "<group>"; };
 		FCA5AFDB6F6EA18541C3DB40 /* Pods_DGPPrivateData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DGPPrivateData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -189,6 +199,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C70B6FBD26512FBF0087E326 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C71BF30625F61F5C002239BE /* PasswordGeneratorView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		C710204D25F12AEF0085535B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +250,7 @@
 		C71BF2F925F61E24002239BE /* Password */ = {
 			isa = PBXGroup;
 			children = (
+				C70B6FBD26512FBF0087E326 /* UI */,
 				C71BF2FA25F61E4C002239BE /* PasswordGeneratorPresenter.swift */,
 				C71BF2FB25F61E4C002239BE /* PasswordGeneratorWorker.swift */,
 				C71BF2FC25F61E4C002239BE /* PasswordGeneratorRouter.swift */,
@@ -251,6 +270,7 @@
 				C7AE5E0125FD349800C4C4D7 /* ViewExtensions.swift */,
 				C7AE5E0525FD441B00C4C4D7 /* CollectionViewCellExtensions.swift */,
 				C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */,
+				C7FD51322655889900FED18E /* Constants.swift */,
 			);
 			path = ExtensionsAndUtils;
 			sourceTree = "<group>";
@@ -275,6 +295,17 @@
 				C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C782163D265166E900323093 /* Neumorphism */ = {
+			isa = PBXGroup;
+			children = (
+				C782163E265166FF00323093 /* NeumorphismButton.swift */,
+				C78216402651671F00323093 /* NeumorphismExtensions.swift */,
+				C78216422651698000323093 /* Media.xcassets */,
+				C78216442651741C00323093 /* ColorsExtension.swift */,
+			);
+			path = Neumorphism;
 			sourceTree = "<group>";
 		};
 		C7AE5DF225FD1CA300C4C4D7 /* Filter */ = {
@@ -314,7 +345,6 @@
 				C72D8AF725DFEB1C0069C72E /* AddEditEntryView.swift */,
 				C72D8AF925E01E3E0069C72E /* FieldEntryView.swift */,
 				C7331AC625F2933800CDE439 /* AuthenticationView.swift */,
-				C71BF30625F61F5C002239BE /* PasswordGeneratorView.swift */,
 				C7AE5DFF25FD210400C4C4D7 /* FilterView.swift */,
 			);
 			path = View;
@@ -414,6 +444,7 @@
 		C7F6FBAF25E52DBB00CB42BB /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				C782163D265166E900323093 /* Neumorphism */,
 				C7F6FBB025E52DC100CB42BB /* DGPPickerView */,
 			);
 			path = Library;
@@ -513,6 +544,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78216432651698000323093 /* Media.xcassets in Resources */,
 				C7EB5CFB25DE72AA00FB1AE8 /* LaunchScreen.storyboard in Resources */,
 				C7CA213325E3BF0800EB8ACE /* Localizable.strings in Resources */,
 				C7EB5CF825DE72AA00FB1AE8 /* Assets.xcassets in Resources */,
@@ -574,8 +606,11 @@
 				C710206A25F13CD60085535B /* AddEditEntryInteractor.swift in Sources */,
 				C7331AC325F291D000CDE439 /* AuthenticationModels.swift in Sources */,
 				C7501902264EDA98003E34D8 /* UserDefaultManager.swift in Sources */,
+				C78216452651741C00323093 /* ColorsExtension.swift in Sources */,
+				C782163F265166FF00323093 /* NeumorphismButton.swift in Sources */,
 				C71BF30125F61E4C002239BE /* PasswordGeneratorWorker.swift in Sources */,
 				C72D8AF825DFEB1C0069C72E /* AddEditEntryView.swift in Sources */,
+				C7FD51332655889900FED18E /* Constants.swift in Sources */,
 				C7331AC525F291D000CDE439 /* AuthenticationInteractor.swift in Sources */,
 				C710206525F13CD60085535B /* AddEditEntryPresenter.swift in Sources */,
 				C7D03C9725DE89CC008303C6 /* ManagerMasterCoreData.swift in Sources */,
@@ -594,6 +629,7 @@
 				C7331AC725F2933800CDE439 /* AuthenticationView.swift in Sources */,
 				C710205825F12B320085535B /* ListEntryModels.swift in Sources */,
 				C7B9A1F825F528B400725F3F /* ListEntryCellViewModel.swift in Sources */,
+				C78216412651671F00323093 /* NeumorphismExtensions.swift in Sources */,
 				C71BF30325F61E4C002239BE /* PasswordGeneratorModels.swift in Sources */,
 				C71BF30225F61E4C002239BE /* PasswordGeneratorRouter.swift in Sources */,
 				C7D03CA225DEBB85008303C6 /* ListEntryViewCell.swift in Sources */,

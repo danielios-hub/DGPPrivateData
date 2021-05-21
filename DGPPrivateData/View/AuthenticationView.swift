@@ -15,7 +15,7 @@ class AuthenticationView: UIView {
         
         authButton.clipsToBounds = true
         authButton.layer.cornerRadius = 6
-        authButton.backgroundColor = UIColor.lavenderTea
+        authButton.backgroundColor = UIColor.forgottenPurple
         authButton.setTitleColor(.white, for: .normal)
         
     }

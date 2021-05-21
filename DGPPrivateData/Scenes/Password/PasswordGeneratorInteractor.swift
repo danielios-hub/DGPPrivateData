@@ -16,6 +16,7 @@ protocol PasswordGeneratorBusinessLogic {
     func doLoadPassword(request: PasswordGeneratorScene.Show.Request)
     func doGeneratePassword(request: PasswordGeneratorScene.New.Request)
     func doCopyPassword(request: PasswordGeneratorScene.Copy.Request)
+    func doPasswordEditing(request: PasswordGeneratorScene.UpdateText.Request)
     var password: String { get set }
     var tableViewModel: PasswordGeneratorScene.PasswordGeneratorViewModel { get }
 }
@@ -47,6 +48,10 @@ class PasswordGeneratorInteractor: PasswordGeneratorBusinessLogic, PasswordGener
         UIPasteboard.general.string = request.text
         let response = PasswordGeneratorScene.Copy.Response()
         presenter?.presentCopy(response: response)
+    }
+    
+    func doPasswordEditing(request: PasswordGeneratorScene.UpdateText.Request){
+        self.password = request.text
     }
     
 }

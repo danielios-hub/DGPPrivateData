@@ -15,7 +15,6 @@ public class AddEditEntryView: UIView {
     @IBOutlet var viewUsername: FieldEntryView!
     @IBOutlet var viewPassword: FieldEntryView!
     
-    @IBOutlet var labelNotes: UILabel!
     @IBOutlet var textViewNotes: UITextView!
     @IBOutlet var scrollView: UIScrollView!
     
@@ -23,14 +22,17 @@ public class AddEditEntryView: UIView {
     @IBOutlet var iconCategory: UIImageView!
     @IBOutlet var valueCategory: UILabel!
     @IBOutlet var buttonCategory: UIButton!
-    @IBOutlet var favoriteButton: UIButton!
+    @IBOutlet var favoriteButton: NeumorphismButton!
     
     //MARK: - Instance properties
     
-    let titleFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+    let titleFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
     let valueFont = UIFont.systemFont(ofSize: 15, weight: .regular)
     
     public func setup(target: Any, actionEdit: Selector, actionCopy: Selector) {
+        self.backgroundColor = UIColor.element
+        textViewNotes.layer.cornerRadius = Constants.cornerRadius
+        
         viewTitle.titleLabel.text = NSLocalizedString("Title", comment: "title of the entry")
         viewTitle.textField.placeholder = NSLocalizedString("Write a title", comment: "placeholder of the title of the entry")
         
@@ -40,7 +42,6 @@ public class AddEditEntryView: UIView {
         viewPassword.titleLabel.text = NSLocalizedString("Password", comment: "title of the password")
         viewPassword.textField.text = ""
         
-        labelNotes.text = NSLocalizedString("Notes", comment: "title of the notes")
         textViewNotes.text = NSLocalizedString("Write some notes for your entry", comment: "Placeholder notes entry")
         
         viewPassword.textField.isSecureTextEntry = true
@@ -54,7 +55,6 @@ public class AddEditEntryView: UIView {
         viewUsername.titleFont = titleFont
         viewUsername.textFieldFont = valueFont
         
-        labelNotes.font = titleFont
         textViewNotes.font = valueFont
         
         labelCategoryTitle.font = titleFont
@@ -63,6 +63,7 @@ public class AddEditEntryView: UIView {
         viewPassword.setButtonsPassword(target: target,
                                         actionEdit: actionEdit,
                                         actionCopy: actionCopy)
+        
     }
     
     func updateCategory(name: String, icon: String) {

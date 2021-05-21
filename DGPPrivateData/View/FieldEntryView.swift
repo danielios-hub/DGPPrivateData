@@ -17,7 +17,7 @@ public class FieldEntryView: UIView {
     
     private var widthStack: NSLayoutConstraint?
     
-    static let MARGIN_TEXTFIELD: CGFloat = 0
+    static let MARGIN_TEXTFIELD: CGFloat = 8
     
     var titleFont: UIFont? {
         didSet {
@@ -71,12 +71,12 @@ public class FieldEntryView: UIView {
         
         widthStack = stackButtonView.widthAnchor.constraint(equalToConstant: 0)
         widthStack?.isActive = true 
-        separator.backgroundColor = .silver
+        separator.backgroundColor = .clear
         
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor.forgottenPurple
         textField.textColor = .black_midnight_light
         stackButtonView.distribution = .equalSpacing
-        
+        self.layer.cornerRadius = Constants.cornerRadius
     }
     
     func setButtonsPassword(target: Any?,
@@ -96,9 +96,9 @@ public class FieldEntryView: UIView {
         stackButtonView?.addArrangedSubview(buttonShow)
         stackButtonView?.addArrangedSubview(buttonCopy)
         
-        buttonEdit.tintColor = .lavenderTea
-        buttonShow.tintColor = .lavenderTea
-        buttonCopy.tintColor = .lavenderTea
+        buttonEdit.tintColor = .berry
+        buttonShow.tintColor = .berry
+        buttonCopy.tintColor = .berry
         
         buttonEdit.addTarget(target, action: actionEdit, for: .touchUpInside)
         buttonShow.addTarget(self, action: #selector(toggleSecureTextEntry), for: .touchUpInside)

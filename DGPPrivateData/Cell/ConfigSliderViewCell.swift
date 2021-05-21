@@ -22,6 +22,8 @@ class ConfigSliderViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
         slider.minimumValue = 0
         slider.maximumValue = Float(PasswordManager.PasswordConfig.maximumCharacterForType)
         slider.addTarget(self, action: #selector(updateValue(_:)), for: .valueChanged)

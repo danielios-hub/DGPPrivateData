@@ -87,7 +87,7 @@ class AuthenticationViewController: UIViewController, AuthenticationDisplayLogic
     
     private func setupView() {
         title = NSLocalizedString("Authentication", comment: "title for authentication screen")
-        navigationController?.navigationBar.barTintColor = UIColor.lavenderTea
+        navigationController?.navigationBar.barTintColor = UIColor.forgottenPurple
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white

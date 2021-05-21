@@ -17,8 +17,15 @@ extension UIColor {
     
     static let mimosa = UIColor(named: "mimosa")
     static let lavenderTea = UIColor(named: "lavenderTea")
+    static let forgottenPurple = UIColor(named: "forgottenPurple")
+    static let berry = UIColor(named: "berry")
+    
     static let grayDark = UIColor(named: "grayDark")
     static let redFluorescent = UIColor(named: "redFluorescent")
+    
+//    static let element = UIColor(named: "Element")
+//    static let highlight = UIColor(named: "Highlight")
+//    static let shadow = UIColor(named: "Shadow")
    
     
     // Create a UIColor from RGB

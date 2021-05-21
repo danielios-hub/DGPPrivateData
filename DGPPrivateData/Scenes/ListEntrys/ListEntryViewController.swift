@@ -94,7 +94,7 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
                                                            action: #selector(filterEntrys))
         navigationItem.rightBarButtonItem = barButton
         navigationItem.hidesBackButton = true 
-        navigationController?.navigationBar.barTintColor = UIColor.lavenderTea
+        navigationController?.navigationBar.barTintColor = UIColor.forgottenPurple
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white

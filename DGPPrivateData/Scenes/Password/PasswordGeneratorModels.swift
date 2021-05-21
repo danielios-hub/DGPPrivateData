@@ -50,6 +50,12 @@ enum PasswordGeneratorScene {
         }
     }
     
+    enum UpdateText {
+        struct Request {
+            let text: String
+        }
+    }
+    
     //MARK: ViewModels
     
     class PasswordGeneratorViewModel {

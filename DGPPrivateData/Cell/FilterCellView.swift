@@ -34,7 +34,7 @@ class FilterCellView: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            self.contentView.backgroundColor = isSelected ? .redFluorescent : UIColor.grayDark
+            self.contentView.backgroundColor = isSelected ? .berry : UIColor.grayDark
             self.titleLabel.textColor = isSelected ? .white : .black
         }
     }

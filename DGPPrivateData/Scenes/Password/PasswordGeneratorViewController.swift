@@ -81,6 +81,8 @@ class PasswordGeneratorViewController: UIViewController, PasswordGeneratorDispla
         passwordView.copyButton.addTarget(self, action: #selector(copyPassword), for: .touchUpInside)
         passwordView.generateButton.addTarget(self, action: #selector(generatePassword), for: .touchUpInside)
         passwordView.applyButton.addTarget(self, action: #selector(updatePassword), for: .touchUpInside)
+        passwordView.passwordTextfield.addTarget(self, action: #selector(textfieldChangeValue(_:)), for: .editingChanged)
+        passwordView.passwordTextfield.delegate = self
     }
     
     // MARK: Output
@@ -90,10 +92,16 @@ class PasswordGeneratorViewController: UIViewController, PasswordGeneratorDispla
         interactor?.doLoadPassword(request: request)
     }
     
+    func loadPasswordEditing(_ text: String) {
+        let request = PasswordGeneratorScene.UpdateText.Request(text: text)
+        self.interactor?.doPasswordEditing(request: request)
+    }
+
+    
     //MARK: - Input
     
     func displayPassword(viewModel: PasswordGeneratorScene.Show.ViewModel) {
-        passwordView.passwordLabel.text = viewModel.password
+        passwordView.passwordTextfield.text = viewModel.password
     }
     
     func displayToast(with message: String) {
@@ -103,7 +111,7 @@ class PasswordGeneratorViewController: UIViewController, PasswordGeneratorDispla
     //MARK: - Actions
     
     @objc func copyPassword() {
-        let text = passwordView.passwordLabel.text!
+        let text = passwordView.passwordTextfield.text!
         let request = PasswordGeneratorScene.Copy.Request(text: text)
         interactor?.doCopyPassword(request: request)
     }
@@ -170,8 +178,30 @@ extension PasswordGeneratorViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return passwordView.getHeaderTableView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
 }
 
 extension PasswordGeneratorViewController: UITableViewDelegate {
+    
+}
+
+extension PasswordGeneratorViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func textfieldChangeValue(_ textField: UITextField) {
+        self.loadPasswordEditing(textField.text!)
+    }
+    
     
 }
