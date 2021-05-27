@@ -13,6 +13,5 @@
 import UIKit
 
 class PasswordGeneratorWorker {
-    func doSomeWork() {
-    }
+   
 }

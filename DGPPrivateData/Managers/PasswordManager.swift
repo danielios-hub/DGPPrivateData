@@ -7,20 +7,20 @@
 
 import Foundation
 
-protocol PasswordGenerator {
-    func generatePassword() -> String
+public struct PasswordConfig {
+    var lowercaseCount: UInt = 8
+    var uppercaseCount: UInt = 6
+    var digitCount : UInt = 2
+    var symbolCount: UInt = 2
+    static let maximumCharacterForType: Int = 12
 }
 
-public class PasswordManager: PasswordGenerator {
-    
-    public struct PasswordConfig {
-        var lowercaseCount: Int = 8
-        var uppercaseCount: Int = 6
-        var digitCount : Int = 2
-        var symbolCount: Int = 2
-        
-        static var maximumCharacterForType: Int = 12
-    }
+protocol PasswordGenerator {
+    func generatePassword() -> String
+    func setConfig(_ config: PasswordConfig)
+}
+
+public final class PasswordManager: PasswordGenerator {
     
     //MARK: - Instance properties
     

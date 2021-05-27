@@ -25,7 +25,11 @@ class ListEntryInteractor: ListEntryBusinessLogic, ListEntryDataStore {
     
     var entries = [Entry]()
     var dataStore: StoreDataSource = UserDefaultManager()
-    lazy var worker = ListEntryWorker(dataStore: dataStore)
+    var worker: ListEntryWorker
+    
+    init() {
+        worker = ListEntryWorker(dataStore: dataStore, masterDataSource: ManagerMasterCoreData.shared)
+    }
     
     // MARK: Do something
     

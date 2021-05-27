@@ -23,7 +23,7 @@ class ListEntryPresenter: ListEntryPresentationLogic {
     
     func presentInitialData(response: ListEntryScene.Load.Response) {
         let cellsViewModel: [ListEntryCellViewModel] = response.entrys.map { model in
-            let category = model.relationCategory?.name ?? ""
+            let category = model.category.name ?? ""
             return ListEntryCellViewModel(title: model.title, icon: model.icon, categoryDescription: category)
         }
         let viewModel = ListEntryScene.Load.ViewModel(cellsModel: cellsViewModel)

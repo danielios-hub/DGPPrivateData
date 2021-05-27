@@ -27,23 +27,7 @@ class PasswordGeneratorRouter: NSObject, PasswordGeneratorRoutingLogic, Password
     // MARK: Routing
     
     func routeToAddEditEntry() {
-        let index = viewController!.navigationController!.viewControllers.count - 2
-        let destinationVC = viewController!.navigationController!.viewControllers[index] as! AddEditEntryViewController
-        var destinationDS = destinationVC.router!.dataStore!
-        passDataToAddEditEntry(source: dataStore!, destination: &destinationDS)
-        navigateToAddEditEntry(source: viewController!, destination: destinationVC)
+        viewController?.dismiss(animated: true)
         
-    }
-    
-    // MARK: Navigation
-    
-    func navigateToAddEditEntry(source: PasswordGeneratorViewController, destination: AddEditEntryViewController) {
-        source.navigationController?.popViewController(animated: true)
-    }
-    
-    //MARK: Passing data
-    
-    func passDataToAddEditEntry(source: PasswordGeneratorDataStore, destination: inout AddEditEntryDataStore) {
-        destination.password = source.password
     }
 }

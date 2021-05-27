@@ -1,8 +1,8 @@
 //
-//  Category+CoreDataProperties.swift
+//  CategoryMO+CoreDataProperties.swift
 //  DGPPrivateData
 //
-//  Created by Daniel Gallego Peralta on 15/5/21.
+//  Created by Daniel Gallego Peralta on 22/5/21.
 //
 //
 
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Category {
+extension CategoryMO {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
-        return NSFetchRequest<Category>(entityName: "Category")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<CategoryMO> {
+        return NSFetchRequest<CategoryMO>(entityName: "CategoryMO")
     }
 
     @NSManaged public var icon: String
@@ -23,13 +23,13 @@ extension Category {
 }
 
 // MARK: Generated accessors for entrys
-extension Category {
+extension CategoryMO {
 
     @objc(addEntrysObject:)
-    @NSManaged public func addToEntrys(_ value: Entry)
+    @NSManaged public func addToEntrys(_ value: EntryMO)
 
     @objc(removeEntrysObject:)
-    @NSManaged public func removeFromEntrys(_ value: Entry)
+    @NSManaged public func removeFromEntrys(_ value: EntryMO)
 
     @objc(addEntrys:)
     @NSManaged public func addToEntrys(_ values: NSSet)
@@ -39,6 +39,6 @@ extension Category {
 
 }
 
-extension Category : Identifiable {
+extension CategoryMO : Identifiable {
 
 }

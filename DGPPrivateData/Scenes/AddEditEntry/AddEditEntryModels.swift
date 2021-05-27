@@ -148,4 +148,10 @@ enum AddEditEntryScene {
         }
     }
     
+    enum UpdateNewPassword {
+        struct Request {
+            let password: String
+        }
+    }
+    
 }

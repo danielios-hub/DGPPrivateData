@@ -17,11 +17,18 @@ protocol PasswordGeneratorDisplayLogic: class {
     func displayToast(with message: String)
 }
 
+protocol PasswordGeneratorDelegate: AnyObject {
+    func passwordGenerator(didUpdatePassword password: String)
+}
+
 class PasswordGeneratorViewController: UIViewController, PasswordGeneratorDisplayLogic, Storyboarded {
     var interactor: PasswordGeneratorBusinessLogic?
     var router: (NSObjectProtocol & PasswordGeneratorRoutingLogic & PasswordGeneratorDataPassing)?
     
     //MARK: - Instance properties
+    
+    weak var delegate: PasswordGeneratorViewController?
+    
     var passwordView: PasswordGeneratorView! {
         guard isViewLoaded else {
             return nil
@@ -119,7 +126,7 @@ class PasswordGeneratorViewController: UIViewController, PasswordGeneratorDispla
     @objc func generatePassword() {
         let orderCase = PasswordGeneratorScene.PasswordGeneratorViewModel.Order.self
         
-        var config = PasswordManager.PasswordConfig()
+        var config = PasswordConfig()
         
         orderCase.allCases.forEach { order in
             let indexPath = IndexPath(row: order.rawValue, section: 0)
@@ -127,16 +134,16 @@ class PasswordGeneratorViewController: UIViewController, PasswordGeneratorDispla
             switch order {
             case .total:
                 let cell = self.tableView(passwordView.tableView, cellForRowAt: indexPath) as! ConfigSliderViewCell
-                config.lowercaseCount = Int(cell.slider.value)
+                config.lowercaseCount = UInt(cell.slider.value)
             case .uppercase:
                 let cell = self.tableView(passwordView.tableView, cellForRowAt: indexPath) as! ConfigSliderViewCell
-                config.uppercaseCount = Int(cell.slider.value)
+                config.uppercaseCount = UInt(cell.slider.value)
             case .digit:
                 let cell = self.tableView(passwordView.tableView, cellForRowAt: indexPath) as! ConfigStepperViewCell
-                config.digitCount = Int(cell.stepper.value)
+                config.digitCount = UInt(cell.stepper.value)
             case .symbol:
                 let cell = self.tableView(passwordView.tableView, cellForRowAt: indexPath) as! ConfigStepperViewCell
-                config.symbolCount = Int(cell.stepper.value)
+                config.symbolCount = UInt(cell.stepper.value)
             }
         }
         
@@ -145,6 +152,7 @@ class PasswordGeneratorViewController: UIViewController, PasswordGeneratorDispla
     }
     
     @objc func updatePassword() {
+        interactor?.doApplyChanges(request: PasswordGeneratorScene.ApplyChanges.Request())
         router?.routeToAddEditEntry()
     }
 }

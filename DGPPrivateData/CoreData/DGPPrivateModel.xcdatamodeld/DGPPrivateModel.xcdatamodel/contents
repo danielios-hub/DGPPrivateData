@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Category" representedClassName="Category" syncable="YES">
+    <entity name="CategoryMO" representedClassName="CategoryMO" syncable="YES">
         <attribute name="icon" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="entrys" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="relationCategory" inverseEntity="Entry"/>
+        <relationship name="entrys" toMany="YES" deletionRule="Nullify" destinationEntity="EntryMO" inverseName="relationCategory" inverseEntity="EntryMO"/>
     </entity>
-    <entity name="Entry" representedClassName="Entry" syncable="YES">
+    <entity name="EntryMO" representedClassName="EntryMO" syncable="YES">
         <attribute name="expires" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="icon" attributeType="String" defaultValueString="default_icon"/>
@@ -14,14 +14,14 @@
         <attribute name="title" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="relationCategory" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="entrys" inverseEntity="Category"/>
+        <relationship name="relationCategory" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryMO" inverseName="entrys" inverseEntity="CategoryMO"/>
     </entity>
-    <entity name="MasterUser" representedClassName="MasterUser" syncable="YES">
+    <entity name="MasterUserMO" representedClassName="MasterUserMO" syncable="YES">
         <attribute name="masterHash" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Entry" positionX="-54" positionY="9" width="128" height="178"/>
-        <element name="MasterUser" positionX="-63" positionY="63" width="128" height="44"/>
+        <element name="CategoryMO" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="EntryMO" positionX="-54" positionY="9" width="128" height="164"/>
+        <element name="MasterUserMO" positionX="-63" positionY="63" width="128" height="44"/>
     </elements>
 </model>

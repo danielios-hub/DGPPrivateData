@@ -25,23 +25,15 @@ class AddEditEntryRouter: NSObject, AddEditEntryRoutingLogic, AddEditEntryDataPa
     weak var viewController: AddEditEntryViewController?
     var dataStore: AddEditEntryDataStore?
     
-
-    
     // MARK: Routing
 
     func routeToListEntry() {
-        let index = viewController!.navigationController!.viewControllers.count - 2
-        let destinationVC = viewController?.navigationController?.viewControllers[index] as! ListEntryViewController
-        var destinationDS = destinationVC.router!.dataStore!
-        passDataToListEntry(source: dataStore!, destination: &destinationDS)
-        navigateToListEntry(source: viewController!, destination: destinationVC)
+        viewController?.navigationController?.popViewController(animated: true)
     }
     
     func routeToPasswordGenerator() {
-        let destinationVC = PasswordGeneratorViewController.instantiate()
-        var destinationDS = destinationVC.router!.dataStore!
-        passDataToGeneratePassword(source: dataStore!, destination: &destinationDS)
-        navigateToPasswordGenerator(source: viewController!, destination: destinationVC)
+        let destinationVC = PasswordGeneratorViewController.makePasswordGenerator(initialPassword: dataStore!.password, delegate: self.viewController)
+        viewController?.showDetailViewController(destinationVC, sender: nil)
     }
     
     // MARK: Navigation
@@ -50,17 +42,4 @@ class AddEditEntryRouter: NSObject, AddEditEntryRoutingLogic, AddEditEntryDataPa
         source.navigationController?.popViewController(animated: true)
     }
     
-    func navigateToPasswordGenerator(source: AddEditEntryViewController, destination: PasswordGeneratorViewController) {
-        source.show(destination, sender: nil)
-    }
-    
-     //MARK: Passing data
-    
-    func passDataToListEntry(source: AddEditEntryDataStore, destination: inout ListEntryDataStore) {
-      
-    }
-    
-    func passDataToGeneratePassword(source: AddEditEntryDataStore, destination: inout PasswordGeneratorDataStore) {
-        destination.password = source.password
-    }
 }

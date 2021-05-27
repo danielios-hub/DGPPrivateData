@@ -28,7 +28,7 @@ enum PasswordGeneratorScene {
     
     enum New {
         struct Request {
-            let config: PasswordManager.PasswordConfig
+            let config: PasswordConfig
         }
         struct Response {
             let password: String
@@ -56,10 +56,16 @@ enum PasswordGeneratorScene {
         }
     }
     
+    enum ApplyChanges {
+        struct Request {
+            
+        }
+    }
+    
     //MARK: ViewModels
     
     class PasswordGeneratorViewModel {
-        var config = PasswordManager.PasswordConfig()
+        var config = PasswordConfig()
         
         var numberOfRows: Int {
             return 4
@@ -82,9 +88,9 @@ enum PasswordGeneratorScene {
     
     class ConfigCellViewModel {
         let title: String
-        var value: Int
+        var value: UInt
         
-        init(title: String, value: Int) {
+        init(title: String, value: UInt) {
             self.title = title
             self.value = value
         }

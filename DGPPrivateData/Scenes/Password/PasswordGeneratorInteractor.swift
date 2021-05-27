@@ -17,6 +17,7 @@ protocol PasswordGeneratorBusinessLogic {
     func doGeneratePassword(request: PasswordGeneratorScene.New.Request)
     func doCopyPassword(request: PasswordGeneratorScene.Copy.Request)
     func doPasswordEditing(request: PasswordGeneratorScene.UpdateText.Request)
+    func doApplyChanges(request: PasswordGeneratorScene.ApplyChanges.Request)
     var password: String { get set }
     var tableViewModel: PasswordGeneratorScene.PasswordGeneratorViewModel { get }
 }
@@ -24,13 +25,19 @@ protocol PasswordGeneratorBusinessLogic {
 protocol PasswordGeneratorDataStore {
     var password: String { get set }
     var tableViewModel: PasswordGeneratorScene.PasswordGeneratorViewModel { get }
+    var passwordGenerator: PasswordGenerator? { get set }
+    var delegate: PasswordGeneratorDelegate? { get set }
 }
 
 class PasswordGeneratorInteractor: PasswordGeneratorBusinessLogic, PasswordGeneratorDataStore {
     var presenter: PasswordGeneratorPresentationLogic?
     var worker: PasswordGeneratorWorker?
-    var password: String = ""
+    
     let tableViewModel = PasswordGeneratorScene.PasswordGeneratorViewModel()
+    var passwordGenerator: PasswordGenerator? = nil
+    var delegate: PasswordGeneratorDelegate?
+    
+    var password: String = ""
     
     func doLoadPassword(request: PasswordGeneratorScene.Show.Request) {
         let response = PasswordGeneratorScene.Show.Response(password: password)
@@ -38,7 +45,7 @@ class PasswordGeneratorInteractor: PasswordGeneratorBusinessLogic, PasswordGener
     }
     
     func doGeneratePassword(request: PasswordGeneratorScene.New.Request) {
-        PasswordManager.shared.setConfig(request.config)
+        passwordGenerator?.setConfig(request.config)
         password = PasswordManager.shared.generatePassword()
         let response = PasswordGeneratorScene.Show.Response(password: password)
         presenter?.presentPassword(response: response)
@@ -52,6 +59,10 @@ class PasswordGeneratorInteractor: PasswordGeneratorBusinessLogic, PasswordGener
     
     func doPasswordEditing(request: PasswordGeneratorScene.UpdateText.Request){
         self.password = request.text
+    }
+    
+    func doApplyChanges(request: PasswordGeneratorScene.ApplyChanges.Request) {
+        self.delegate?.passwordGenerator(didUpdatePassword: self.password)
     }
     
 }

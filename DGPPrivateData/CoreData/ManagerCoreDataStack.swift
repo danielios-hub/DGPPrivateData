@@ -10,15 +10,13 @@ import CoreData
 
 public class ManagerCoreDataStack {
     
-    public static var shared = ManagerCoreDataStack()
-    
-    private init() {}
-    
-    let nameModel = "DGPPrivateModel"
-    
     public enum CoreDataError : Error {
         case saveContext(String)
     }
+    
+    let nameModel = "DGPPrivateModel"
+    
+    init() {}
     
     // MARK: - Core Data stack
     
@@ -66,7 +64,6 @@ public class ManagerCoreDataStack {
         return managedObjectContext
     }()
     
-    
     public lazy var managedPrivateObjectContext: NSManagedObjectContext? = {
         let coordinator = self.persistentStoreCoordinator
         if coordinator == nil {
@@ -77,35 +74,4 @@ public class ManagerCoreDataStack {
         return managedPrivateObjectContext
     }()
     
-    // MARK: - Core Data Saving support
-    
-    public func saveContext () throws {
-        if let moc = self.managedObjectContext {
-            if moc.hasChanges {
-                do {
-                    try moc.save()
-                } catch let err as NSError {
-                    let msg = "error saving main context \(err.localizedDescription) \(err.debugDescription)"
-                    print(msg)
-                    throw CoreDataError.saveContext(msg)
-                    
-                }
-            }
-        }
-    }
-    
-    public func savePrivateContext() {
-        if let moc = self.managedPrivateObjectContext, let _ = self.managedObjectContext {
-            moc.perform { () -> Void in
-                if moc.hasChanges{
-                    do {
-                        try moc.save()
-                    }
-                    catch let err as NSError{
-                        print("error saving private context \(err.localizedDescription) \(err.debugDescription)")
-                    }
-                }
-            }
-        }
-    }
 }

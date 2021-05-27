@@ -75,6 +75,7 @@ public class FieldEntryView: UIView {
         
         titleLabel.textColor = UIColor.forgottenPurple
         textField.textColor = .black_midnight_light
+        textField.addToolbar()
         stackButtonView.distribution = .equalSpacing
         self.layer.cornerRadius = Constants.cornerRadius
     }

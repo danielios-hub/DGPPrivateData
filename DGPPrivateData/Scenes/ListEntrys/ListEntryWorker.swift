@@ -15,9 +15,11 @@ import UIKit
 class ListEntryWorker {
     
     var dataStore: StoreDataSource
+    var masterDataSource: MasterDataSource
     
-    init(dataStore: StoreDataSource) {
+    init(dataStore: StoreDataSource, masterDataSource: MasterDataSource) {
         self.dataStore = dataStore
+        self.masterDataSource = masterDataSource
     }
     
     func fetchEntrys(applyFilters: Bool, completionHandler: ([Entry]) -> Void ) {
@@ -27,8 +29,7 @@ class ListEntryWorker {
             return $0.title
         }
         
-        ManagerMasterCoreData.shared.getAllEntrys(filterByCategoryName: filtersName) { entrys in
-            completionHandler(entrys)
-        }
+        completionHandler(
+            masterDataSource.getAllEntrys(filterByCategoryName: filtersName))
     }
 }

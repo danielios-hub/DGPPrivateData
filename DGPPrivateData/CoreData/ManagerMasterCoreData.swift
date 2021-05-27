@@ -7,15 +7,114 @@
 
 import Foundation
 import CoreData
-import Promises
 
-public protocol MasterDataSource {
-    func getAllCategories(completionHandler: ([Category]) -> Void)
-    func getAllEntrys(filterByCategoryName: [String], completionHandler: ([Entry]) -> Void)
-    func createEntry(with title: String?, username: String?, password: String?, notes: String?, isFavorite: Bool, category: Category?) throws -> Entry
-    func getDefaultCategory() -> Category?
+protocol MasterDataSource {
+    func getAllCategories() -> [Category]
+    func getAllEntrys(filterByCategoryName: [String]) -> [Entry]
+    func createEntry(with title: String, username: String?, password: String?, notes: String?, isFavorite: Bool, category: Category) throws -> Entry
+    func updateEntry(_ entry: Entry)
 }
 
+class ManagerMasterCoreData: MasterDataSource {
+    
+    enum CoreDataError: Error {
+        case errorSaving(String)
+        case noData
+    }
+    
+    static let shared = ManagerMasterCoreData()
+    
+    static let defaultCategoryIndex: Int = 0
+    
+    var mainWork: UnitOfWork
+    var backgroundWork: UnitOfWork
+    
+    let nameCategories = [
+        "General",
+        "SocialNetwork",
+        "Email",
+        "Network",
+        "Internet",
+        "Bank"
+    ]
+    
+    let iconCategories = [
+        "folder",
+        "social",
+        "email",
+        "wifi",
+        "internet",
+        "creditcard"
+    ]
+    
+    init() {
+        let stack = ManagerCoreDataStack()
+        mainWork = UnitOfWork(context: stack.managedObjectContext!)
+        backgroundWork = UnitOfWork(context: stack.managedPrivateObjectContext!)
+    }
+    
+    func getAllCategories() -> [Category] {
+        let result = mainWork.categoryRepository.get(predicate: nil)
+        switch result {
+        case let .success(categories):
+            if categories.isEmpty {
+                createDefaultData()
+                return getAllCategories()
+            }
+            return categories
+        case let .failure(_):
+            //fixme
+            return []
+        }
+    }
+    
+    func getAllEntrys(filterByCategoryName: [String]) -> [Entry] {
+        let result = mainWork.entryRepository.get(predicate: nil)
+        switch result {
+        case let .success(entries):
+            return entries
+        case let .failure(_):
+            //fixme
+            return []
+        }
+    }
+    
+    func createEntry(with title: String,
+                     username: String?,
+                     password: String?,
+                     notes: String?,
+                     isFavorite: Bool,
+                     category: Category) throws -> Entry {
+        let entry = Entry(title: title, username: username , password: password, url: "", notes: notes, favorite: isFavorite, category: category)
+        let result = mainWork.entryRepository.create(entry: entry)
+        mainWork.saveChanges()
+        switch result {
+        case .success(_):
+            return entry
+        case let .failure(error):
+            throw error
+        }
+    }
+    
+    func updateEntry(_ entry: Entry) {
+        
+    }
+    
+    //MARK: - Helpers
+    
+    public func createDefaultData() {
+        for (index, name) in nameCategories.enumerated() {
+            mainWork.categoryRepository.create(
+                category: Category(name: name,
+                                   icon: iconCategories[index])
+            )
+        }
+        
+        mainWork.saveChanges()
+    }
+}
+
+/*
 public class ManagerMasterCoreData: MasterDataSource {
     
     enum CoreDataError: Error {
@@ -51,13 +150,12 @@ public class ManagerMasterCoreData: MasterDataSource {
         }
     }
     
-    public func getAllEntrys(filterByCategoryName: [String]) -> [Entry] {
-        guard let context = ManagerCoreDataStack.shared.managedObjectContext else {
-            return []
-        }
+    func getAllEntrys(filterByCategoryName: [String]) -> [EntryViewModel] {
+        var result: [EntryViewModel] = []
         
-        var result: [Entry] = []
-        context.performAndWait {
+        let context = ManagerCoreDataStack.shared.managedObjectContext
+        
+        context?.performAndWait {
             let request = Entry.entryFetchRequest()
             
             var predicates: [NSPredicate] = []
@@ -71,53 +169,33 @@ public class ManagerMasterCoreData: MasterDataSource {
             
             request.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
             
-            if let resultList = try? context.fetch(request) {
-                result = resultList
+            guard let resultList = try? context?.fetch(request) else {
+                return
+            }
+            
+            result = resultList.compactMap { entry in
+                return EntryViewModel(from: entry)
             }
         }
         
         return result
     }
     
-    public func getAllEntrys(filterByCategoryName: [String], completionHandler: ([Entry]) -> Void) {
-        let entrys = getAllEntrys(filterByCategoryName: filterByCategoryName)
-        completionHandler(entrys)
-    }
-    
-    public func getAllCategories(completionHandler: ([Category]) -> Void) {
-        let categories = getAllCategories()
-        completionHandler(categories)
-    }
-    
-//    public func getAllCategoriesPromise() -> Promise<[Category]> {
-//        return Promise<[Category]>(on: .global()) { fullfill, reject in
-//            guard let context = ManagerCoreDataStack.shared.managedPrivateObjectContext else {
-//                throw CoreDataError.noData
-//            }
-//            
-//            let request = Category.categoryFetchRequest()
-//            guard let result = try? context.fetch(request) else {
-//                throw CoreDataError.noData
-//            }
-//            
-//            DispatchQueue.main.async {
-//                fullfill(result)
-//            }
-//        }
-//    }
-    
-    public func getAllCategories() -> [Category] {
-        guard let context = ManagerCoreDataStack.shared.managedObjectContext else {
-            return []
+    func getAllCategories() -> [Category] {
+        var categoriesList = [Category]()
+        
+        let context = ManagerCoreDataStack.shared.managedObjectContext
+        context?.performAndWait {
+            let request = Category.categoryFetchRequest()
+            guard let result = try? context?.fetch(request) else {
+                return
+            }
+            
+            categoriesList = result.map {
+                return CategoryViewModel(from: $0)
+            }
         }
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Category.entityName())
-        
-        guard let result = try? context.fetch(request) as? Array<Category> else {
-            return []
-        }
-        
-        return result
+        return categoriesList
     }
     
     public func getDefaultCategory() -> Category? {
@@ -158,34 +236,30 @@ public class ManagerMasterCoreData: MasterDataSource {
         }
     }
     
-    public func createEntry(with title: String? = nil,
+    func createEntry(with title: String,
                             username: String? = nil,
                             password: String? = nil,
                             notes: String? = nil,
                             isFavorite: Bool,
-                            category: Category? = nil) throws -> Entry {
-        guard let context = ManagerCoreDataStack.shared.managedObjectContext else {
-            throw CoreDataError.errorSaving("")
+                            category: Category) throws -> Entry {
+        var entry: Entry?
+        let context = ManagerCoreDataStack.shared.managedObjectContext
+        
+        context?.performAndWait {
+            guard let selectedCategory = category ?? getDefaultCategory() else {
+                throw CoreDataError.errorSaving("")
+            }
+            let entry = Entry(title: title,
+                              username: username,
+                              password: password,
+                              notes: notes,
+                              isFavorite: isFavorite,
+                              category: selectedCategory,
+                              context: context)
         }
         
-        guard let selectedCategory = category ?? getDefaultCategory() else {
-            throw CoreDataError.errorSaving("")
-        }
-        
-        let entry = Entry(title: title ?? "Default title",
-                          username: username,
-                          password: password,
-                          notes: notes,
-                          isFavorite: isFavorite,
-                          category: selectedCategory,
-                          context: context)
-        do {
-            try ManagerCoreDataStack.shared.saveContext()
-            return entry
-        } catch {
-            print(error)
-            throw CoreDataError.errorSaving("")
-        }
+        self.save()
+        return entry
     }
     
     public func updateEntry(_ entry: Entry) throws {
@@ -197,22 +271,15 @@ public class ManagerMasterCoreData: MasterDataSource {
         }
     }
     
-//    public func createEntry(title: String? = nil, username: String? = nil, password: String? = nil, notes: String? = nil, category: Category? = nil) -> Entry? {
-//        guard let context = ManagerCoreDataStack.sharedInstance.managedObjectContext else {
-//            return nil
-//        }
-//
-//        guard let selectedCategory = category ?? getDefaultCategory() else {
-//            return nil
-//        }
-//
-//        let entry = Entry(title: title ?? "Default title", username: username, password: password, notes: notes, category: selectedCategory, context: context)
-//        do {
-//            try ManagerCoreDataStack.sharedInstance.saveContext()
-//            return entry
-//        } catch {
-//            print(error)
-//            return nil
-//        }
-//    }
+    func save() {
+        do {
+            try ManagerCoreDataStack.shared.saveContext()
+        } catch {
+            print(error)
+            throw CoreDataError.errorSaving("")
+        }
+    }
+    
+    
 }
+*/

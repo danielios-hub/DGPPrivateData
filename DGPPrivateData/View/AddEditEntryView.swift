@@ -64,6 +64,7 @@ public class AddEditEntryView: UIView {
                                         actionEdit: actionEdit,
                                         actionCopy: actionCopy)
         
+        textViewNotes.addToolbar()
     }
     
     func updateCategory(name: String, icon: String) {
@@ -78,4 +79,10 @@ public class AddEditEntryView: UIView {
             favoriteButton.setImage(UIImage(symbol: .star), for: .normal)
         }
     }
+    
+    
 }
+
+
+
+

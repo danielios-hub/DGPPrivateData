@@ -102,11 +102,6 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         loadCategory()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        interactor?.updatePassword(request: AddEditEntryScene.UpdatePassword.Request())
-    }
-    
     private func setupView() {
         addEntryView.setup(target: self,
                            actionEdit: #selector(editPassword),
@@ -123,6 +118,7 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         addEntryView.favoriteButton.addTarget(self, action: #selector(toggleIsFavorite), for: .touchUpInside)
         
         configureTagView()
+        
         addObserver(addEntryView.viewTitle.textField)
         addObserver(addEntryView.viewUsername.textField)
         addObserver(addEntryView.viewPassword.textField)
@@ -149,6 +145,10 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     
     func loadCategory() {
         interactor?.updatedCategory(request: AddEditEntryScene.UpdateCategory.Request())
+    }
+    
+    func loadPassword() {
+        interactor?.updatePassword(request: AddEditEntryScene.UpdatePassword.Request())
     }
     
     //MARK: - Input
@@ -388,6 +388,16 @@ extension AddEditEntryViewController: DGPPickerViewModel {
         isSelectingCategory = false
     }
     
+}
+
+//MARK: - AddEditEntryViewController
+
+extension AddEditEntryViewController: PasswordGeneratorDelegate {
+    
+    func passwordGenerator(didUpdatePassword password: String) {
+        self.interactor?.updateNewPassword(request: AddEditEntryScene.UpdateNewPassword.Request(password: password))
+        self.loadPassword()
+    }
 }
 
 

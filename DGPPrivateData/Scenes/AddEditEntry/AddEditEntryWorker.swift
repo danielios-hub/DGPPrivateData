@@ -13,10 +13,15 @@
 import UIKit
 
 class AddEditEntryWorker {
+    
+    let service: MasterDataSource
+    
+    init(service: MasterDataSource) {
+        self.service = service
+    }
+    
     func fetchCategories(completionHandler: @escaping (([Category]) -> Void)) {
-        ManagerMasterCoreData.shared.getAllCategories { categories in
-            completionHandler(categories)
-        }
+        completionHandler(service.getAllCategories())
     }
     
     func createEntry(with formFields: AddEditEntryScene.EntryFormFields, category: Category, completionHandler: @escaping ((Result<Entry, Error>) -> Void)) {

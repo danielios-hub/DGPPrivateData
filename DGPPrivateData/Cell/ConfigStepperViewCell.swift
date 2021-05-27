@@ -22,11 +22,12 @@ class ConfigStepperViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         self.contentView.backgroundColor = .clear
         self.backgroundColor = .clear
         stepper.neumorphism()
         stepper.minimumValue = 0
-        stepper.maximumValue = Double(PasswordManager.PasswordConfig.maximumCharacterForType)
+        stepper.maximumValue = Double(PasswordConfig.maximumCharacterForType)
         stepper.addTarget(self, action: #selector(stepperChange(_:)), for: .valueChanged)
         
         stepper.tintColor = .red
@@ -34,7 +35,7 @@ class ConfigStepperViewCell: UITableViewCell {
     }
     
     @objc func stepperChange(_ sender: UIStepper) {
-        let value = Int(sender.value)
+        let value = UInt(sender.value)
         valueLabel.text = String(value)
         viewModel.value = value
     }

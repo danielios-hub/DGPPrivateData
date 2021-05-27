@@ -19,6 +19,7 @@ protocol AddEditEntryBusinessLogic {
     func showEntryToEdit(request: AddEditEntryScene.Edit.Request)
     func updatedCategory(request: AddEditEntryScene.UpdateCategory.Request)
     func updatePassword(request: AddEditEntryScene.UpdatePassword.Request)
+    func updateNewPassword(request: AddEditEntryScene.UpdateNewPassword.Request)
     func copyText(request: AddEditEntryScene.Copy.Request)
     func toggleIsFavorite(request: AddEditEntryScene.UpdateFavorite.Request)
     var entryToEdit: Entry? { get set }
@@ -53,12 +54,17 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     var isFavorite: Bool = false
     
     var categories = [Category]()
+    let masterService: MasterDataSource
     var selectedIndex: Int = 0
+    
+    init(service: MasterDataSource = ManagerMasterCoreData.shared) {
+        self.masterService = service
+        worker = AddEditEntryWorker(service: service)
+    }
     
     // MARK: Input
     
     func loadInitialData(request: AddEditEntryScene.Load.Request) {
-        worker = AddEditEntryWorker()
         worker?.fetchCategories { [weak self] categories in
             self?.categories = categories
             self?.selectedIndex = ManagerMasterCoreData.defaultCategoryIndex
@@ -68,9 +74,7 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     }
     
     func saveEntry(request: AddEditEntryScene.Save.Request) {
-        worker = AddEditEntryWorker()
         let category = categories[selectedIndex]
-        
         
         worker?.createEntry(with: request.entryFormFields, category: category, completionHandler: { [weak self] result in
             switch result {
@@ -90,7 +94,6 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
             return
         }
         
-        worker = AddEditEntryWorker()
         let category = categories[selectedIndex]
         let entity = buildEntryFromFields(entity: entryToEdit, fields: request.entryFormFields, category: category)
         worker?.editEntry(entry: entity) { [weak self] result in
@@ -107,14 +110,16 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     }
     
     func showEntryToEdit(request: AddEditEntryScene.Edit.Request) {
-        if let entryToEdit = entryToEdit,
-           let category = entryToEdit.relationCategory {
-            selectedIndex = categories.firstIndex(of: category) ?? 0
-            isFavorite = entryToEdit.favorite
-            let response = AddEditEntryScene.Edit.Response(entry: entryToEdit)
-            self.presenter?.presentEntryToEdit(response: response)
-            
-        }
+        //fixme
+//        if let entryToEdit = entryToEdit {
+//           let category = entryToEdit.category
+//            selectedIndex = categories.firstIndex(of: category) ?? 0
+//            isFavorite = entryToEdit.favorite
+//            password = entryToEdit.password ?? ""
+//            let response = AddEditEntryScene.Edit.Response(entry: entryToEdit)
+//            self.presenter?.presentEntryToEdit(response: response)
+//
+//        }
     }
     
     func updatedCategory(request: AddEditEntryScene.UpdateCategory.Request) {
@@ -126,6 +131,10 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     func updatePassword(request: AddEditEntryScene.UpdatePassword.Request) {
         let response = AddEditEntryScene.UpdatePassword.Response(password: password)
         presenter?.presentUpdatePassword(response: response)
+    }
+    
+    func updateNewPassword(request: AddEditEntryScene.UpdateNewPassword.Request) {
+        self.password = request.password
     }
     
     func toggleIsFavorite(request: AddEditEntryScene.UpdateFavorite.Request) {
@@ -142,13 +151,17 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     //MARK: - Utils
     
     private func buildEntryFromFields(entity: Entry, fields: AddEditEntryScene.EntryFormFields, category: Category) -> Entry {
-        entity.title = fields.title
-        entity.username = fields.username
-        entity.password = fields.password
-        entity.notes = fields.notes
-        entity.favorite = fields.favorite
-        entity.relationCategory = category
-        return entity
+        let entry = Entry(
+            title: fields.title,
+            username: fields.username,
+            password: fields.password,
+            url: "",
+            notes: fields.notes,
+            favorite: fields.favorite,
+            category: category
+        )
+        
+        return entry
     }
     
     var isValid:  Bool {
