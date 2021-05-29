@@ -32,7 +32,9 @@ class AddEditEntryRouter: NSObject, AddEditEntryRoutingLogic, AddEditEntryDataPa
     }
     
     func routeToPasswordGenerator() {
-        let destinationVC = PasswordGeneratorViewController.makePasswordGenerator(initialPassword: dataStore!.password, delegate: self.viewController)
+        let destinationVC = PasswordGeneratorViewController.makePasswordGenerator(
+            initialPassword: dataStore!.entry!.password,
+            delegate: self.viewController)
         viewController?.showDetailViewController(destinationVC, sender: nil)
     }
     

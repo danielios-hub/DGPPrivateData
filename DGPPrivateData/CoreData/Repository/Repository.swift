@@ -19,4 +19,5 @@ protocol Repository {
     func create() -> Result<Entity, Error>
     
     func delete(entity: Entity) -> Result<Bool, Error>
+    
 }

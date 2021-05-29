@@ -57,4 +57,13 @@ class CoreDataRepository<T: NSManagedObject>: Repository {
         context.delete(entity)
         return .success(true)
     }
+    
+    func get(objectID: String) -> NSManagedObject? {
+        if let url = URL(string: objectID) {
+            if let objectInternalID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url) {
+                return context.object(with: objectInternalID)
+            }
+        }
+        return nil
+    }
 }

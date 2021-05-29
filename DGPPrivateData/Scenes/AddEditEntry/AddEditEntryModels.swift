@@ -35,9 +35,13 @@ enum AddEditEntryScene {
         
         struct Request {
         }
+        
         struct Response {
             let categories: [Category]
+            var selectedIndex: Int
+            var entry: Entry
         }
+        
         struct ViewModel {
             
             let categories: [Category]
@@ -57,19 +61,21 @@ enum AddEditEntryScene {
             public func getSelectedCategory() -> Category? {
                 return selectedIndex < categories.count ? categories[selectedIndex] : nil
             }
+            
+            var entry: Entry
         }
     }
     
     // Save Entry
     enum Save {
         struct Request {
-            var entryFormFields: EntryFormFields
+            //var entryFormFields: EntryFormFields
         }
         struct Response {
             var entry: Entry?
         }
         struct ViewModel {
-            
+            var entry: Entry?
         }
     }
     
@@ -115,7 +121,9 @@ enum AddEditEntryScene {
     }
     
     enum UpdatePassword {
-        struct Request {}
+        struct Request {
+            let password: String
+        }
         struct Response {
             let password: String
         }
@@ -145,12 +153,6 @@ enum AddEditEntryScene {
         }
         struct ViewModel {
             let isFavorite: Bool
-        }
-    }
-    
-    enum UpdateNewPassword {
-        struct Request {
-            let password: String
         }
     }
     

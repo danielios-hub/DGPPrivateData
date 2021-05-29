@@ -24,21 +24,16 @@ class AddEditEntryWorker {
         completionHandler(service.getAllCategories())
     }
     
-    func createEntry(with formFields: AddEditEntryScene.EntryFormFields, category: Category, completionHandler: @escaping ((Result<Entry, Error>) -> Void)) {
+    func save(entry: Entry) -> Result<Entry, Error> {
         do {
-            let entry = try ManagerMasterCoreData.shared.createEntry(with: formFields.title, username: formFields.username, password: formFields.password, notes: formFields.notes, isFavorite: formFields.favorite, category: category)
-            completionHandler(.success(entry))
+            if entry.id == nil {
+                return .success(try service.createEntry(entry))
+            } else {
+                return .success(try service.updateEntry(entry))
+            }
         } catch {
-            completionHandler(.failure(error))
+            return .failure(error)
         }
-    }
-    
-    func editEntry(entry: Entry, completionHandler: @escaping ((Result<Entry, Error>) -> Void)) {
-        do {
-            try ManagerMasterCoreData.shared.updateEntry(entry)
-            completionHandler(.success(entry))
-        } catch {
-            completionHandler(.failure(error))
-        }
+        
     }
 }

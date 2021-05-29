@@ -8,14 +8,19 @@
 import UIKit
 
 struct Entry {
-    let title: String
-    let username: String
-    let password: String
-    let url: String
-    let notes: String
-    let favorite: Bool
+    var title: String
+    var username: String
+    var password: String
+    var url: String
+    var notes: String
+    var favorite: Bool
     let icon: String
-    let category: Category
+    let id: String?
+    var category: Category
+    
+    init(category: Category) {
+        self.init(title: "", username: nil, password: nil, url: nil, notes: nil, favorite: false, category: category)
+    }
     
     init(title: String,
          username: String?,
@@ -33,15 +38,11 @@ struct Entry {
         self.notes = notes ?? ""
         self.icon = icon
         self.favorite = favorite
-
+        self.id = nil
     }
     
     init(from entry: EntryMO) {
-//        guard let category = entry.relationCategory else {
-//            return nil
-//        }
         self.category = Category(from: entry.relationCategory!)
-        //self.category = Category(from: category)
         self.title = entry.title
         self.username = entry.username ?? ""
         self.password = entry.password ?? ""
@@ -49,5 +50,6 @@ struct Entry {
         self.notes = entry.notes ?? ""
         self.favorite = entry.favorite
         self.icon = entry.icon ?? ""
+        self.id = entry.objectID.uriRepresentation().absoluteString
     }
 }

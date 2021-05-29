@@ -14,30 +14,21 @@ import UIKit
 
 protocol AddEditEntryBusinessLogic {
     func loadInitialData(request: AddEditEntryScene.Load.Request)
-    func saveEntry(request: AddEditEntryScene.Save.Request)
-    func updateEntry(request: AddEditEntryScene.Save.Request)
-    func showEntryToEdit(request: AddEditEntryScene.Edit.Request)
     func updatedCategory(request: AddEditEntryScene.UpdateCategory.Request)
     func updatePassword(request: AddEditEntryScene.UpdatePassword.Request)
-    func updateNewPassword(request: AddEditEntryScene.UpdateNewPassword.Request)
     func copyText(request: AddEditEntryScene.Copy.Request)
+    
+    func setTitle(_ title: String)
+    func setUsername(_ username: String)
+    func setPassword(_ password: String)
+    func setNotes(_ notes: String)
+    func setSelectedIndex(_ index: Int)
     func toggleIsFavorite(request: AddEditEntryScene.UpdateFavorite.Request)
-    var entryToEdit: Entry? { get set }
-    var title: String { get set }
-    var username: String { get set }
-    var password: String { get set }
-    var notes: String { get set }
-    var isValid: Bool { get }
-    var selectedIndex: Int { get set }
+    func save(request: AddEditEntryScene.Save.Request)
 }
 
 protocol AddEditEntryDataStore {
-    var entryToEdit: Entry? { get set }
-    var title: String { get set }
-    var username: String { get set }
-    var password: String { get set }
-    var notes: String { get set }
-    var isFavorite: Bool { get set }
+    var entry: Entry? { get set }
     var isValid: Bool { get }
     var selectedIndex: Int { get set }
 }
@@ -46,80 +37,48 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     var presenter: AddEditEntryPresentationLogic?
     var worker: AddEditEntryWorker?
     
-    var entryToEdit: Entry?
-    var title: String = ""
-    var username: String = ""
-    var password: String = ""
-    var notes: String = ""
-    var isFavorite: Bool = false
-    
+    var entry: Entry?
     var categories = [Category]()
     let masterService: MasterDataSource
+    let passwordService: PasswordGenerator
     var selectedIndex: Int = 0
     
-    init(service: MasterDataSource = ManagerMasterCoreData.shared) {
+    init(service: MasterDataSource = ManagerMasterCoreData.shared,
+         passwordService: PasswordGenerator = PasswordManager.shared) {
         self.masterService = service
-        worker = AddEditEntryWorker(service: service)
+        self.passwordService = passwordService
+        self.worker = AddEditEntryWorker(service: service)
     }
     
     // MARK: Input
     
     func loadInitialData(request: AddEditEntryScene.Load.Request) {
-        worker?.fetchCategories { [weak self] categories in
-            self?.categories = categories
-            self?.selectedIndex = ManagerMasterCoreData.defaultCategoryIndex
-            let response = AddEditEntryScene.Load.Response(categories: categories)
-            self?.presenter?.presentInitialData(response: response)
-        }
-    }
-    
-    func saveEntry(request: AddEditEntryScene.Save.Request) {
-        let category = categories[selectedIndex]
-        
-        worker?.createEntry(with: request.entryFormFields, category: category, completionHandler: { [weak self] result in
-            switch result {
-            case .success(let entry):
-                let response = AddEditEntryScene.Save.Response(entry: entry)
-                self?.presenter?.presentCreatedEntry(response: response)
-            case .failure(let error):
-                self?.presenter?.presentError(error: error)
+        worker?.fetchCategories { [unowned self] categories in
+            self.categories = categories
+            self.selectedIndex = 0
+            
+            if let entry = self.entry {
+                self.selectedIndex = self.categories.firstIndex(where: { entry.category.id == $0.id}) ?? 0
+            } else {
+                self.entry = Entry(category: self.categories[0])
+                self.entry?.password = passwordService.generatePassword()
             }
-        })
+            
+            let response = AddEditEntryScene.Load.Response(categories: categories, selectedIndex: selectedIndex, entry: self.entry!)
+            self.presenter?.presentInitialData(response: response)
+        }
     }
     
-    func updateEntry(request: AddEditEntryScene.Save.Request) {
-        guard let entryToEdit = entryToEdit else {
-            print("no entity edit to save")
-            self.presenter?.presentError(error: AddEditEntryScene.AddEditError.entityNotPresent)
-            return
+    func save(request: AddEditEntryScene.Save.Request) {
+        let result = worker!.save(entry: self.entry!)
+        
+        switch result {
+        case .success(let entry):
+            let response = AddEditEntryScene.Save.Response(entry: entry)
+            self.presenter?.presentCreatedEntry(response: response)
+        case .failure(let error):
+            self.presenter?.presentError(error: error)
         }
-        
-        let category = categories[selectedIndex]
-        let entity = buildEntryFromFields(entity: entryToEdit, fields: request.entryFormFields, category: category)
-        worker?.editEntry(entry: entity) { [weak self] result in
-            switch result {
-            case .success(let entity):
-                let response = AddEditEntryScene.Save.Response(entry: entity)
-                self?.presenter?.presentUpdatedEntry(response: response)
-            case .failure(let error):
-                self?.presenter?.presentError(error: error)
-            }
-        }
-        
-        
-    }
-    
-    func showEntryToEdit(request: AddEditEntryScene.Edit.Request) {
-        //fixme
-//        if let entryToEdit = entryToEdit {
-//           let category = entryToEdit.category
-//            selectedIndex = categories.firstIndex(of: category) ?? 0
-//            isFavorite = entryToEdit.favorite
-//            password = entryToEdit.password ?? ""
-//            let response = AddEditEntryScene.Edit.Response(entry: entryToEdit)
-//            self.presenter?.presentEntryToEdit(response: response)
-//
-//        }
     }
     
     func updatedCategory(request: AddEditEntryScene.UpdateCategory.Request) {
@@ -129,18 +88,8 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     }
     
     func updatePassword(request: AddEditEntryScene.UpdatePassword.Request) {
-        let response = AddEditEntryScene.UpdatePassword.Response(password: password)
+        let response = AddEditEntryScene.UpdatePassword.Response(password: request.password)
         presenter?.presentUpdatePassword(response: response)
-    }
-    
-    func updateNewPassword(request: AddEditEntryScene.UpdateNewPassword.Request) {
-        self.password = request.password
-    }
-    
-    func toggleIsFavorite(request: AddEditEntryScene.UpdateFavorite.Request) {
-        self.isFavorite.toggle()
-        let response = AddEditEntryScene.UpdateFavorite.Response(isfavorite: self.isFavorite)
-        presenter?.presentUpdateFavorite(response: response)
     }
     
     func copyText(request: AddEditEntryScene.Copy.Request) {
@@ -148,25 +97,39 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
         presenter?.presentCopySuccess(response: AddEditEntryScene.Copy.Response())
     }
     
+    //MARK: - Update fields
+    
+    func setTitle(_ title: String) {
+        self.entry?.title = title
+    }
+    
+    func setUsername(_ username: String) {
+        self.entry?.username = username
+    }
+    
+    func setPassword(_ password: String) {
+        self.entry?.password = password
+    }
+    
+    func setNotes(_ notes: String) {
+        self.entry?.notes = notes
+    }
+    
+    func setSelectedIndex(_ index: Int) {
+        self.selectedIndex = index
+        entry?.category = self.categories[index]
+    }
+    
+    func toggleIsFavorite(request: AddEditEntryScene.UpdateFavorite.Request) {
+        entry?.favorite.toggle()
+        let response = AddEditEntryScene.UpdateFavorite.Response(isfavorite: entry?.favorite ?? false)
+        presenter?.presentUpdateFavorite(response: response)
+    }
+    
     //MARK: - Utils
     
-    private func buildEntryFromFields(entity: Entry, fields: AddEditEntryScene.EntryFormFields, category: Category) -> Entry {
-        let entry = Entry(
-            title: fields.title,
-            username: fields.username,
-            password: fields.password,
-            url: "",
-            notes: fields.notes,
-            favorite: fields.favorite,
-            category: category
-        )
-        
-        return entry
-    }
-    
     var isValid:  Bool {
-        return !title.isEmpty || !username.isEmpty || !password.isEmpty || !notes.isEmpty
+        return entry?.title.isNotEmpty == true
     }
-    
     
 }

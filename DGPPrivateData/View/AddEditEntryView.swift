@@ -42,8 +42,6 @@ public class AddEditEntryView: UIView {
         viewPassword.titleLabel.text = NSLocalizedString("Password", comment: "title of the password")
         viewPassword.textField.text = ""
         
-        textViewNotes.text = NSLocalizedString("Write some notes for your entry", comment: "Placeholder notes entry")
-        
         viewPassword.textField.isSecureTextEntry = true
         
         viewTitle.titleFont = titleFont

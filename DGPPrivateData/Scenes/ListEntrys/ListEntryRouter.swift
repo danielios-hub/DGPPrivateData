@@ -60,6 +60,6 @@ class ListEntryRouter: NSObject, ListEntryRoutingLogic, ListEntryDataPassing {
     
     func passDataToEdit(source: ListEntryDataStore, destination: inout AddEditEntryDataStore) {
         let selectedIndex = viewController!.selectedRow
-        destination.entryToEdit = source.entries[selectedIndex!]
+        destination.entry = source.entries[selectedIndex!]
     }
 }

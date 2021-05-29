@@ -10,7 +10,12 @@ import CoreData
 
 protocol EntryService {
     func create(entry: Entry) -> Result<Bool, Error>
+    func update(entry: Entry) -> Result<Bool, Error>
     func get(predicate: NSPredicate?) -> Result<[Entry], Error>
+}
+
+enum RepositoryError: Error {
+    case invalidObjectId
 }
 
 class EntryRepository: EntryService {
@@ -33,14 +38,34 @@ class EntryRepository: EntryService {
             entryMO.notes = entry.notes
             entryMO.favorite = entry.favorite
             entryMO.icon = entry.icon
-            
-            //fixme category
-            let category = entry.category
+
+            let categoryMO = repository.get(objectID: entry.category.id)
+            entryMO.relationCategory = categoryMO as? CategoryMO
             
             return .success(true)
         case let .failure(error):
             return .failure(error)
         }
+    }
+    
+    func update(entry: Entry) -> Result<Bool, Error> {
+        guard let id = entry.id,
+              let entryMO = repository.get(objectID: id) as? EntryMO else {
+            return .failure(RepositoryError.invalidObjectId)
+        }
+   
+        entryMO.title = entry.title
+        entryMO.username = entry.username
+        entryMO.password = entry.password
+        entryMO.url = entry.url
+        entryMO.notes = entry.notes
+        entryMO.favorite = entry.favorite
+        entryMO.icon = entry.icon
+
+        let categoryMO = repository.get(objectID: entry.category.id)
+        entryMO.relationCategory = categoryMO as? CategoryMO
+        
+        return .success(true)
     }
     
     func get(predicate: NSPredicate?) -> Result<[Entry], Error> {

@@ -16,7 +16,6 @@ import DGPExtensionCore
 protocol AddEditEntryDisplayLogic: class {
     func displayInitialData(viewModel: AddEditEntryScene.Load.ViewModel)
     func displayEntryCreated(viewModel: AddEditEntryScene.Save.ViewModel)
-    func displayEntryToEdit(viewModel: AddEditEntryScene.Edit.ViewModel)
     func displaySelectedCategory(viewModel: AddEditEntryScene.UpdateCategory.ViewModel)
     func displayUpdatePassword(viewModel: AddEditEntryScene.UpdatePassword.ViewModel)
     func displayUpdateFavorite(viewModel: AddEditEntryScene.UpdateFavorite.ViewModel)
@@ -96,9 +95,8 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        loadInitialData()
         setPlaceholder()
-        loadEditEntry()
+        loadInitialData()
         loadCategory()
     }
     
@@ -138,17 +136,12 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         interactor?.loadInitialData(request: request)
     }
     
-    func loadEditEntry() {
-        let request = AddEditEntryScene.Edit.Request()
-        interactor?.showEntryToEdit(request: request)
-    }
-    
     func loadCategory() {
         interactor?.updatedCategory(request: AddEditEntryScene.UpdateCategory.Request())
     }
     
-    func loadPassword() {
-        interactor?.updatePassword(request: AddEditEntryScene.UpdatePassword.Request())
+    func loadPassword(text: String) {
+        interactor?.updatePassword(request: AddEditEntryScene.UpdatePassword.Request(password: text))
     }
     
     //MARK: - Input
@@ -156,30 +149,11 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     func displayInitialData(viewModel: AddEditEntryScene.Load.ViewModel) {
         self.viewModel = viewModel
         addEntryView.updateCategory(name: viewModel.categoryText, icon: viewModel.categoryIcon)
-        
-        if interactor?.entryToEdit == nil {
-            interactor?.password = PasswordManager.shared.generatePassword()
-            interactor?.updatePassword(request: AddEditEntryScene.UpdatePassword.Request())
-            addEntryView.viewPassword.textField.text = PasswordManager.shared.generatePassword()
-        }
+        showEntryFields(viewModel.entry)
     }
     
     func displayEntryCreated(viewModel: AddEditEntryScene.Save.ViewModel) {
         router?.routeToListEntry()
-    }
-    
-    func displayEntryToEdit(viewModel: AddEditEntryScene.Edit.ViewModel) {
-        let formFields = viewModel.entryFormFields
-        
-        addEntryView.viewTitle.textField.text = formFields.title
-        addEntryView.viewUsername.textField.text = formFields.username
-        addEntryView.viewPassword.textField.text = formFields.password
-        addEntryView.updateFavorite(selected: formFields.favorite)
-        
-        if !formFields.notes.isEmpty {
-            addEntryView.textViewNotes.text = formFields.notes
-            addEntryView.textViewNotes.textColor = .black
-        }
     }
     
     func displaySelectedCategory(viewModel: AddEditEntryScene.UpdateCategory.ViewModel) {
@@ -205,33 +179,7 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     //MARK: - Actions
     
     @objc func saveEntry() {
-        let title = addEntryView.viewTitle.textField.text!
-        let username = addEntryView.viewUsername.textField.text!
-        let password = addEntryView.viewPassword.textField.text!
-        var notes = addEntryView.textViewNotes.text!
-        let isFavorite = self.router?.dataStore?.isFavorite ?? false
-        
-        if notes == textPlaceholder {
-            notes = ""
-        }
-        
-        if let _ = interactor?.entryToEdit {
-            let request = AddEditEntryScene.Save.Request(entryFormFields: AddEditEntryScene.EntryFormFields(title: title,
-                                                                                                                   username: username,
-                                                                                                                   password: password,
-                                                                                                                   notes: notes,
-                                                                                                                   favorite: isFavorite))
-            interactor?.updateEntry(request: request)
-        } else {
-            let request = AddEditEntryScene.Save.Request(entryFormFields: AddEditEntryScene.EntryFormFields(title: title,
-                                                                                                            username: username,
-                                                                                                            password: password,
-                                                                                                            notes: notes,
-                                                                                                            favorite: isFavorite)
-                                                        )
-            interactor?.saveEntry(request: request)
-        }
-        
+        interactor?.save(request: AddEditEntryScene.Save.Request())
     }
     
     @objc func selectCategory() {
@@ -246,7 +194,6 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     }
     
     @objc func editPassword() {
-        interactor?.password = addEntryView.viewPassword.textField.text!
         router?.routeToPasswordGenerator()
     }
     
@@ -269,19 +216,32 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     func updatedText(_ text: String, tag: Int) {
         switch tag {
         case TagTextField.title.rawValue:
-            interactor?.title = text
+            interactor?.setTitle(text)
         case TagTextField.username.rawValue:
-            interactor?.username = text
+            interactor?.setUsername(text)
         case TagTextField.password.rawValue:
-            interactor?.password = text
+            interactor?.setPassword(text)
         case TagTextField.notes.rawValue:
-            interactor?.notes = text
+            interactor?.setNotes(text)
         default: break
         }
     }
     
     func isValid() -> Bool {
-        return self.interactor!.isValid
+        return self.router?.dataStore?.isValid == true
+    }
+    
+    func showEntryFields(_ entry: Entry) {
+        addEntryView.viewTitle.textField.text = entry.title
+        addEntryView.viewUsername.textField.text = entry.username
+        addEntryView.viewPassword.textField.text = entry.password
+        addEntryView.updateFavorite(selected: entry.favorite)
+        
+        if !entry.notes.isEmpty {
+            addEntryView.textViewNotes.text = entry.notes
+            addEntryView.textViewNotes.textColor = .black
+        }
+        
     }
 }
 
@@ -364,7 +324,7 @@ extension AddEditEntryViewController: UITextViewDelegate, UITextViewPlaceholderP
 
 extension AddEditEntryViewController: DGPPickerViewModel {
     var selectedIndex: Int {
-        return interactor?.selectedIndex ?? -1
+        return router?.dataStore?.selectedIndex ?? -1
     }
     
     public func numberOfComponents() -> Int {
@@ -380,7 +340,7 @@ extension AddEditEntryViewController: DGPPickerViewModel {
     }
     
     public func didSelectItem(with index: Int, component: Int) -> Void {
-        interactor?.selectedIndex = index
+        interactor?.setSelectedIndex(index)
         loadCategory()
     }
     
@@ -395,8 +355,7 @@ extension AddEditEntryViewController: DGPPickerViewModel {
 extension AddEditEntryViewController: PasswordGeneratorDelegate {
     
     func passwordGenerator(didUpdatePassword password: String) {
-        self.interactor?.updateNewPassword(request: AddEditEntryScene.UpdateNewPassword.Request(password: password))
-        self.loadPassword()
+        loadPassword(text: password)
     }
 }
 

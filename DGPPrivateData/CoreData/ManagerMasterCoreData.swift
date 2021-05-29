@@ -12,7 +12,9 @@ protocol MasterDataSource {
     func getAllCategories() -> [Category]
     func getAllEntrys(filterByCategoryName: [String]) -> [Entry]
     func createEntry(with title: String, username: String?, password: String?, notes: String?, isFavorite: Bool, category: Category) throws -> Entry
-    func updateEntry(_ entry: Entry)
+    
+    func createEntry(_ entry: Entry) throws -> Entry
+    func updateEntry(_ entry: Entry) throws -> Entry
 }
 
 class ManagerMasterCoreData: MasterDataSource {
@@ -62,8 +64,7 @@ class ManagerMasterCoreData: MasterDataSource {
                 return getAllCategories()
             }
             return categories
-        case let .failure(_):
-            //fixme
+        case .failure(_):
             return []
         }
     }
@@ -73,8 +74,7 @@ class ManagerMasterCoreData: MasterDataSource {
         switch result {
         case let .success(entries):
             return entries
-        case let .failure(_):
-            //fixme
+        case .failure(_):
             return []
         }
     }
@@ -85,7 +85,7 @@ class ManagerMasterCoreData: MasterDataSource {
                      notes: String?,
                      isFavorite: Bool,
                      category: Category) throws -> Entry {
-        let entry = Entry(title: title, username: username , password: password, url: "", notes: notes, favorite: isFavorite, category: category)
+        let entry = Entry(title: title, username: username , password: password, url: "", notes: notes, favorite: isFavorite, icon: "default_icon", category: category)
         let result = mainWork.entryRepository.create(entry: entry)
         mainWork.saveChanges()
         switch result {
@@ -96,8 +96,26 @@ class ManagerMasterCoreData: MasterDataSource {
         }
     }
     
-    func updateEntry(_ entry: Entry) {
-        
+    func createEntry(_ entry: Entry) throws -> Entry {
+        let result = mainWork.entryRepository.create(entry: entry)
+        mainWork.saveChanges()
+        switch result {
+        case .success(_):
+            return entry
+        case let .failure(error):
+            throw error
+        }
+    }
+    
+    func updateEntry(_ entry: Entry) throws -> Entry {
+        let result = mainWork.entryRepository.update(entry: entry)
+        mainWork.saveChanges()
+        switch result {
+        case .success(_):
+            return entry
+        case let .failure(error):
+            throw error
+        }
     }
     
     //MARK: - Helpers

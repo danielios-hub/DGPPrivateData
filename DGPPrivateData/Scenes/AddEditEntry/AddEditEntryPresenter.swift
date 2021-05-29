@@ -15,8 +15,6 @@ import UIKit
 protocol AddEditEntryPresentationLogic {
     func presentInitialData(response: AddEditEntryScene.Load.Response)
     func presentCreatedEntry(response: AddEditEntryScene.Save.Response)
-    func presentUpdatedEntry(response: AddEditEntryScene.Save.Response)
-    func presentEntryToEdit(response: AddEditEntryScene.Edit.Response)
     func presentSelectedCategory(response: AddEditEntryScene.UpdateCategory.Response)
     func presentCopySuccess(response: AddEditEntryScene.Copy.Response)
     func presentUpdatePassword(response: AddEditEntryScene.UpdatePassword.Response)
@@ -30,30 +28,15 @@ class AddEditEntryPresenter: AddEditEntryPresentationLogic {
     // MARK: Load Initial Data
     
     func presentInitialData(response: AddEditEntryScene.Load.Response) {
-        let viewModel = AddEditEntryScene.Load.ViewModel(categories: response.categories,
-                                                         selectedIndex: ManagerMasterCoreData.defaultCategoryIndex)
+        let viewModel = AddEditEntryScene.Load.ViewModel(
+            categories: response.categories,
+            selectedIndex: response.selectedIndex,
+            entry: response.entry)
         viewController?.displayInitialData(viewModel: viewModel)
     }
     
     func presentCreatedEntry(response: AddEditEntryScene.Save.Response) {
         viewController?.displayEntryCreated(viewModel: AddEditEntryScene.Save.ViewModel())
-    }
-    
-    func presentUpdatedEntry(response: AddEditEntryScene.Save.Response) {
-        viewController?.displayEntryCreated(viewModel: AddEditEntryScene.Save.ViewModel())
-    }
-    
-    func presentEntryToEdit(response: AddEditEntryScene.Edit.Response) {
-        let entry = response.entry
-        
-        let viewModel = AddEditEntryScene.Edit.ViewModel(
-            entryFormFields: AddEditEntryScene.EntryFormFields(title: entry.title,
-                                                               username: entry.username ?? "",
-                                                               password: entry.password ?? "",
-                                                               notes: entry.notes ?? "",
-                                                               favorite: entry.favorite)
-        )
-        viewController?.displayEntryToEdit(viewModel: viewModel)
     }
     
     func presentSelectedCategory(response: AddEditEntryScene.UpdateCategory.Response) {
