@@ -13,19 +13,33 @@
 import UIKit
 
 enum FilterScene {
+    
     // MARK: Use cases
     
     enum Load {
-        struct Request {
-        }
+        
+        struct Request { }
+        
         struct Response {
-            let filters: [Filter]
+            let categoryFilters: [Filter]
+            let orderFilters: [Filter]
         }
+        
         struct ViewModel {
-            var cells: [FilterCellViewModel] = []
-            init(filters: [Filter]) {
-                filters.forEach {
-                    cells.append(FilterCellViewModel(title: $0.title, icon: $0.icon, state: $0.state))
+            var cellsCategoryModel: [FilterCellViewModel] = []
+            var cellsOrderModel: [OrderCellViewModel] = []
+            
+            init(categoryFilters: [Filter], orderFilters: [Filter]) {
+                cellsCategoryModel = categoryFilters.map { filter in
+                    FilterCellViewModel(title: filter.title, icon: filter.icon, state: filter.state) { isSelected in
+                        filter.state = isSelected
+                    }
+                }
+                
+                cellsOrderModel = orderFilters.map { filter in
+                    OrderCellViewModel(title: filter.title, state: filter.state) { isSelected in
+                        filter.state = isSelected
+                    }
                 }
             }
         }
@@ -36,27 +50,8 @@ enum FilterScene {
             let index: Int
         }
     }
-}
-
-struct FilterCellViewModel {
-    let title: String
-    let icon: String
-    let state: Bool
-}
-
-class Filter: Codable {
-    let title: String
-    let icon: String
-    var state: Bool
     
-    init(title: String, icon: String, state: Bool) {
-        self.title = title
-        self.icon = icon
-        self.state = state
+    enum OrderFilters {
+        struct Request {}
     }
 }
-
-struct FilterSavedList: Codable {
-    var filters: [Filter]
-}
-

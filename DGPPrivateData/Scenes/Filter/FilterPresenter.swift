@@ -22,7 +22,7 @@ class FilterPresenter: FilterPresentationLogic {
     // MARK: Do something
     
     func presentFilters(response: FilterScene.Load.Response) {
-        let viewModel = FilterScene.Load.ViewModel(filters: response.filters)
+        let viewModel = FilterScene.Load.ViewModel(categoryFilters: response.categoryFilters, orderFilters: response.orderFilters)
         viewController?.displayFilters(viewModel: viewModel)
     }
 }

@@ -10,11 +10,8 @@ import UIKit
 class FilterView: UIView {
     
     //MARK: - Instance properties
-    var collectionView: UICollectionView!
     
-    struct ViewTraits {
-        
-    }
+    var collectionView: UICollectionView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,11 +24,11 @@ class FilterView: UIView {
     }
     
     func setupView() {
-   
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(FilterCellView.self, forCellWithReuseIdentifier: FilterCellView.getIdentifier())
+        collectionView.register(FilterCellView.self, forCellWithReuseIdentifier: FilterCellView.reuseIdentifier)
+        collectionView.register(OrderFilterViewCell.self, forCellWithReuseIdentifier: OrderFilterViewCell.reuseIdentifier)
       
         self.backgroundColor = .white
         self.collectionView.backgroundColor = .white

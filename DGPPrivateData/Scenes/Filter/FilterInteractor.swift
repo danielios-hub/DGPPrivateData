@@ -15,6 +15,7 @@ import UIKit
 protocol FilterBusinessLogic {
     func doLoadFilters(request: FilterScene.Load.Request)
     func doSelectFilter(request: FilterScene.ToggleFilter.Request)
+    func doSaveOrderFilters(request: FilterScene.OrderFilters.Request)
     var filters: [Filter] { get }
 }
 
@@ -25,12 +26,16 @@ protocol FilterDataStore {
 class FilterInteractor: FilterBusinessLogic, FilterDataStore {
     var presenter: FilterPresentationLogic?
     var filters: [Filter] = []
+    var orderFilters: [Filter] = []
+    
     var storeDataSource: StoreDataSource = UserDefaultManager()
     lazy var worker = FilterWorker(dataStore: storeDataSource)
     
     func doLoadFilters(request: FilterScene.Load.Request) {
-        let response = FilterScene.Load.Response(filters: worker.doLoadFilters())
-        filters = response.filters
+        let (categories, orders) = worker.doLoadFilters()
+        filters = categories
+        orderFilters = orders
+        let response = FilterScene.Load.Response(categoryFilters: categories, orderFilters: orders)
         presenter?.presentFilters(response: response)
     }
     
@@ -39,4 +44,10 @@ class FilterInteractor: FilterBusinessLogic, FilterDataStore {
         filters[request.index].state = !currentValue
         worker.saveFilters(filter: filters)
     }
+    
+    func doSaveOrderFilters(request: FilterScene.OrderFilters.Request) {
+        worker.saveOrderFilters(filters: orderFilters)
+    }
+    
+    
 }

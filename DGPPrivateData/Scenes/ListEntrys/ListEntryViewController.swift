@@ -12,6 +12,7 @@
 
 import UIKit
 
+
 protocol ListEntryDisplayLogic: class {
     func displayListEntrys(viewModel: ListEntryScene.Load.ViewModel)
 }
@@ -33,6 +34,8 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
     var selectedRow: Int? {
         return listView.tableView.indexPathForSelectedRow?.row
     }
+    
+    @IBOutlet var searchBar: UISearchBar!
     
     // MARK: Object lifecycle
     
@@ -76,7 +79,7 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNavigationBar()
         setupView()
     }
     
@@ -85,22 +88,29 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
         loadInitialData()
     }
     
-    func setupView() {
-        self.title = NSLocalizedString("Entrys", comment: "Title entry list")
+    func setupNavigationBar() {
         let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createEntry))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(symbol: .lineHorizontal3DecreaseCircleFill),
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(filterEntrys))
         navigationItem.rightBarButtonItem = barButton
-        navigationItem.hidesBackButton = true 
+        navigationItem.hidesBackButton = true
         navigationController?.navigationBar.barTintColor = UIColor.forgottenPurple
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white
         ]
-        listView.setup()
         
+        searchBar.tintColor = .black
+        searchBar.searchTextField.backgroundColor = .white
+        searchBar.searchTextField.addToolbar()
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+    }
+    
+    func setupView() {
+        listView.setup()
     }
     
     // MARK: Request
@@ -126,7 +136,10 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
     }
 }
 
+//MARK: - UITableView DataSource
+
 extension ListEntryViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellViewModels.count
     }
@@ -137,12 +150,26 @@ extension ListEntryViewController: UITableViewDataSource {
         return cell
     }
     
-    
 }
+
+//MARK: - UITableView Delegate
 
 extension ListEntryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.routeToEditEntry()
+    }
+}
+
+extension ListEntryViewController: UISearchBarDelegate {
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        //searchBar.showsCancelButton = true
+        return true
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        //searchBar.showsCancelButton = false
+        return true
     }
 }

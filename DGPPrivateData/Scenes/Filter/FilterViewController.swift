@@ -27,7 +27,36 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
         return (view as! FilterView)
     }
     
-    var cellsViewModels: [FilterCellViewModel] = []
+    struct TableViewModel {
+        
+        enum Section: Int {
+            case categories = 0
+            case orders = 1
+        }
+        
+        var numberOfSection: Int = 2
+        var filterCellViewModel: [FilterCellViewModel] = []
+        var orderCellViewModel: [OrderCellViewModel] = []
+        
+        init() { }
+        
+        init(filtersModel: [FilterCellViewModel], orderModels: [OrderCellViewModel]) {
+            self.filterCellViewModel = filtersModel
+            self.orderCellViewModel = orderModels
+        }
+        
+        func rows(for section: Int) -> Int {
+            section == 0 ? filterCellViewModel.count : section == 1 ? orderCellViewModel.count : 0
+        }
+        
+        func viewModel(forSection section: Int, row: Int) -> FilterOptionViewModel? {
+            return section == 0 ? filterCellViewModel[row] : section == 1 ? orderCellViewModel[row] : nil
+        }
+        
+    }
+    
+    var tableViewModel = TableViewModel()
+    
     
     // MARK: Object lifecycle
     
@@ -80,7 +109,7 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     }
     
     private func setupView() {
-        navigationItem.title = "Filters"
+        navigationItem.title = NSLocalizedString("Filters", comment: "Filters title")
         filterView.collectionView.dataSource = self
         filterView.collectionView.delegate = self
     }
@@ -99,13 +128,17 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     //MARK: - Input
     
     func displayFilters(viewModel: FilterScene.Load.ViewModel) {
-        cellsViewModels = viewModel.cells
+        tableViewModel = TableViewModel(
+            filtersModel: viewModel.cellsCategoryModel,
+            orderModels: viewModel.cellsOrderModel)
         reloadCollectionView()
         
-        for (index, model) in cellsViewModels.enumerated() {
+        for (index, model) in viewModel.cellsCategoryModel.enumerated() {
             if model.state {
-                self.filterView.collectionView.selectItem(at: IndexPath(item: index, section: 0),
-                                                          animated: false, scrollPosition: .top)
+                self.filterView.collectionView.selectItem(
+                    at: IndexPath(item: index, section: 0),
+                    animated: false,
+                    scrollPosition: .top)
             }
         }
     }
@@ -115,36 +148,75 @@ class FilterViewController: UIViewController, FilterDisplayLogic {
     func reloadCollectionView() {
         filterView.collectionView.reloadData()
     }
+    
 }
 
 //MARK: - UICollectionView DataSource
 
 extension FilterViewController: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        tableViewModel.numberOfSection
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellsViewModels.count
+        tableViewModel.rows(for: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCellView.getIdentifier(), for: indexPath) as! FilterCellView
-        cell.viewModel = cellsViewModels[indexPath.item]
-        return cell
+    
+        switch indexPath.section {
+        case TableViewModel.Section.categories.rawValue:
+            let cell = collectionView.dequeueCell(FilterCellView.self, indexPath: indexPath)
+            cell.viewModel = tableViewModel.viewModel(
+                forSection: indexPath.section,
+                row: indexPath.item)
+            return cell
+        case TableViewModel.Section.orders.rawValue:
+            let cell = collectionView.dequeueCell(OrderFilterViewCell.self, indexPath: indexPath)
+            cell.viewModel = tableViewModel.viewModel(
+                forSection: indexPath.section,
+                row: indexPath.item)
+            cell.delegate = self
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+        
+        
     }
 }
 
 //MARK: - UICollectionView DelegateFlowLayout
+
 extension FilterViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectFilter(index: indexPath.item)
+        self.collectionViewHelper(selectedIndexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        self.selectFilter(index: indexPath.item)
+        self.collectionViewHelper(selectedIndexPath: indexPath)
+    }
+    
+    func collectionViewHelper(selectedIndexPath indexPath: IndexPath) {
+        switch indexPath.section {
+        case TableViewModel.Section.categories.rawValue:
+            self.selectFilter(index: indexPath.item)
+        default:
+            break
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return FilterCellView.ViewTraits.cellSize
+        switch indexPath.section {
+        case TableViewModel.Section.categories.rawValue:
+            return FilterCellView.ViewTraits.cellSize
+        case TableViewModel.Section.orders.rawValue:
+            return CGSize(width: collectionView.frame.width, height: OrderFilterViewCell.ViewTraits.heightCell)
+        default: return .zero
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -152,7 +224,21 @@ extension FilterViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let padding: CGFloat = 15
+        let padding: CGFloat = section == 0 ? 15 : 30
         return UIEdgeInsets(top: padding, left: padding, bottom: 0, right: padding)
     }
 }
+
+//MARK: - CollectionCell Delegate
+
+extension FilterViewController: OrderFilterViewCellDelegate {
+    
+    func orderFilterViewCellDelegateSaveOrderFilters(controller: OrderFilterViewCell) {
+        interactor?.doSaveOrderFilters(request: FilterScene.OrderFilters.Request())
+    }
+    
+    
+    
+}
+
+

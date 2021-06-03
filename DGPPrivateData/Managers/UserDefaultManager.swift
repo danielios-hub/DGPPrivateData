@@ -9,6 +9,7 @@ import Foundation
 
 protocol StoreDataSource {
     var filterList: [Filter] { get set }
+    var orderList: [Filter] { get set }
 }
 
 class UserDefaultManager: StoreDataSource {
@@ -22,12 +23,13 @@ class UserDefaultManager: StoreDataSource {
     }
     
     struct Constants {
-        static let filterList = "filterList"
+        static let filters = "filterList"
+        static let orders = "orderList"
     }
     
     var filterList: [Filter] {
         get {
-            if let data = UserDefaults.standard.data(forKey: Constants.filterList),
+            if let data = UserDefaults.standard.data(forKey: Constants.filters),
                let objectList = try? decoder.decode([Filter].self, from: data) {
                 return objectList
             }
@@ -35,7 +37,22 @@ class UserDefaultManager: StoreDataSource {
         }
         set {
             if let data = try? encoder.encode(newValue) {
-                UserDefaults.standard.set(data, forKey: Constants.filterList)
+                UserDefaults.standard.set(data, forKey: Constants.filters)
+            }
+        }
+    }
+    
+    var orderList: [Filter] {
+        get {
+            if let data = UserDefaults.standard.data(forKey: Constants.orders),
+               let objectList = try? decoder.decode([Filter].self, from: data) {
+                return objectList
+            }
+            return []
+        }
+        set {
+            if let data = try? encoder.encode(newValue) {
+                UserDefaults.standard.set(data, forKey: Constants.orders)
             }
         }
     }

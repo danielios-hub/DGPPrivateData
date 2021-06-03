@@ -19,25 +19,40 @@ class FilterWorker {
         self.dataStore = dataStore
     }
     
-    func doLoadFilters() -> [Filter] {
-        let filterList = dataStore.filterList
+    func doLoadFilters() -> (categories: [Filter], orders: [Filter]) {
+        var filterList = dataStore.filterList
         
-        if filterList.isNotEmpty {
-            return filterList
+        if filterList.isEmpty {
+            filterList = [Filter(title: "Favorites",
+                                  icon: "default_icon",
+                                  state: true)]
+            filterList.append(contentsOf: ManagerMasterCoreData.shared.getAllCategories().map { category in
+                return Filter(title: category.name, icon: category.icon, state: true)
+            })
+            
+            dataStore.filterList = filterList
         }
         
-        var filters: [Filter] = [Filter(title: "Favorites",
-                              icon: "default_icon",
-                              state: true)]
-        filters.append(contentsOf: ManagerMasterCoreData.shared.getAllCategories().map { category in
-            return Filter(title: category.name, icon: category.icon, state: true)
-        })
+        var orderList = dataStore.orderList
         
-        dataStore.filterList = filters
-        return filters
+        if orderList.isEmpty {
+            orderList = [
+                Filter(title: "Group by Categories", icon: "", state: true),
+                Filter(title: "Alphabetically", icon: "", state: false),
+            ]
+            
+            dataStore.orderList = orderList
+        }
+        
+        
+        return (filterList, orderList)
     }
     
     func saveFilters(filter: [Filter]) {
         dataStore.filterList = filter
+    }
+    
+    func saveOrderFilters(filters: [Filter]) {
+        dataStore.orderList = filters
     }
 }

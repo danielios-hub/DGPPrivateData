@@ -28,7 +28,8 @@ class ListEntryInteractor: ListEntryBusinessLogic, ListEntryDataStore {
     var worker: ListEntryWorker
     
     init() {
-        worker = ListEntryWorker(dataStore: dataStore, masterDataSource: ManagerMasterCoreData.shared)
+        worker = ListEntryWorker(dataStore: dataStore,
+                                 masterDataSource: ManagerMasterCoreData.shared)
     }
     
     // MARK: Do something

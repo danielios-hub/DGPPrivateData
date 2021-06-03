@@ -25,7 +25,7 @@ class FilterCellView: UICollectionViewCell {
         return label
     }()
     
-    var viewModel: FilterCellViewModel! {
+    var viewModel: FilterOptionViewModel! {
         didSet {
             titleLabel.text = viewModel.title
             iconImage.image = UIImage(named: "\(viewModel.icon)_big")
