@@ -8,9 +8,14 @@
 import Foundation
 import CoreData
 
+enum Order {
+    case `default`
+    case alphabetically
+}
+
 protocol MasterDataSource {
     func getAllCategories() -> [Category]
-    func getAllEntrys(filterByCategoryName: [String]) -> [Entry]
+    func getAllEntries(filters: [FilterType]) -> [Entry]
     func createEntry(with title: String, username: String?, password: String?, notes: String?, isFavorite: Bool, category: Category) throws -> Entry
     
     func createEntry(_ entry: Entry) throws -> Entry
@@ -69,7 +74,7 @@ class ManagerMasterCoreData: MasterDataSource {
         }
     }
     
-    func getAllEntrys(filterByCategoryName: [String]) -> [Entry] {
+    func getAllEntries(filters: [FilterType]) -> [Entry] {
         let result = mainWork.entryRepository.get(predicate: nil)
         switch result {
         case let .success(entries):

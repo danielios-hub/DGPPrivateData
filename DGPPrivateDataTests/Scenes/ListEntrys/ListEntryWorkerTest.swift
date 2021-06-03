@@ -119,6 +119,61 @@ class ListEntryWorkerTest: XCTestCase {
         ])
     }
     
+    func test_fetchEntry_noOrderSelected() {
+        let dataStore = DataStoreMock()
+        dataStore.orderList = [Filter(title: "Alphabetically", icon: "", state: false)]
+        
+        let (sut, spy) = makeSUT(dataStoreMock: dataStore)
+        let filtersExpectation = expectation(description: "waiting filters")
+        sut.fetchEntrys(applyFilters: true) { (entries) in
+            filtersExpectation.fulfill()
+        }
+        
+        wait(for: [filtersExpectation], timeout: 2)
+        XCTAssertEqual(spy.requestedOrders, [.default])
+    }
+    
+    func test_fetchEntry_oneOrderSelected() {
+        let dataStore = DataStoreMock()
+        dataStore.orderList = [Filter(title: "Alphabetically", icon: "", state: true)]
+        
+        let (sut, spy) = makeSUT(dataStoreMock: dataStore)
+        let filtersExpectation = expectation(description: "waiting filters")
+        sut.fetchEntrys(applyFilters: true) { (entries) in
+            filtersExpectation.fulfill()
+        }
+        
+        wait(for: [filtersExpectation], timeout: 2)
+        XCTAssertEqual(spy.requestedOrders, [.alphabetically])
+    }
+    
+    func test_fetchEntry_multipleValuesGroupedTwiceRequests() {
+        let (sut, spy) = makeSUT(dataStoreMock: getDataStore())
+        
+        let filtersExpectation = expectation(description: "waiting filters")
+        sut.fetchEntrys(applyFilters: true) { (entries) in
+            filtersExpectation.fulfill()
+        }
+        
+        wait(for: [filtersExpectation], timeout: 2)
+        
+        let filtersExpectationTwice = expectation(description: "waiting filters")
+        
+        sut.fetchEntrys(applyFilters: true) { (entries) in
+            filtersExpectationTwice.fulfill()
+        }
+        
+        wait(for: [filtersExpectationTwice], timeout: 2)
+        
+        
+        XCTAssertEqual(spy.requestedFilters, [
+            ["Favorites", "SocialNetwork"],
+            ["Favorites", "SocialNetwork"]
+        ])
+        
+        XCTAssertEqual(spy.requestedOrders, [.alphabetically, .alphabetically])
+    }
+    
     //MARK: - Helpers
     
     func makeSUT(dataStoreMock: DataStoreMock) -> (sut: ListEntryWorker, spy: DataSourceMock) {
@@ -143,8 +198,9 @@ class ListEntryWorkerTest: XCTestCase {
     }
     
     class DataSourceMock: MasterDataSource {
-        
+
         var requestedFilters: [[String]] = []
+        var requestedOrders: [Order] = []
         
         enum ErrorMock: Error {
             case mockError
@@ -154,8 +210,18 @@ class ListEntryWorkerTest: XCTestCase {
             return []
         }
         
-        func getAllEntrys(filterByCategoryName: [String]) -> [Entry] {
-            requestedFilters.append(filterByCategoryName)
+        func getAllEntries(filters: [FilterType]) -> [Entry] {
+            filters.forEach { filterType  in
+                switch filterType {
+                case .categories(let categoriesName):
+                    requestedFilters.append(categoriesName)
+                case .order(let orderType):
+                    requestedOrders.append(orderType)
+                case .search(let text):
+                    break
+                }
+            }
+            
             return []
         }
         

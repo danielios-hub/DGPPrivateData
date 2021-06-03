@@ -87,22 +87,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B535DB38-F3B9-44DC-ACB1-A6B2B4ADD2D6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DGPPrivateData/CoreData/ManagerMasterCoreData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "getAllEntrys(filterByCategoryName:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9079BEB9-FB66-4DE7-A3A1-5142E016B074"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -126,8 +110,8 @@
             filePath = "DGPPrivateData/CoreData/ManagerMasterCoreData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "createEntry(with:username:password:notes:isFavorite:category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +126,8 @@
             filePath = "DGPPrivateData/CoreData/ManagerMasterCoreData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "createEntry(with:username:password:notes:isFavorite:category:)"
             landmarkType = "7">
             <Locations>
@@ -286,9 +270,9 @@
             filePath = "DGPPrivateData/CoreData/ManagerMasterCoreData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "updateEntry(_:)"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "createEntry(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -609,22 +593,6 @@
             startingLineNumber = "107"
             endingLineNumber = "107"
             landmarkName = "test_multipleCategory_multipleOrder_displayFilter()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F45D385A-E53C-4B6D-982B-DFABB1C2F834"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DGPPrivateDataTests/Scenes/ListEntrys/ListEntryWorkerTest.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "getAllEntrys(filterByCategoryName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

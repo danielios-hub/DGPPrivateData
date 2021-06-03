@@ -23,13 +23,19 @@ class ListEntryWorker {
     }
     
     func fetchEntrys(applyFilters: Bool, completionHandler: ([Entry]) -> Void ) {
+        
         let filtersName = dataStore.filterList.filter {
             $0.state
         }.map {
             return $0.title
         }
+        let categoriesFilter = FilterType.categories(filtersName)
+        
+        let order = dataStore.orderList.filter { $0.title == "Alphabetically" }.first
+        
+        let orderFilter = FilterType.order(order?.state == true ? .alphabetically : .default)
         
         completionHandler(
-            masterDataSource.getAllEntrys(filterByCategoryName: filtersName))
+            masterDataSource.getAllEntries(filters: [categoriesFilter, orderFilter]))
     }
 }
