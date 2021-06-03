@@ -22,7 +22,7 @@ class ListEntryWorker {
         self.masterDataSource = masterDataSource
     }
     
-    func fetchEntrys(applyFilters: Bool, completionHandler: ([Entry]) -> Void ) {
+    func fetchEntrys(textSearch: String? = nil, completionHandler: ([Entry]) -> Void ) {
         
         let filtersName = dataStore.filterList.filter {
             $0.state
@@ -35,7 +35,13 @@ class ListEntryWorker {
         
         let orderFilter = FilterType.order(order?.state == true ? .alphabetically : .default)
         
+        var filtersType = [categoriesFilter, orderFilter]
+        
+        if let textSearch = textSearch {
+            filtersType.append(FilterType.search(textSearch))
+        }
+        
         completionHandler(
-            masterDataSource.getAllEntries(filters: [categoriesFilter, orderFilter]))
+            masterDataSource.getAllEntries(filters: filtersType))
     }
 }

@@ -39,7 +39,7 @@ class ListEntryWorkerTest: XCTestCase {
         let (sut, spy) = makeSUT(dataStoreMock: DataStoreMock())
         
         let filtersExpectation = expectation(description: "waiting filters")
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
             filtersExpectation.fulfill()
         }
         
@@ -55,7 +55,7 @@ class ListEntryWorkerTest: XCTestCase {
         let (sut, spy) = makeSUT(dataStoreMock: dataStore)
         
         let filtersExpectation = expectation(description: "waiting filters")
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
             filtersExpectation.fulfill()
         }
         
@@ -71,7 +71,7 @@ class ListEntryWorkerTest: XCTestCase {
         let (sut, spy) = makeSUT(dataStoreMock: dataStore)
         
         let filtersExpectation = expectation(description: "waiting filters")
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
             filtersExpectation.fulfill()
         }
         
@@ -84,7 +84,7 @@ class ListEntryWorkerTest: XCTestCase {
         let (sut, spy) = makeSUT(dataStoreMock: getDataStore())
         
         let filtersExpectation = expectation(description: "waiting filters")
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
             filtersExpectation.fulfill()
         }
         
@@ -99,7 +99,7 @@ class ListEntryWorkerTest: XCTestCase {
         let (sut, spy) = makeSUT(dataStoreMock: getDataStore())
         
         let filtersExpectation = expectation(description: "waiting filters")
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
             filtersExpectation.fulfill()
         }
         
@@ -107,7 +107,7 @@ class ListEntryWorkerTest: XCTestCase {
         
         let filtersExpectationTwice = expectation(description: "waiting filters")
         
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
             filtersExpectationTwice.fulfill()
         }
         
@@ -125,7 +125,7 @@ class ListEntryWorkerTest: XCTestCase {
         
         let (sut, spy) = makeSUT(dataStoreMock: dataStore)
         let filtersExpectation = expectation(description: "waiting filters")
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
             filtersExpectation.fulfill()
         }
         
@@ -139,7 +139,7 @@ class ListEntryWorkerTest: XCTestCase {
         
         let (sut, spy) = makeSUT(dataStoreMock: dataStore)
         let filtersExpectation = expectation(description: "waiting filters")
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
             filtersExpectation.fulfill()
         }
         
@@ -147,11 +147,40 @@ class ListEntryWorkerTest: XCTestCase {
         XCTAssertEqual(spy.requestedOrders, [.alphabetically])
     }
     
-    func test_fetchEntry_multipleValuesGroupedTwiceRequests() {
+    func test_fetchEntries_noTextSearch() {
         let (sut, spy) = makeSUT(dataStoreMock: getDataStore())
         
         let filtersExpectation = expectation(description: "waiting filters")
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys() { (entries) in
+            filtersExpectation.fulfill()
+        }
+        
+        wait(for: [filtersExpectation], timeout: 2)
+        
+        XCTAssertEqual(spy.requestedTextSearchs, [])
+    }
+    
+    func test_fetchEntries_oneTextSearch() {
+        let (sut, spy) = makeSUT(dataStoreMock: getDataStore())
+        
+        let filtersExpectation = expectation(description: "waiting filters")
+        let textSearch = "something"
+        sut.fetchEntrys(textSearch: textSearch) { (entries) in
+            filtersExpectation.fulfill()
+        }
+        
+        wait(for: [filtersExpectation], timeout: 2)
+        
+        XCTAssertEqual(spy.requestedTextSearchs, [textSearch])
+    }
+    
+    func test_fetchEntry_multipleValuesGroupedAndSearch_TwiceRequests() {
+        let (sut, spy) = makeSUT(dataStoreMock: getDataStore())
+        
+        let filtersExpectation = expectation(description: "waiting filters")
+        let textSearch = "something"
+        let textSearch2 = "something2"
+        sut.fetchEntrys(textSearch: textSearch) { (entries) in
             filtersExpectation.fulfill()
         }
         
@@ -159,7 +188,7 @@ class ListEntryWorkerTest: XCTestCase {
         
         let filtersExpectationTwice = expectation(description: "waiting filters")
         
-        sut.fetchEntrys(applyFilters: true) { (entries) in
+        sut.fetchEntrys(textSearch: textSearch2) { (entries) in
             filtersExpectationTwice.fulfill()
         }
         
@@ -172,6 +201,8 @@ class ListEntryWorkerTest: XCTestCase {
         ])
         
         XCTAssertEqual(spy.requestedOrders, [.alphabetically, .alphabetically])
+        
+        XCTAssertEqual(spy.requestedTextSearchs, [textSearch, textSearch2])
     }
     
     //MARK: - Helpers
@@ -201,6 +232,7 @@ class ListEntryWorkerTest: XCTestCase {
 
         var requestedFilters: [[String]] = []
         var requestedOrders: [Order] = []
+        var requestedTextSearchs: [String] = []
         
         enum ErrorMock: Error {
             case mockError
@@ -218,7 +250,7 @@ class ListEntryWorkerTest: XCTestCase {
                 case .order(let orderType):
                     requestedOrders.append(orderType)
                 case .search(let text):
-                    break
+                    requestedTextSearchs.append(text)
                 }
             }
             

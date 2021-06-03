@@ -35,7 +35,7 @@ class ListEntryInteractor: ListEntryBusinessLogic, ListEntryDataStore {
     // MARK: Do something
     
     func doLoadInitialData(request: ListEntryScene.Load.Request) {
-        worker.fetchEntrys(applyFilters: true) { entrys in
+        worker.fetchEntrys() { entrys in
             self.entries = entrys
             let response = ListEntryScene.Load.Response(entrys: entrys)
             self.presenter?.presentInitialData(response: response)
