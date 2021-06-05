@@ -17,6 +17,7 @@ protocol ListEntryBusinessLogic {
 }
 
 protocol ListEntryDataStore {
+    func setDependencies(preferencesService: PreferencesService, repositoryService: RepositoryService)
     var entries: [Entry] { get set }
 }
 
@@ -24,12 +25,17 @@ class ListEntryInteractor: ListEntryBusinessLogic, ListEntryDataStore {
     var presenter: ListEntryPresentationLogic?
     
     var entries = [Entry]()
-    var dataStore: StoreDataSource = UserDefaultManager()
-    var worker: ListEntryWorker
     
-    init() {
-        worker = ListEntryWorker(dataStore: dataStore,
-                                 masterDataSource: ManagerMasterCoreData.shared)
+    var preferences: PreferencesService!
+    var repositoryService: RepositoryService!
+    var worker: ListEntryWorker!
+
+    func setDependencies(preferencesService: PreferencesService, repositoryService: RepositoryService) {
+        self.preferences = preferencesService
+        self.repositoryService = repositoryService
+        
+        worker = ListEntryWorker(dataStore: preferencesService,
+                                 masterDataSource: repositoryService)
     }
     
     // MARK: Do something

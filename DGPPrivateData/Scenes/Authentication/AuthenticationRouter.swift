@@ -27,7 +27,7 @@ class AuthenticationRouter: NSObject, AuthenticationRoutingLogic, Authentication
     // MARK: Routing
     
     func routeToListEntry() {
-        let destinationVC = ListEntryViewController.instantiate()
+        let destinationVC = ListEntryViewController.makeListEntryViewController()
         navigateToListEntry(source: viewController!, destination: destinationVC)
     }
     

@@ -14,10 +14,10 @@ import UIKit
 
 class ListEntryWorker {
     
-    var dataStore: StoreDataSource
-    var masterDataSource: MasterDataSource
+    var dataStore: PreferencesService
+    var masterDataSource: RepositoryService
     
-    init(dataStore: StoreDataSource, masterDataSource: MasterDataSource) {
+    init(dataStore: PreferencesService, masterDataSource: RepositoryService) {
         self.dataStore = dataStore
         self.masterDataSource = masterDataSource
     }

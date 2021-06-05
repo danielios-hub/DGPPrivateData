@@ -13,9 +13,9 @@
 import UIKit
 
 class FilterWorker {
-    var dataStore: StoreDataSource
+    var dataStore: PreferencesService
     
-    init(dataStore: StoreDataSource) {
+    init(dataStore: PreferencesService) {
         self.dataStore = dataStore
     }
     
@@ -26,7 +26,7 @@ class FilterWorker {
             filterList = [Filter(title: "Favorites",
                                   icon: "default_icon",
                                   state: true)]
-            filterList.append(contentsOf: ManagerMasterCoreData.shared.getAllCategories().map { category in
+            filterList.append(contentsOf: CoreDataRepositoryService.shared.getAllCategories().map { category in
                 return Filter(title: category.name, icon: category.icon, state: true)
             })
             

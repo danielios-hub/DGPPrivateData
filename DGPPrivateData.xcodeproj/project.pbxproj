@@ -46,9 +46,10 @@
 		C738A53D265AC58B00B63AF8 /* EntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A53C265AC58B00B63AF8 /* EntryRepository.swift */; };
 		C738A540265AC92600B63AF8 /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A53F265AC92600B63AF8 /* UnitOfWork.swift */; };
 		C74861172667F1BB002E9846 /* ListEntryWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74861162667F1BB002E9846 /* ListEntryWorkerTest.swift */; };
-		C7501902264EDA98003E34D8 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7501901264EDA98003E34D8 /* UserDefaultManager.swift */; };
+		C7501902264EDA98003E34D8 /* UserDefaultPreferencesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */; };
 		C75B17F22663F5AA0030DD51 /* FilterOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F12663F5AA0030DD51 /* FilterOptionViewModel.swift */; };
 		C75B17F62663F6150030DD51 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F52663F6150030DD51 /* Filter.swift */; };
+		C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */; };
 		C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */; };
 		C77BB3B826583158009C591C /* PasswordGeneratorComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77BB3B726583158009C591C /* PasswordGeneratorComposer.swift */; };
 		C782163F265166FF00323093 /* NeumorphismButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782163E265166FF00323093 /* NeumorphismButton.swift */; };
@@ -85,7 +86,7 @@
 		C7CA214125E4146300EB8ACE /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CA214025E4146300EB8ACE /* Storyboarded.swift */; };
 		C7D03C8B25DE8491008303C6 /* ListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C8A25DE8491008303C6 /* ListEntryView.swift */; };
 		C7D03C9425DE8787008303C6 /* ManagerCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C9325DE8787008303C6 /* ManagerCoreDataStack.swift */; };
-		C7D03C9725DE89CC008303C6 /* ManagerMasterCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C9625DE89CC008303C6 /* ManagerMasterCoreData.swift */; };
+		C7D03C9725DE89CC008303C6 /* CoreDataRepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C9625DE89CC008303C6 /* CoreDataRepositoryService.swift */; };
 		C7D03CA225DEBB85008303C6 /* ListEntryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03CA125DEBB85008303C6 /* ListEntryViewCell.swift */; };
 		C7D03CA725DEBC93008303C6 /* DGPLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* DGPLibrary */; };
 		C7D03CA825DEBC93008303C6 /* DGPLibrary in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* DGPLibrary */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -170,9 +171,10 @@
 		C738A53C265AC58B00B63AF8 /* EntryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRepository.swift; sourceTree = "<group>"; };
 		C738A53F265AC92600B63AF8 /* UnitOfWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
 		C74861162667F1BB002E9846 /* ListEntryWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryWorkerTest.swift; sourceTree = "<group>"; };
-		C7501901264EDA98003E34D8 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultPreferencesService.swift; sourceTree = "<group>"; };
 		C75B17F12663F5AA0030DD51 /* FilterOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionViewModel.swift; sourceTree = "<group>"; };
 		C75B17F52663F6150030DD51 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryServiceTest.swift; sourceTree = "<group>"; };
 		C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
 		C77BB3B726583158009C591C /* PasswordGeneratorComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorComposer.swift; sourceTree = "<group>"; };
 		C782163E265166FF00323093 /* NeumorphismButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphismButton.swift; sourceTree = "<group>"; };
@@ -212,7 +214,7 @@
 		C7CA214025E4146300EB8ACE /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		C7D03C8A25DE8491008303C6 /* ListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryView.swift; sourceTree = "<group>"; };
 		C7D03C9325DE8787008303C6 /* ManagerCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCoreDataStack.swift; sourceTree = "<group>"; };
-		C7D03C9625DE89CC008303C6 /* ManagerMasterCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerMasterCoreData.swift; sourceTree = "<group>"; };
+		C7D03C9625DE89CC008303C6 /* CoreDataRepositoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryService.swift; sourceTree = "<group>"; };
 		C7D03CA125DEBB85008303C6 /* ListEntryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryViewCell.swift; sourceTree = "<group>"; };
 		C7D9AE8F2663AD22005009A6 /* FilterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewControllerTests.swift; sourceTree = "<group>"; };
 		C7D9AE9D2663C0C5005009A6 /* TableViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHelpers.swift; sourceTree = "<group>"; };
@@ -398,6 +400,22 @@
 			path = SharedModels;
 			sourceTree = "<group>";
 		};
+		C763B583266BC02C002C8FB4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C794C9B12659727800E6AC1F /* PasswordManagerTest.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C763B584266BC044002C8FB4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		C782163D265166E900323093 /* Neumorphism */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,10 +430,11 @@
 		C794C9A62659724500E6AC1F /* DGPPrivateDataTests */ = {
 			isa = PBXGroup;
 			children = (
+				C763B584266BC044002C8FB4 /* CoreData */,
 				C7D9AE9C2663C0B4005009A6 /* Helpers */,
-				C7D9AE8D2663ACCF005009A6 /* Scenes */,
 				C794C9A92659724500E6AC1F /* Info.plist */,
-				C794C9B12659727800E6AC1F /* PasswordManagerTest.swift */,
+				C763B583266BC02C002C8FB4 /* Managers */,
+				C7D9AE8D2663ACCF005009A6 /* Scenes */,
 			);
 			path = DGPPrivateDataTests;
 			sourceTree = "<group>";
@@ -461,7 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				C7B9A1FA25F54F1900725F3F /* PasswordManager.swift */,
-				C7501901264EDA98003E34D8 /* UserDefaultManager.swift */,
+				C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -536,9 +555,9 @@
 			children = (
 				C7EB5CED25DE72A800FB1AE8 /* DGPPrivateData */,
 				C794C9A62659724500E6AC1F /* DGPPrivateDataTests */,
-				C7EB5CEC25DE72A800FB1AE8 /* Products */,
 				C7EB5D0825DE793A00FB1AE8 /* Frameworks */,
 				F7C6E9897FA3FB0A08170A1C /* Pods */,
+				C7EB5CEC25DE72A800FB1AE8 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -554,17 +573,17 @@
 		C7EB5CED25DE72A800FB1AE8 /* DGPPrivateData */ = {
 			isa = PBXGroup;
 			children = (
-				C75B17F42663F5F50030DD51 /* SharedModels */,
-				C7B9A1F925F54EFF00725F3F /* Managers */,
-				C710204D25F12AEF0085535B /* Scenes */,
-				C7F6FBAF25E52DBB00CB42BB /* Library */,
-				C7CA213A25E3D6CA00EB8ACE /* Protocol */,
-				C72D8AFB25E024E10069C72E /* ExtensionsAndUtils */,
-				C7D03CA025DEBB6A008303C6 /* Cell */,
-				C7D03C9925DE8E8C008303C6 /* Resources */,
 				C7EB5CEE25DE72A800FB1AE8 /* AppDelegate.swift */,
-				C7EB5CF025DE72A800FB1AE8 /* SceneDelegate.swift */,
+				C7D03CA025DEBB6A008303C6 /* Cell */,
 				C7EB5D0325DE76D600FB1AE8 /* CoreData */,
+				C72D8AFB25E024E10069C72E /* ExtensionsAndUtils */,
+				C7F6FBAF25E52DBB00CB42BB /* Library */,
+				C7B9A1F925F54EFF00725F3F /* Managers */,
+				C7CA213A25E3D6CA00EB8ACE /* Protocol */,
+				C7D03C9925DE8E8C008303C6 /* Resources */,
+				C7EB5CF025DE72A800FB1AE8 /* SceneDelegate.swift */,
+				C710204D25F12AEF0085535B /* Scenes */,
+				C75B17F42663F5F50030DD51 /* SharedModels */,
 				C7D03C8725DE833E008303C6 /* View */,
 			);
 			path = DGPPrivateData;
@@ -577,7 +596,7 @@
 				C7EB5D0C25DE7A3000FB1AE8 /* ModelCoreData */,
 				C7EB5D0425DE76FA00FB1AE8 /* DGPPrivateModel.xcdatamodeld */,
 				C7D03C9325DE8787008303C6 /* ManagerCoreDataStack.swift */,
-				C7D03C9625DE89CC008303C6 /* ManagerMasterCoreData.swift */,
+				C7D03C9625DE89CC008303C6 /* CoreDataRepositoryService.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -797,6 +816,7 @@
 			files = (
 				C74861172667F1BB002E9846 /* ListEntryWorkerTest.swift in Sources */,
 				C7D9AE932663AD22005009A6 /* FilterViewControllerTests.swift in Sources */,
+				C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */,
 				C7D9AE9E2663C0C5005009A6 /* TableViewHelpers.swift in Sources */,
 				C794C9B22659727800E6AC1F /* PasswordManagerTest.swift in Sources */,
 			);
@@ -811,7 +831,7 @@
 				C7D9AEA22663D797005009A6 /* OrderFilterViewCell.swift in Sources */,
 				C710206A25F13CD60085535B /* AddEditEntryInteractor.swift in Sources */,
 				C7331AC325F291D000CDE439 /* AuthenticationModels.swift in Sources */,
-				C7501902264EDA98003E34D8 /* UserDefaultManager.swift in Sources */,
+				C7501902264EDA98003E34D8 /* UserDefaultPreferencesService.swift in Sources */,
 				C78216452651741C00323093 /* ColorsExtension.swift in Sources */,
 				C782163F265166FF00323093 /* NeumorphismButton.swift in Sources */,
 				C71BF30125F61E4C002239BE /* PasswordGeneratorWorker.swift in Sources */,
@@ -821,7 +841,7 @@
 				C794C9C92659A77B00E6AC1F /* MasterUserMO+CoreDataProperties.swift in Sources */,
 				C794C9CB2659A77B00E6AC1F /* EntryMO+CoreDataProperties.swift in Sources */,
 				C710206525F13CD60085535B /* AddEditEntryPresenter.swift in Sources */,
-				C7D03C9725DE89CC008303C6 /* ManagerMasterCoreData.swift in Sources */,
+				C7D03C9725DE89CC008303C6 /* CoreDataRepositoryService.swift in Sources */,
 				C7331AC225F291D000CDE439 /* AuthenticationRouter.swift in Sources */,
 				C794C9C62659A77B00E6AC1F /* CategoryMO+CoreDataClass.swift in Sources */,
 				C794C9BC2659A4F700E6AC1F /* CategoryRepository.swift in Sources */,

@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol StoreDataSource {
+protocol PreferencesService {
     var filterList: [Filter] { get set }
     var orderList: [Filter] { get set }
 }
 
-class UserDefaultManager: StoreDataSource {
+class UserDefaultPreferencesService: PreferencesService {
     
     let encoder: JSONEncoder
     let decoder: JSONDecoder

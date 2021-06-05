@@ -39,11 +39,11 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     
     var entry: Entry?
     var categories = [Category]()
-    let masterService: MasterDataSource
+    let masterService: RepositoryService
     let passwordService: PasswordGenerator
     var selectedIndex: Int = 0
     
-    init(service: MasterDataSource = ManagerMasterCoreData.shared,
+    init(service: RepositoryService = CoreDataRepositoryService.shared,
          passwordService: PasswordGenerator = PasswordManager.shared) {
         self.masterService = service
         self.passwordService = passwordService

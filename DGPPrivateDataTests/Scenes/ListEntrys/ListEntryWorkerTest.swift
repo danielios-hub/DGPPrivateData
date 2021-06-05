@@ -223,12 +223,12 @@ class ListEntryWorkerTest: XCTestCase {
         return dataStoreMock
     }
     
-    class DataStoreMock: StoreDataSource {
+    class DataStoreMock: PreferencesService {
         var filterList: [Filter] = []
         var orderList: [Filter] = []
     }
     
-    class DataSourceMock: MasterDataSource {
+    class DataSourceMock: RepositoryService {
 
         var requestedFilters: [[String]] = []
         var requestedOrders: [Order] = []

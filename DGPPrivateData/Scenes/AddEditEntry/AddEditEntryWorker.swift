@@ -14,9 +14,9 @@ import UIKit
 
 class AddEditEntryWorker {
     
-    let service: MasterDataSource
+    let service: RepositoryService
     
-    init(service: MasterDataSource) {
+    init(service: RepositoryService) {
         self.service = service
     }
     

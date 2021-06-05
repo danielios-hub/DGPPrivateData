@@ -32,3 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//MARK: - Factory methods
+
+extension ListEntryViewController {
+    
+    static func makeListEntryViewController() -> ListEntryViewController {
+        let viewController = ListEntryViewController.instantiate()
+        let dataStore = viewController.router!.dataStore
+        dataStore?.setDependencies(preferencesService: UserDefaultPreferencesService(), repositoryService: CoreDataRepositoryService.shared)
+        
+        return viewController
+    }
+}
+

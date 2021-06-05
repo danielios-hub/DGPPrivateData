@@ -13,7 +13,7 @@ enum Order {
     case alphabetically
 }
 
-protocol MasterDataSource {
+protocol RepositoryService {
     func getAllCategories() -> [Category]
     func getAllEntries(filters: [FilterType]) -> [Entry]
     func createEntry(with title: String, username: String?, password: String?, notes: String?, isFavorite: Bool, category: Category) throws -> Entry
@@ -22,14 +22,14 @@ protocol MasterDataSource {
     func updateEntry(_ entry: Entry) throws -> Entry
 }
 
-class ManagerMasterCoreData: MasterDataSource {
+class CoreDataRepositoryService: RepositoryService {
     
     enum CoreDataError: Error {
         case errorSaving(String)
         case noData
     }
     
-    static let shared = ManagerMasterCoreData()
+    static let shared = CoreDataRepositoryService()
     
     static let defaultCategoryIndex: Int = 0
     
