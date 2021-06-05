@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B294363EE95B02B90D47D49F /* Pods_DGPPrivateData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA5AFDB6F6EA18541C3DB40 /* Pods_DGPPrivateData.framework */; };
+		5AAA048297CAE13FA3C66BBC /* Pods_DGPPrivateData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841B5D729FAF67188FD843C3 /* Pods_DGPPrivateData.framework */; };
 		C709A02C25E51633006DCAAE /* DGPPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709A02B25E51633006DCAAE /* DGPPickerView.swift */; };
 		C710205525F12B320085535B /* ListEntryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710204F25F12B320085535B /* ListEntryPresenter.swift */; };
 		C710205625F12B320085535B /* ListEntryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710205025F12B320085535B /* ListEntryWorker.swift */; };
@@ -88,10 +88,10 @@
 		C7D03C9425DE8787008303C6 /* ManagerCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C9325DE8787008303C6 /* ManagerCoreDataStack.swift */; };
 		C7D03C9725DE89CC008303C6 /* CoreDataRepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C9625DE89CC008303C6 /* CoreDataRepositoryService.swift */; };
 		C7D03CA225DEBB85008303C6 /* ListEntryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03CA125DEBB85008303C6 /* ListEntryViewCell.swift */; };
-		C7D03CA725DEBC93008303C6 /* DGPLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* DGPLibrary */; };
-		C7D03CA825DEBC93008303C6 /* DGPLibrary in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* DGPLibrary */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C7D03CAC25DEBDCA008303C6 /* DGPExtensionCore in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CAB25DEBDCA008303C6 /* DGPExtensionCore */; };
-		C7D03CAD25DEBDCB008303C6 /* DGPExtensionCore in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CAB25DEBDCA008303C6 /* DGPExtensionCore */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C7D03CA725DEBC93008303C6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* SwiftPackageProductDependency */; };
+		C7D03CA825DEBC93008303C6 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* SwiftPackageProductDependency */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C7D03CAC25DEBDCA008303C6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CAB25DEBDCA008303C6 /* SwiftPackageProductDependency */; };
+		C7D03CAD25DEBDCB008303C6 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CAB25DEBDCA008303C6 /* SwiftPackageProductDependency */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C7D9AE932663AD22005009A6 /* FilterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D9AE8F2663AD22005009A6 /* FilterViewControllerTests.swift */; };
 		C7D9AE9E2663C0C5005009A6 /* TableViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D9AE9D2663C0C5005009A6 /* TableViewHelpers.swift */; };
 		C7D9AEA22663D797005009A6 /* OrderFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D9AEA12663D796005009A6 /* OrderFilterViewCell.swift */; };
@@ -123,8 +123,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C7D03CA825DEBC93008303C6 /* DGPLibrary in Embed Frameworks */,
-				C7D03CAD25DEBDCB008303C6 /* DGPExtensionCore in Embed Frameworks */,
+				C7D03CA825DEBC93008303C6 /* BuildFile in Embed Frameworks */,
+				C7D03CAD25DEBDCB008303C6 /* BuildFile in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,7 +132,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		885A3D29D6ADEC529899C272 /* Pods-DGPPrivateData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.release.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.release.xcconfig"; sourceTree = "<group>"; };
+		4BA934F49CC201650C496CBB /* Pods-DGPPrivateData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.debug.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.debug.xcconfig"; sourceTree = "<group>"; };
+		841B5D729FAF67188FD843C3 /* Pods_DGPPrivateData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DGPPrivateData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3126E80869860E5357A6475 /* Pods-DGPPrivateData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.release.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.release.xcconfig"; sourceTree = "<group>"; };
 		C709A02B25E51633006DCAAE /* DGPPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGPPickerView.swift; sourceTree = "<group>"; };
 		C710204F25F12B320085535B /* ListEntryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryPresenter.swift; sourceTree = "<group>"; };
 		C710205025F12B320085535B /* ListEntryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryWorker.swift; sourceTree = "<group>"; };
@@ -230,8 +232,6 @@
 		C7EB5D0925DE793B00FB1AE8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C7F55A3C26655E0500662D27 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C7FD51322655889900FED18E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D29935CB78BA360E0C9D9F9D /* Pods-DGPPrivateData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.debug.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.debug.xcconfig"; sourceTree = "<group>"; };
-		FCA5AFDB6F6EA18541C3DB40 /* Pods_DGPPrivateData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DGPPrivateData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,10 +246,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7D03CAC25DEBDCA008303C6 /* DGPExtensionCore in Frameworks */,
-				C7D03CA725DEBC93008303C6 /* DGPLibrary in Frameworks */,
+				C7D03CAC25DEBDCA008303C6 /* BuildFile in Frameworks */,
+				C7D03CA725DEBC93008303C6 /* BuildFile in Frameworks */,
 				C7EB5D2525DE7E7200FB1AE8 /* CoreData.framework in Frameworks */,
-				B294363EE95B02B90D47D49F /* Pods_DGPPrivateData.framework in Frameworks */,
+				5AAA048297CAE13FA3C66BBC /* Pods_DGPPrivateData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,7 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				C7EB5D0925DE793B00FB1AE8 /* CoreData.framework */,
-				FCA5AFDB6F6EA18541C3DB40 /* Pods_DGPPrivateData.framework */,
+				841B5D729FAF67188FD843C3 /* Pods_DGPPrivateData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -651,8 +651,8 @@
 		F7C6E9897FA3FB0A08170A1C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D29935CB78BA360E0C9D9F9D /* Pods-DGPPrivateData.debug.xcconfig */,
-				885A3D29D6ADEC529899C272 /* Pods-DGPPrivateData.release.xcconfig */,
+				4BA934F49CC201650C496CBB /* Pods-DGPPrivateData.debug.xcconfig */,
+				B3126E80869860E5357A6475 /* Pods-DGPPrivateData.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -682,12 +682,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7EB5CFF25DE72AA00FB1AE8 /* Build configuration list for PBXNativeTarget "DGPPrivateData" */;
 			buildPhases = (
-				CACD510BE852EF9DB5CD8358 /* [CP] Check Pods Manifest.lock */,
+				368E280C364F494001285C84 /* [CP] Check Pods Manifest.lock */,
 				C7EB5CE725DE72A800FB1AE8 /* Sources */,
 				C7EB5CE825DE72A800FB1AE8 /* Frameworks */,
 				C7EB5CE925DE72A800FB1AE8 /* Resources */,
 				C7D03CA925DEBC93008303C6 /* Embed Frameworks */,
-				0A7DB698F18CAC1FAB902EC0 /* [CP] Embed Pods Frameworks */,
+				1B5E1488E651784B58BEEB50 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -695,8 +695,8 @@
 			);
 			name = DGPPrivateData;
 			packageProductDependencies = (
-				C7D03CA625DEBC93008303C6 /* DGPLibrary */,
-				C7D03CAB25DEBDCA008303C6 /* DGPExtensionCore */,
+				C7D03CA625DEBC93008303C6 /* SwiftPackageProductDependency */,
+				C7D03CAB25DEBDCA008303C6 /* SwiftPackageProductDependency */,
 			);
 			productName = DGPPrivateData;
 			productReference = C7EB5CEB25DE72A800FB1AE8 /* DGPPrivateData.app */;
@@ -732,8 +732,8 @@
 			);
 			mainGroup = C7EB5CE225DE72A800FB1AE8;
 			packageReferences = (
-				C7D03CA525DEBC93008303C6 /* XCRemoteSwiftPackageReference "dgplibrary" */,
-				C7D03CAA25DEBDCA008303C6 /* XCRemoteSwiftPackageReference "dgpextensioncore" */,
+				C7D03CA525DEBC93008303C6 /* RemoteSwiftPackageReference */,
+				C7D03CAA25DEBDCA008303C6 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = C7EB5CEC25DE72A800FB1AE8 /* Products */;
 			projectDirPath = "";
@@ -768,7 +768,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A7DB698F18CAC1FAB902EC0 /* [CP] Embed Pods Frameworks */ = {
+		1B5E1488E651784B58BEEB50 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -785,7 +785,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CACD510BE852EF9DB5CD8358 /* [CP] Check Pods Manifest.lock */ = {
+		368E280C364F494001285C84 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1112,7 +1112,7 @@
 		};
 		C7EB5D0025DE72AA00FB1AE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D29935CB78BA360E0C9D9F9D /* Pods-DGPPrivateData.debug.xcconfig */;
+			baseConfigurationReference = 4BA934F49CC201650C496CBB /* Pods-DGPPrivateData.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1133,7 +1133,7 @@
 		};
 		C7EB5D0125DE72AA00FB1AE8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 885A3D29D6ADEC529899C272 /* Pods-DGPPrivateData.release.xcconfig */;
+			baseConfigurationReference = B3126E80869860E5357A6475 /* Pods-DGPPrivateData.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1185,7 +1185,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C7D03CA525DEBC93008303C6 /* XCRemoteSwiftPackageReference "dgplibrary" */ = {
+		C7D03CA525DEBC93008303C6 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://daniel_ios@bitbucket.org/daniel_ios/dgplibrary.git";
 			requirement = {
@@ -1193,7 +1193,7 @@
 				kind = branch;
 			};
 		};
-		C7D03CAA25DEBDCA008303C6 /* XCRemoteSwiftPackageReference "dgpextensioncore" */ = {
+		C7D03CAA25DEBDCA008303C6 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://daniel_ios@bitbucket.org/daniel_ios/dgpextensioncore.git";
 			requirement = {
@@ -1204,14 +1204,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C7D03CA625DEBC93008303C6 /* DGPLibrary */ = {
+		C7D03CA625DEBC93008303C6 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C7D03CA525DEBC93008303C6 /* XCRemoteSwiftPackageReference "dgplibrary" */;
+			package = C7D03CA525DEBC93008303C6 /* RemoteSwiftPackageReference */;
 			productName = DGPLibrary;
 		};
-		C7D03CAB25DEBDCA008303C6 /* DGPExtensionCore */ = {
+		C7D03CAB25DEBDCA008303C6 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C7D03CAA25DEBDCA008303C6 /* XCRemoteSwiftPackageReference "dgpextensioncore" */;
+			package = C7D03CAA25DEBDCA008303C6 /* RemoteSwiftPackageReference */;
 			productName = DGPExtensionCore;
 		};
 /* End XCSwiftPackageProductDependency section */
