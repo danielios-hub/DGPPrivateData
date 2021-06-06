@@ -185,10 +185,11 @@ class FilterViewControllerTests: XCTestCase {
     
     //MARK: - Helpers
     
-    func makeSUT() -> FilterViewController {
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FilterViewController {
         let sut = FilterViewController()
         sut.interactor = spy
         _ = sut.view
+        self.trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
     

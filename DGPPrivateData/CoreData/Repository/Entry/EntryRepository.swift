@@ -8,10 +8,15 @@
 import Foundation
 import CoreData
 
+enum EntryResult {
+    case success(Entry)
+    case failure(Error)
+}
+
 protocol EntryService {
-    func create(entry: Entry) -> Result<Bool, Error>
-    func update(entry: Entry) -> Result<Bool, Error>
-    func get(predicate: NSPredicate?) -> Result<[Entry], Error>
+    func create(entry: Entry) -> EntryResult
+    func update(entry: Entry) -> EntryResult
+    func get(predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?) -> Result<[Entry], Error>
 }
 
 enum RepositoryError: Error {
@@ -21,12 +26,14 @@ enum RepositoryError: Error {
 class EntryRepository: EntryService {
     
     let repository: CoreDataRepository<EntryMO>
+    let categoryRepository: CoreDataRepository<CategoryMO>
     
     init(context: NSManagedObjectContext) {
         self.repository = CoreDataRepository<EntryMO>(context: context)
+        self.categoryRepository = CoreDataRepository<CategoryMO>(context: context)
     }
     
-    func create(entry: Entry) -> Result<Bool, Error> {
+    func create(entry: Entry) -> EntryResult {
         
         let result = repository.create()
         switch result {
@@ -39,16 +46,22 @@ class EntryRepository: EntryService {
             entryMO.favorite = entry.favorite
             entryMO.icon = entry.icon
 
-            let categoryMO = repository.get(objectID: entry.category.id)
-            entryMO.relationCategory = categoryMO as? CategoryMO
+            let predicate = NSPredicate(format: "name == %@", entry.category.name)
+            let categoryResult = categoryRepository.get(predicate: predicate, sortDescriptor: nil)
             
-            return .success(true)
+            switch categoryResult {
+            case let .success(categories):
+                entryMO.relationCategory = categories.first!
+                return .success(entryMO.toDomainModel())
+            case let .failure(error):
+                return .failure(error)
+            }
         case let .failure(error):
             return .failure(error)
         }
     }
     
-    func update(entry: Entry) -> Result<Bool, Error> {
+    func update(entry: Entry) -> EntryResult {
         guard let id = entry.id,
               let entryMO = repository.get(objectID: id) as? EntryMO else {
             return .failure(RepositoryError.invalidObjectId)
@@ -64,12 +77,11 @@ class EntryRepository: EntryService {
 
         let categoryMO = repository.get(objectID: entry.category.id)
         entryMO.relationCategory = categoryMO as? CategoryMO
-        
-        return .success(true)
+        return .success(entryMO.toDomainModel())
     }
     
-    func get(predicate: NSPredicate?) -> Result<[Entry], Error> {
-        let result = repository.get(predicate: predicate, sortDescriptor: nil)
+    func get(predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]? = nil) -> Result<[Entry], Error> {
+        let result = repository.get(predicate: predicate, sortDescriptor: sortDescriptors)
         switch result {
         case let .success(entries):
             return .success(entries.map {

@@ -11,10 +11,8 @@ import XCTest
 
 class ListEntryWorkerTest: XCTestCase {
     
-    let defaultCategoryName = "Favorites"
-    
     var testFilters = [
-        Filter(title: "Favorites",
+        Filter(title: "Another",
                               icon: "",
                               state: true),
         Filter(title: "General",
@@ -25,7 +23,10 @@ class ListEntryWorkerTest: XCTestCase {
                               state: true),
         Filter(title: "Email",
                               icon: "",
-                              state: false)
+                              state: false),
+        Filter(title: Filter.favoriteFilterName,
+                              icon: "",
+                              state: true),
     ]
     
     var orderFilter = [
@@ -62,6 +63,7 @@ class ListEntryWorkerTest: XCTestCase {
         wait(for: [filtersExpectation], timeout: 2)
         
         XCTAssertEqual(spy.requestedFilters, [["name"]])
+        XCTAssertEqual(spy.requestedIsFavorite, [])
     }
     
     func test_fetchEntry_onecategoriesUnSelected() {
@@ -78,6 +80,7 @@ class ListEntryWorkerTest: XCTestCase {
         wait(for: [filtersExpectation], timeout: 2)
         
         XCTAssertEqual(spy.requestedFilters, [[]])
+        XCTAssertEqual(spy.requestedIsFavorite, [])
     }
     
     func test_fetchEntry_multipleValues() {
@@ -91,7 +94,7 @@ class ListEntryWorkerTest: XCTestCase {
         wait(for: [filtersExpectation], timeout: 2)
         
         XCTAssertEqual(spy.requestedFilters, [
-            ["Favorites", "SocialNetwork"]
+            ["Another", "SocialNetwork"]
         ])
     }
     
@@ -114,10 +117,12 @@ class ListEntryWorkerTest: XCTestCase {
         wait(for: [filtersExpectationTwice], timeout: 2)
         
         XCTAssertEqual(spy.requestedFilters, [
-            ["Favorites", "SocialNetwork"],
-            ["Favorites", "SocialNetwork"]
+            ["Another", "SocialNetwork"],
+            ["Another", "SocialNetwork"]
         ])
     }
+    
+    //MARK: - Order
     
     func test_fetchEntry_noOrderSelected() {
         let dataStore = DataStoreMock()
@@ -131,6 +136,7 @@ class ListEntryWorkerTest: XCTestCase {
         
         wait(for: [filtersExpectation], timeout: 2)
         XCTAssertEqual(spy.requestedOrders, [.default])
+        XCTAssertEqual(spy.requestedIsFavorite, [])
     }
     
     func test_fetchEntry_oneOrderSelected() {
@@ -145,7 +151,10 @@ class ListEntryWorkerTest: XCTestCase {
         
         wait(for: [filtersExpectation], timeout: 2)
         XCTAssertEqual(spy.requestedOrders, [.alphabetically])
+        XCTAssertEqual(spy.requestedIsFavorite, [])
     }
+    
+    //MARK: - Search
     
     func test_fetchEntries_noTextSearch() {
         let (sut, spy) = makeSUT(dataStoreMock: getDataStore())
@@ -172,6 +181,7 @@ class ListEntryWorkerTest: XCTestCase {
         wait(for: [filtersExpectation], timeout: 2)
         
         XCTAssertEqual(spy.requestedTextSearchs, [textSearch])
+        XCTAssertEqual(spy.requestedIsFavorite, [true])
     }
     
     func test_fetchEntry_multipleValuesGroupedAndSearch_TwiceRequests() {
@@ -184,6 +194,7 @@ class ListEntryWorkerTest: XCTestCase {
             filtersExpectation.fulfill()
         }
         
+        let expectedFilters = ["Another", "SocialNetwork"]
         wait(for: [filtersExpectation], timeout: 2)
         
         let filtersExpectationTwice = expectation(description: "waiting filters")
@@ -193,26 +204,23 @@ class ListEntryWorkerTest: XCTestCase {
         }
         
         wait(for: [filtersExpectationTwice], timeout: 2)
-        
-        
-        XCTAssertEqual(spy.requestedFilters, [
-            ["Favorites", "SocialNetwork"],
-            ["Favorites", "SocialNetwork"]
-        ])
-        
+
+        XCTAssertEqual(spy.requestedFilters, [expectedFilters, expectedFilters])
         XCTAssertEqual(spy.requestedOrders, [.alphabetically, .alphabetically])
-        
         XCTAssertEqual(spy.requestedTextSearchs, [textSearch, textSearch2])
+        XCTAssertEqual(spy.requestedIsFavorite, [true, true])
     }
     
     //MARK: - Helpers
     
-    func makeSUT(dataStoreMock: DataStoreMock) -> (sut: ListEntryWorker, spy: DataSourceMock) {
+    func makeSUT(dataStoreMock: DataStoreMock, file: StaticString = #filePath, line: UInt = #line) -> (sut: ListEntryWorker, spy: DataSourceMock) {
         let spy = DataSourceMock()
         let sut = ListEntryWorker(
             dataStore: dataStoreMock,
             masterDataSource: spy)
         
+        self.trackForMemoryLeaks(sut, file: file, line: line)
+        self.trackForMemoryLeaks(spy, file: file, line: line)
         return (sut, spy)
     }
     
@@ -229,10 +237,10 @@ class ListEntryWorkerTest: XCTestCase {
     }
     
     class DataSourceMock: RepositoryService {
-
         var requestedFilters: [[String]] = []
         var requestedOrders: [Order] = []
         var requestedTextSearchs: [String] = []
+        var requestedIsFavorite: [Bool] = []
         
         enum ErrorMock: Error {
             case mockError
@@ -240,6 +248,10 @@ class ListEntryWorkerTest: XCTestCase {
         
         func getAllCategories() -> [DGPPrivateData.Category] {
             return []
+        }
+        
+        func createCategory(category: DGPPrivateData.Category) throws -> DGPPrivateData.Category {
+            return DGPPrivateData.Category(name: "", icon: "")
         }
         
         func getAllEntries(filters: [FilterType]) -> [Entry] {
@@ -251,6 +263,8 @@ class ListEntryWorkerTest: XCTestCase {
                     requestedOrders.append(orderType)
                 case .search(let text):
                     requestedTextSearchs.append(text)
+                case let .isFavorite(value):
+                    requestedIsFavorite.append(value)
                 }
             }
             

@@ -8,8 +8,13 @@
 import Foundation
 import CoreData
 
+enum CategoryResult {
+    case success(Category)
+    case failure(Error)
+}
+
 protocol CategoryService {
-    func create(category: Category) -> Result<Bool, Error>
+    func create(category: Category) -> CategoryResult
     func get(predicate: NSPredicate?) -> Result<[Category], Error>
 }
 
@@ -22,7 +27,8 @@ class CategoryRepository: CategoryService {
     }
     
     func get(predicate: NSPredicate?) -> Result<[Category], Error> {
-        let result = repository.get(predicate: predicate, sortDescriptor: nil)
+        let descriptors = [NSSortDescriptor(keyPath: \CategoryMO.name, ascending: true)]
+        let result = repository.get(predicate: predicate, sortDescriptor: descriptors)
         switch result {
         case let .success(categories):
             return .success(categories.map {
@@ -34,13 +40,13 @@ class CategoryRepository: CategoryService {
     }
     
     @discardableResult
-    func create(category: Category) -> Result<Bool, Error> {
+    func create(category: Category) -> CategoryResult {
         let result = repository.create()
         switch result {
         case let .success(categoryMO):
             categoryMO.name = category.name
             categoryMO.icon = category.icon
-            return .success(true)
+            return .success(categoryMO.toDomainModel())
         case let .failure(error):
             return .failure(error)
         }

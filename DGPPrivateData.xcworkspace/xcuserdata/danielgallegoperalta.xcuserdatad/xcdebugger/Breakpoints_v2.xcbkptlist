@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
             endingLineNumber = "149"
-            landmarkName = "reloadCollectionView()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -88,7 +88,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9079BEB9-FB66-4DE7-A3A1-5142E016B074"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DGPPrivateData/CoreData/Repository/UnitOfWork.swift"
@@ -130,45 +130,13 @@
             endingLineNumber = "100"
             landmarkName = "createEntry(with:username:password:notes:isFavorite:category:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BD6D6737-9642-44FC-B7C8-07DFE086B0B7 - 1533eb0e46469bea"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DGPPrivateData.ManagerMasterCoreData.createEntry(with: Swift.String, username: Swift.Optional&lt;Swift.String&gt;, password: Swift.Optional&lt;Swift.String&gt;, notes: Swift.Optional&lt;Swift.String&gt;, isFavorite: Swift.Bool, category: DGPPrivateData.Category) throws -&gt; DGPPrivateData.Entry"
-                  moduleName = "DGPPrivateData"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielgallegoperalta/Desktop/Datos/IOS/swift%20main%20projects/DGPPrivateData/DGPPrivateData/CoreData/ManagerMasterCoreData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "1291">
-               </Location>
-               <Location
-                  uuid = "BD6D6737-9642-44FC-B7C8-07DFE086B0B7 - 1533eb0e46469bea"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DGPPrivateData.ManagerMasterCoreData.createEntry(with: Swift.String, username: Swift.Optional&lt;Swift.String&gt;, password: Swift.Optional&lt;Swift.String&gt;, notes: Swift.Optional&lt;Swift.String&gt;, isFavorite: Swift.Bool, category: DGPPrivateData.Category) throws -&gt; DGPPrivateData.Entry"
-                  moduleName = "DGPPrivateData"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielgallegoperalta/Desktop/Datos/IOS/swift%20main%20projects/DGPPrivateData/DGPPrivateData/CoreData/ManagerMasterCoreData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "1400">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "123A63C9-DB2A-4681-A462-6D8EDBFFCDFA"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DGPPrivateData/CoreData/Repository/UnitOfWork.swift"
@@ -200,7 +168,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AD4E4496-A321-41ED-9813-A2A463049ACD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DGPPrivateData/CoreData/Repository/UnitOfWork.swift"
@@ -286,8 +254,8 @@
             filePath = "DGPPrivateData/CoreData/Repository/Entry/EntryRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "update(entry:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -320,8 +288,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "init(from:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -448,8 +416,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "displayFilters(viewModel:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -496,8 +464,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
             endingLineNumber = "199"
-            landmarkName = "collectionView(_:didDeselectItemAt:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -510,8 +478,8 @@
             filePath = "DGPPrivateDataTests/Scenes/Filter/FilterViewControllerTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "doSaveOrderFilters(request:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -606,9 +574,377 @@
             filePath = "DGPPrivateDataTests/Scenes/ListEntrys/ListEntryWorkerTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "test_fetchEntrys_noCategories()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14597CF4-5CED-43C2-9898-DDBC26FD4326"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "init()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "14597CF4-5CED-43C2-9898-DDBC26FD4326 - 778ba987df5712d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DGPPrivateDataTests.CoreDataInMemoryStackTest.init() -&gt; DGPPrivateDataTests.CoreDataInMemoryStackTest"
+                  moduleName = "DGPPrivateDataTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgallegoperalta/Desktop/Datos/IOS/swift%20main%20projects/DGPPrivateData/DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "911">
+               </Location>
+               <Location
+                  uuid = "14597CF4-5CED-43C2-9898-DDBC26FD4326 - 239024e8c403e9b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSPersistentStoreDescription, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DGPPrivateDataTests.CoreDataInMemoryStackTest.init() -&gt; DGPPrivateDataTests.CoreDataInMemoryStackTest"
+                  moduleName = "DGPPrivateDataTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgallegoperalta/Desktop/Datos/IOS/swift%20main%20projects/DGPPrivateData/DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "75">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E67995EC-9618-4A2E-8918-4266668B6A16"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED29B148-8701-467E-B817-2DD9830B530C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "getAllCategories()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8529FDB9-881B-474E-8F53-3E6FF8FF0825"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "makeEntry(sut:title:category:isFavorite:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CEA716F5-83B0-4E27-9A3C-1310747C67A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/Repository/Category/CategoryRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "create(category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "97C9AB2C-77F9-4FE3-8300-9CE736523698"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/Repository/Category/Category.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "init(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C3BFEBE-FC7A-4B9E-9DB8-E8BC0237A30A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "makeCategory(sut:name:icon:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4DDB16A4-F0D8-4DF9-AC97-BC15DC233BC2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "createCategory(category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76281C75-BE65-41E6-A048-168FDC89C449"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/Repository/Category/CategoryRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "create(category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE10055F-7224-4A29-80C0-F6B8431812DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/Repository/Category/CategoryRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "create(category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7CA79A0D-FBCB-444C-86D5-C6D066C1931A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "createCategory(category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD5E7205-48B7-4ACF-A5E2-0FA2CD97181F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "createCategory(category:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AD5E7205-48B7-4ACF-A5E2-0FA2CD97181F - 97d746e0b28a2ba4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DGPPrivateData.CoreDataRepositoryService.createCategory(category: DGPPrivateData.Category) throws -&gt; DGPPrivateData.Category"
+                  moduleName = "DGPPrivateData"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgallegoperalta/Desktop/Datos/IOS/swift%20main%20projects/DGPPrivateData/DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "731">
+               </Location>
+               <Location
+                  uuid = "AD5E7205-48B7-4ACF-A5E2-0FA2CD97181F - 97d746e0b28a2ba4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DGPPrivateData.CoreDataRepositoryService.createCategory(category: DGPPrivateData.Category) throws -&gt; DGPPrivateData.Category"
+                  moduleName = "DGPPrivateData"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgallegoperalta/Desktop/Datos/IOS/swift%20main%20projects/DGPPrivateData/DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "814">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "029DFF36-A9C2-4A7D-AA18-EEFEDF2E3C73"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/Repository/CoreDataRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "get(objectID:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D78B6C10-2CD9-4C28-91A6-0EFE483DD190"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/Scenes/ListEntrys/ListEntryWorker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "fetchEntrys(textSearch:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "19798A30-BA79-426E-A173-F7EDA87F6D1D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "getAllEntries(filters:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82EA6142-7747-4A5F-AF92-A14DE84297C1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateData/Scenes/ListEntrys/ListEntryWorker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "fetchEntrys(textSearch:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "82EA6142-7747-4A5F-AF92-A14DE84297C1 - 8c0884935d41286e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DGPPrivateData.ListEntryWorker.fetchEntrys(textSearch: Swift.Optional&lt;Swift.String&gt;, completionHandler: (Swift.Array&lt;DGPPrivateData.Entry&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "DGPPrivateData"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgallegoperalta/Desktop/Datos/IOS/swift%20main%20projects/DGPPrivateData/DGPPrivateData/Scenes/ListEntrys/ListEntryWorker.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "125">
+               </Location>
+               <Location
+                  uuid = "82EA6142-7747-4A5F-AF92-A14DE84297C1 - a344a328a2f4a739"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (DGPPrivateData.Filter) -&gt; Swift.Bool in DGPPrivateData.ListEntryWorker.fetchEntrys(textSearch: Swift.Optional&lt;Swift.String&gt;, completionHandler: (Swift.Array&lt;DGPPrivateData.Entry&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "DGPPrivateData"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgallegoperalta/Desktop/Datos/IOS/swift%20main%20projects/DGPPrivateData/DGPPrivateData/Scenes/ListEntrys/ListEntryWorker.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "285241D2-C323-4ECD-9A06-2F2981589B35"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DGPPrivateDataTests/Scenes/ListEntrys/ListEntryWorkerTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "test_fetchEntry_multipleValuesGroupedAndSearch_TwiceRequests()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

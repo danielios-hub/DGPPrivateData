@@ -26,9 +26,10 @@ class ListEntryWorker {
         
         let filtersName = dataStore.filterList.filter {
             $0.state
-        }.map {
-            return $0.title
+        }.compactMap {
+            return $0.title != Filter.favoriteFilterName ? $0.title : nil
         }
+        
         let categoriesFilter = FilterType.categories(filtersName)
         
         let order = dataStore.orderList.filter { $0.title == "Alphabetically" }.first
@@ -39,6 +40,10 @@ class ListEntryWorker {
         
         if let textSearch = textSearch {
             filtersType.append(FilterType.search(textSearch))
+        }
+        
+        if let isFavorite = dataStore.filterList.filter({ $0.title == Filter.favoriteFilterName}).first?.state, isFavorite {
+            filtersType.append(FilterType.isFavorite(true))
         }
         
         completionHandler(

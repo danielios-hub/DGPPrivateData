@@ -23,8 +23,8 @@ class FilterWorker {
         var filterList = dataStore.filterList
         
         if filterList.isEmpty {
-            filterList = [Filter(title: "Favorites",
-                                  icon: "default_icon",
+            filterList = [Filter(title: Filter.favoriteFilterName,
+                                 icon: Filter.favoriteFilterIcon,
                                   state: true)]
             filterList.append(contentsOf: CoreDataRepositoryService.shared.getAllCategories().map { category in
                 return Filter(title: category.name, icon: category.icon, state: true)

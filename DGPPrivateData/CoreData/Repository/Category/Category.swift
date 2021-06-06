@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Category {
-    let name: String
-    let icon: String
-    let id: String
+public struct Category: Equatable {
+    public let name: String
+    public let icon: String
+    public let id: String
     
     init(from category: CategoryMO) {
         self.name = category.name
@@ -18,9 +18,13 @@ struct Category {
         self.id = category.objectID.uriRepresentation().absoluteString
     }
     
-    init(name: String, icon: String) {
+    public init(name: String, icon: String) {
         self.name = name
         self.icon = icon
         self.id = ""
+    }
+    
+    public static func ==(lhs: Category, rhs: Category) -> Bool {
+        return lhs.name == rhs.name && rhs.icon == lhs.icon
     }
 }

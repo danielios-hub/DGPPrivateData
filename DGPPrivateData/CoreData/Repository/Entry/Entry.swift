@@ -7,18 +7,18 @@
 
 import UIKit
 
-struct Entry {
-    var title: String
+public struct Entry: Equatable {
+    public var title: String
     var username: String
     var password: String
     var url: String
     var notes: String
-    var favorite: Bool
+    public var favorite: Bool
     let icon: String
     let id: String?
     var category: Category
     
-    init(category: Category) {
+    public init(category: Category) {
         self.init(title: "", username: nil, password: nil, url: nil, notes: nil, favorite: false, category: category)
     }
     
@@ -51,5 +51,16 @@ struct Entry {
         self.favorite = entry.favorite
         self.icon = entry.icon ?? ""
         self.id = entry.objectID.uriRepresentation().absoluteString
+    }
+    
+    public static func ==(lhs: Entry, rhs: Entry) -> Bool {
+        return lhs.category == rhs.category &&
+            rhs.title == lhs.title &&
+        rhs.username == lhs.username &&
+        rhs.password == lhs.password &&
+        rhs.url == lhs.url &&
+        rhs.notes == lhs.notes &&
+        rhs.favorite == lhs.favorite &&
+        rhs.icon == lhs.icon
     }
 }

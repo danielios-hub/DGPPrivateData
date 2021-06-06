@@ -61,7 +61,7 @@ class CoreDataRepository<T: NSManagedObject>: Repository {
     func get(objectID: String) -> NSManagedObject? {
         if let url = URL(string: objectID) {
             if let objectInternalID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url) {
-                return context.object(with: objectInternalID)
+                return try? context.existingObject(with: objectInternalID)
             }
         }
         return nil

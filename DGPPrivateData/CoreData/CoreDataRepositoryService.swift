@@ -8,21 +8,21 @@
 import Foundation
 import CoreData
 
-enum Order {
+public enum Order {
     case `default`
     case alphabetically
 }
 
-protocol RepositoryService {
+public protocol RepositoryService {
     func getAllCategories() -> [Category]
+    func createCategory(category: Category) throws -> Category
     func getAllEntries(filters: [FilterType]) -> [Entry]
     func createEntry(with title: String, username: String?, password: String?, notes: String?, isFavorite: Bool, category: Category) throws -> Entry
-    
     func createEntry(_ entry: Entry) throws -> Entry
     func updateEntry(_ entry: Entry) throws -> Entry
 }
 
-class CoreDataRepositoryService: RepositoryService {
+public class CoreDataRepositoryService: RepositoryService {
     
     enum CoreDataError: Error {
         case errorSaving(String)
@@ -54,17 +54,19 @@ class CoreDataRepositoryService: RepositoryService {
         "creditcard"
     ]
     
-    init() {
-        let stack = ManagerCoreDataStack()
+    public init(stack: CoreDataStack = CoreDataStack()) {
+        //self.stack = stack
         mainWork = UnitOfWork(context: stack.managedObjectContext!)
         backgroundWork = UnitOfWork(context: stack.managedPrivateObjectContext!)
     }
     
-    func getAllCategories() -> [Category] {
+    //MARK: - Categories
+    
+    public func getAllCategories() -> [Category] {
         let result = mainWork.categoryRepository.get(predicate: nil)
         switch result {
         case let .success(categories):
-            if categories.isEmpty {
+            if categories.count < nameCategories.count {
                 createDefaultData()
                 return getAllCategories()
             }
@@ -74,8 +76,32 @@ class CoreDataRepositoryService: RepositoryService {
         }
     }
     
-    func getAllEntries(filters: [FilterType]) -> [Entry] {
-        let result = mainWork.entryRepository.get(predicate: nil)
+    public func createCategory(category: Category) throws -> Category {
+        let result = mainWork.categoryRepository.create(category: category)
+        mainWork.saveChanges()
+        switch result {
+        case let .success(updatedCategory):
+            return updatedCategory
+        case let .failure(error):
+            throw error
+        }
+    }
+    
+    //MARK: - Entries
+    
+    public func getAllEntries(filters: [FilterType]) -> [Entry] {
+        let (categories, order, search, isFavorite) = mapFilters(filters: filters)
+        
+        let predicate = NSCompoundPredicate(
+            andPredicateWithSubpredicates: getPredicates(
+                categories: categories,
+                search: search,
+                isFavorite: isFavorite))
+        
+        let descriptors = getSortDescriptors(order: order)
+        
+        let result = mainWork.entryRepository.get(predicate: predicate,
+                                                  sortDescriptors: descriptors)
         switch result {
         case let .success(entries):
             return entries
@@ -84,7 +110,8 @@ class CoreDataRepositoryService: RepositoryService {
         }
     }
     
-    func createEntry(with title: String,
+    @discardableResult
+    public func createEntry(with title: String,
                      username: String?,
                      password: String?,
                      notes: String?,
@@ -94,25 +121,26 @@ class CoreDataRepositoryService: RepositoryService {
         let result = mainWork.entryRepository.create(entry: entry)
         mainWork.saveChanges()
         switch result {
-        case .success(_):
-            return entry
+        case let .success(updatedEntry):
+            return updatedEntry
         case let .failure(error):
             throw error
         }
     }
     
-    func createEntry(_ entry: Entry) throws -> Entry {
+    @discardableResult
+    public func createEntry(_ entry: Entry) throws -> Entry {
         let result = mainWork.entryRepository.create(entry: entry)
         mainWork.saveChanges()
         switch result {
-        case .success(_):
-            return entry
+        case let .success(updatedEntry):
+            return updatedEntry
         case let .failure(error):
             throw error
         }
     }
     
-    func updateEntry(_ entry: Entry) throws -> Entry {
+    public func updateEntry(_ entry: Entry) throws -> Entry {
         let result = mainWork.entryRepository.update(entry: entry)
         mainWork.saveChanges()
         switch result {
@@ -134,5 +162,61 @@ class CoreDataRepositoryService: RepositoryService {
         }
         
         mainWork.saveChanges()
+    }
+    
+    private func mapFilters(filters: [FilterType]) -> (categories: [String], order: Order, search: String, isFavorite: Bool) {
+        var categories: [String] = []
+        var order = Order.default
+        var textSearch = ""
+        var isFavoriteSearch: Bool = false
+        
+        filters.forEach {
+            switch $0 {
+            case let .categories(names):
+                categories.append(contentsOf: names)
+            case let .order(typeOrder):
+                order = typeOrder
+            case let .search(text):
+                textSearch = text
+            case let .isFavorite(value):
+                isFavoriteSearch = value
+            }
+        }
+        
+        return (categories, order, textSearch, isFavoriteSearch)
+    }
+    
+    private func getPredicates(categories: [String], search: String, isFavorite: Bool) -> [NSPredicate] {
+        var predicates: [NSPredicate] = []
+        
+        if categories.isNotEmpty {
+            predicates.append(NSPredicate(format: "relationCategory.name in %@", categories))
+        }
+        
+        if search.isNotEmpty {
+            predicates.append(
+                NSPredicate(format: "title CONTAINS[cd] %@", search))
+        }
+        
+        if isFavorite {
+            predicates.append(
+                NSPredicate(format: "favorite == true"))
+        }
+        
+        return predicates
+    }
+    
+    private func getSortDescriptors(order: Order) -> [NSSortDescriptor] {
+        var descritors: [NSSortDescriptor] = []
+        
+        switch order {
+        case .alphabetically:
+            descritors = [
+                NSSortDescriptor(keyPath: \EntryMO.title, ascending: true),
+                NSSortDescriptor(keyPath: \EntryMO.username, ascending: true),
+            ]
+        default: break
+        }
+        return descritors
     }
 }

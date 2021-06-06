@@ -47,6 +47,7 @@
 		C738A540265AC92600B63AF8 /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A53F265AC92600B63AF8 /* UnitOfWork.swift */; };
 		C74861172667F1BB002E9846 /* ListEntryWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74861162667F1BB002E9846 /* ListEntryWorkerTest.swift */; };
 		C7501902264EDA98003E34D8 /* UserDefaultPreferencesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */; };
+		C759827B266CEB75002520E4 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759827A266CEB75002520E4 /* XCTestCaseExtension.swift */; };
 		C75B17F22663F5AA0030DD51 /* FilterOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F12663F5AA0030DD51 /* FilterOptionViewModel.swift */; };
 		C75B17F62663F6150030DD51 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F52663F6150030DD51 /* Filter.swift */; };
 		C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */; };
@@ -85,13 +86,13 @@
 		C7CA213C25E3D6DC00EB8ACE /* UITextViewPlaceholderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CA213B25E3D6DC00EB8ACE /* UITextViewPlaceholderProtocol.swift */; };
 		C7CA214125E4146300EB8ACE /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CA214025E4146300EB8ACE /* Storyboarded.swift */; };
 		C7D03C8B25DE8491008303C6 /* ListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C8A25DE8491008303C6 /* ListEntryView.swift */; };
-		C7D03C9425DE8787008303C6 /* ManagerCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C9325DE8787008303C6 /* ManagerCoreDataStack.swift */; };
+		C7D03C9425DE8787008303C6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C9325DE8787008303C6 /* CoreDataStack.swift */; };
 		C7D03C9725DE89CC008303C6 /* CoreDataRepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03C9625DE89CC008303C6 /* CoreDataRepositoryService.swift */; };
 		C7D03CA225DEBB85008303C6 /* ListEntryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D03CA125DEBB85008303C6 /* ListEntryViewCell.swift */; };
-		C7D03CA725DEBC93008303C6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* SwiftPackageProductDependency */; };
-		C7D03CA825DEBC93008303C6 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* SwiftPackageProductDependency */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C7D03CAC25DEBDCA008303C6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CAB25DEBDCA008303C6 /* SwiftPackageProductDependency */; };
-		C7D03CAD25DEBDCB008303C6 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CAB25DEBDCA008303C6 /* SwiftPackageProductDependency */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C7D03CA725DEBC93008303C6 /* DGPLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* DGPLibrary */; };
+		C7D03CA825DEBC93008303C6 /* DGPLibrary in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CA625DEBC93008303C6 /* DGPLibrary */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C7D03CAC25DEBDCA008303C6 /* DGPExtensionCore in Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CAB25DEBDCA008303C6 /* DGPExtensionCore */; };
+		C7D03CAD25DEBDCB008303C6 /* DGPExtensionCore in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C7D03CAB25DEBDCA008303C6 /* DGPExtensionCore */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C7D9AE932663AD22005009A6 /* FilterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D9AE8F2663AD22005009A6 /* FilterViewControllerTests.swift */; };
 		C7D9AE9E2663C0C5005009A6 /* TableViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D9AE9D2663C0C5005009A6 /* TableViewHelpers.swift */; };
 		C7D9AEA22663D797005009A6 /* OrderFilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D9AEA12663D796005009A6 /* OrderFilterViewCell.swift */; };
@@ -123,8 +124,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C7D03CA825DEBC93008303C6 /* BuildFile in Embed Frameworks */,
-				C7D03CAD25DEBDCB008303C6 /* BuildFile in Embed Frameworks */,
+				C7D03CA825DEBC93008303C6 /* DGPLibrary in Embed Frameworks */,
+				C7D03CAD25DEBDCB008303C6 /* DGPExtensionCore in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +175,7 @@
 		C738A53F265AC92600B63AF8 /* UnitOfWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
 		C74861162667F1BB002E9846 /* ListEntryWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryWorkerTest.swift; sourceTree = "<group>"; };
 		C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultPreferencesService.swift; sourceTree = "<group>"; };
+		C759827A266CEB75002520E4 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
 		C75B17F12663F5AA0030DD51 /* FilterOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionViewModel.swift; sourceTree = "<group>"; };
 		C75B17F52663F6150030DD51 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryServiceTest.swift; sourceTree = "<group>"; };
@@ -215,7 +217,7 @@
 		C7CA213B25E3D6DC00EB8ACE /* UITextViewPlaceholderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholderProtocol.swift; sourceTree = "<group>"; };
 		C7CA214025E4146300EB8ACE /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		C7D03C8A25DE8491008303C6 /* ListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryView.swift; sourceTree = "<group>"; };
-		C7D03C9325DE8787008303C6 /* ManagerCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCoreDataStack.swift; sourceTree = "<group>"; };
+		C7D03C9325DE8787008303C6 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C7D03C9625DE89CC008303C6 /* CoreDataRepositoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryService.swift; sourceTree = "<group>"; };
 		C7D03CA125DEBB85008303C6 /* ListEntryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryViewCell.swift; sourceTree = "<group>"; };
 		C7D9AE8F2663AD22005009A6 /* FilterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewControllerTests.swift; sourceTree = "<group>"; };
@@ -246,8 +248,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7D03CAC25DEBDCA008303C6 /* BuildFile in Frameworks */,
-				C7D03CA725DEBC93008303C6 /* BuildFile in Frameworks */,
+				C7D03CAC25DEBDCA008303C6 /* DGPExtensionCore in Frameworks */,
+				C7D03CA725DEBC93008303C6 /* DGPLibrary in Frameworks */,
 				C7EB5D2525DE7E7200FB1AE8 /* CoreData.framework in Frameworks */,
 				5AAA048297CAE13FA3C66BBC /* Pods_DGPPrivateData.framework in Frameworks */,
 			);
@@ -546,6 +548,7 @@
 			isa = PBXGroup;
 			children = (
 				C7D9AE9D2663C0C5005009A6 /* TableViewHelpers.swift */,
+				C759827A266CEB75002520E4 /* XCTestCaseExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -595,7 +598,7 @@
 				C794C9B426599AE800E6AC1F /* Repository */,
 				C7EB5D0C25DE7A3000FB1AE8 /* ModelCoreData */,
 				C7EB5D0425DE76FA00FB1AE8 /* DGPPrivateModel.xcdatamodeld */,
-				C7D03C9325DE8787008303C6 /* ManagerCoreDataStack.swift */,
+				C7D03C9325DE8787008303C6 /* CoreDataStack.swift */,
 				C7D03C9625DE89CC008303C6 /* CoreDataRepositoryService.swift */,
 			);
 			path = CoreData;
@@ -695,8 +698,8 @@
 			);
 			name = DGPPrivateData;
 			packageProductDependencies = (
-				C7D03CA625DEBC93008303C6 /* SwiftPackageProductDependency */,
-				C7D03CAB25DEBDCA008303C6 /* SwiftPackageProductDependency */,
+				C7D03CA625DEBC93008303C6 /* DGPLibrary */,
+				C7D03CAB25DEBDCA008303C6 /* DGPExtensionCore */,
 			);
 			productName = DGPPrivateData;
 			productReference = C7EB5CEB25DE72A800FB1AE8 /* DGPPrivateData.app */;
@@ -732,8 +735,8 @@
 			);
 			mainGroup = C7EB5CE225DE72A800FB1AE8;
 			packageReferences = (
-				C7D03CA525DEBC93008303C6 /* RemoteSwiftPackageReference */,
-				C7D03CAA25DEBDCA008303C6 /* RemoteSwiftPackageReference */,
+				C7D03CA525DEBC93008303C6 /* XCRemoteSwiftPackageReference "dgplibrary" */,
+				C7D03CAA25DEBDCA008303C6 /* XCRemoteSwiftPackageReference "dgpextensioncore" */,
 			);
 			productRefGroup = C7EB5CEC25DE72A800FB1AE8 /* Products */;
 			projectDirPath = "";
@@ -818,6 +821,7 @@
 				C7D9AE932663AD22005009A6 /* FilterViewControllerTests.swift in Sources */,
 				C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */,
 				C7D9AE9E2663C0C5005009A6 /* TableViewHelpers.swift in Sources */,
+				C759827B266CEB75002520E4 /* XCTestCaseExtension.swift in Sources */,
 				C794C9B22659727800E6AC1F /* PasswordManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -873,7 +877,7 @@
 				C7AE5E0625FD441B00C4C4D7 /* CollectionViewCellExtensions.swift in Sources */,
 				C709A02C25E51633006DCAAE /* DGPPickerView.swift in Sources */,
 				C71BF30B25F6322B002239BE /* DefaultStyleElement.swift in Sources */,
-				C7D03C9425DE8787008303C6 /* ManagerCoreDataStack.swift in Sources */,
+				C7D03C9425DE8787008303C6 /* CoreDataStack.swift in Sources */,
 				C71BF30025F61E4C002239BE /* PasswordGeneratorPresenter.swift in Sources */,
 				C7331AC125F291D000CDE439 /* AuthenticationWorker.swift in Sources */,
 				C71BF30D25F63945002239BE /* ConfigSliderViewCell.swift in Sources */,
@@ -1185,7 +1189,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C7D03CA525DEBC93008303C6 /* RemoteSwiftPackageReference */ = {
+		C7D03CA525DEBC93008303C6 /* XCRemoteSwiftPackageReference "dgplibrary" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://daniel_ios@bitbucket.org/daniel_ios/dgplibrary.git";
 			requirement = {
@@ -1193,7 +1197,7 @@
 				kind = branch;
 			};
 		};
-		C7D03CAA25DEBDCA008303C6 /* RemoteSwiftPackageReference */ = {
+		C7D03CAA25DEBDCA008303C6 /* XCRemoteSwiftPackageReference "dgpextensioncore" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://daniel_ios@bitbucket.org/daniel_ios/dgpextensioncore.git";
 			requirement = {
@@ -1204,14 +1208,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C7D03CA625DEBC93008303C6 /* SwiftPackageProductDependency */ = {
+		C7D03CA625DEBC93008303C6 /* DGPLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C7D03CA525DEBC93008303C6 /* RemoteSwiftPackageReference */;
+			package = C7D03CA525DEBC93008303C6 /* XCRemoteSwiftPackageReference "dgplibrary" */;
 			productName = DGPLibrary;
 		};
-		C7D03CAB25DEBDCA008303C6 /* SwiftPackageProductDependency */ = {
+		C7D03CAB25DEBDCA008303C6 /* DGPExtensionCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C7D03CAA25DEBDCA008303C6 /* RemoteSwiftPackageReference */;
+			package = C7D03CAA25DEBDCA008303C6 /* XCRemoteSwiftPackageReference "dgpextensioncore" */;
 			productName = DGPExtensionCore;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -7,16 +7,20 @@
 
 import Foundation
 
-enum FilterType {
+public enum FilterType {
     case search(String)
     case order(Order)
     case categories([String])
+    case isFavorite(Bool)
 }
 
-class Filter: Codable {
+public class Filter: Codable {
     let title: String
     let icon: String
     var state: Bool
+    
+    public static var favoriteFilterName = "Favorites"
+    public static var favoriteFilterIcon = "default_icon"
     
     init(title: String, icon: String, state: Bool) {
         self.title = title

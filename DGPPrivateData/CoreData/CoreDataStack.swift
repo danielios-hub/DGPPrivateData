@@ -8,15 +8,20 @@
 import Foundation
 import CoreData
 
-public class ManagerCoreDataStack {
+open class CoreDataStack {
     
     public enum CoreDataError : Error {
         case saveContext(String)
     }
     
-    let nameModel = "DGPPrivateModel"
+    public static let nameModel = "DGPPrivateModel"
     
-    init() {}
+    public static let managedObjectModel: NSManagedObjectModel = {
+        let modelURL = Bundle.main.url(forResource: nameModel, withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
+    }()
+    
+    public init() {}
     
     // MARK: - Core Data stack
     
@@ -25,14 +30,9 @@ public class ManagerCoreDataStack {
         return urls[urls.count-1]
     }()
     
-    private lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = Bundle.main.url(forResource: nameModel, withExtension: "momd")!
-        return NSManagedObjectModel(contentsOf: modelURL)!
-    }()
-    
     private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.appendingPathComponent("\(nameModel).sqlite")
+        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: CoreDataStack.managedObjectModel)
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("\(CoreDataStack.nameModel).sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType,
@@ -54,7 +54,8 @@ public class ManagerCoreDataStack {
         return coordinator
     }()
 
-    public lazy var managedObjectContext: NSManagedObjectContext? = {
+    
+    open lazy var managedObjectContext: NSManagedObjectContext? = {
         let coordinator = self.persistentStoreCoordinator
         if coordinator == nil {
             return nil
@@ -64,7 +65,7 @@ public class ManagerCoreDataStack {
         return managedObjectContext
     }()
     
-    public lazy var managedPrivateObjectContext: NSManagedObjectContext? = {
+    open lazy var managedPrivateObjectContext: NSManagedObjectContext? = {
         let coordinator = self.persistentStoreCoordinator
         if coordinator == nil {
             return nil
