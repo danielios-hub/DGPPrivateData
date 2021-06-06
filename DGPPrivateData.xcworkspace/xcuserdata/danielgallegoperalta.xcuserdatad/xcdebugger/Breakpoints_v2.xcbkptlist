@@ -590,8 +590,8 @@
             filePath = "DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "init()"
             landmarkType = "7">
             <Locations>
@@ -638,8 +638,8 @@
             filePath = "DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -654,8 +654,8 @@
             filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "getAllCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -670,8 +670,8 @@
             filePath = "DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "makeEntry(sut:title:category:isFavorite:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -718,8 +718,8 @@
             filePath = "DGPPrivateDataTests/CoreData/CoreDataRepositoryServiceTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "makeCategory(sut:name:icon:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -734,8 +734,8 @@
             filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "createCategory(category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -782,8 +782,8 @@
             filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "createCategory(category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -798,8 +798,8 @@
             filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "createCategory(category:)"
             landmarkType = "7">
             <Locations>
@@ -865,22 +865,6 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "fetchEntrys(textSearch:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "19798A30-BA79-426E-A173-F7EDA87F6D1D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DGPPrivateData/CoreData/CoreDataRepositoryService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "getAllEntries(filters:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -28,7 +28,7 @@ public struct Entry: Equatable {
          url: String?,
          notes: String?,
          favorite: Bool,
-         icon: String = "",
+         icon: String = "default_icon",
          category: Category) {
         self.category = category
         self.title = title

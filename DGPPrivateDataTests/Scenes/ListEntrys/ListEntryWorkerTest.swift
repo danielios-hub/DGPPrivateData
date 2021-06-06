@@ -271,10 +271,6 @@ class ListEntryWorkerTest: XCTestCase {
             return []
         }
         
-        func createEntry(with title: String, username: String?, password: String?, notes: String?, isFavorite: Bool, category: DGPPrivateData.Category) throws -> Entry {
-            throw ErrorMock.mockError
-        }
-        
         func createEntry(_ entry: Entry) throws -> Entry {
             throw ErrorMock.mockError
         }

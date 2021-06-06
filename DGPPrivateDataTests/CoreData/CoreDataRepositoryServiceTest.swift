@@ -195,7 +195,7 @@ class CoreDataRepositoryServiceTest: XCTestCase {
     
     //MARK: - All Filters Combine
     
-    func test_getAllEntries_withMultipleEntries_combineAllFilters() {
+    func test_getAllEntries_withMultipleEntries_combineAllFiltersWithSearch() {
         let sut = makeSUT()
         let favoriteFilter = FilterType.isFavorite(true)
         let searchFilter = FilterType.search("searc")
@@ -204,8 +204,7 @@ class CoreDataRepositoryServiceTest: XCTestCase {
         
         let _ = makeEntry(sut: sut, title: "entry1", category: categories[0])
         _ = makeEntry(sut: sut, title: "entry2")
-        let _ = makeEntry(sut: sut, title: "entry3", category: categories[1], isFavorite: true)
-        let entry4 = makeEntry(sut: sut, title: "searched", category: categories[1], isFavorite: true)
+        let entry4 = makeEntry(sut: sut, title: "searched", category: categories[1], isFavorite: false)
         let entry5 = makeEntry(sut: sut, title: "searchedz", category: categories[1], isFavorite: true)
         
         var combinedFilter = [favoriteFilter, searchFilter, orderFilter]
@@ -213,6 +212,26 @@ class CoreDataRepositoryServiceTest: XCTestCase {
         
         let result = sut.getAllEntries(filters: combinedFilter)
         XCTAssertEqual(result, [entry4, entry5])
+    }
+    
+    func test_getAllEntries_withMultipleEntries_combineCategoryFavoriteFilter() {
+        let sut = makeSUT()
+        
+        let favoriteFilter = FilterType.isFavorite(true)
+       
+        let orderFilter = FilterType.order(.alphabetically)
+        let (filters, categories) = makeCategoriesInfo(sut: sut, categoryNames: ["name"])
+        
+        let entry1 = makeEntry(sut: sut, title: "entry1", category: categories[0])
+        _ = makeEntry(sut: sut, title: "entry2")
+        let entry3 = makeEntry(sut: sut, title: "entry3", isFavorite: true)
+        let entry4 = makeEntry(sut: sut, title: "entry4", category: categories[0], isFavorite: true)
+        
+        var combinedFilter = [favoriteFilter, orderFilter]
+        combinedFilter.append(contentsOf: filters)
+        
+        let result = sut.getAllEntries(filters: combinedFilter)
+        XCTAssertEqual(result, [entry1, entry3, entry4])
     }
     
     

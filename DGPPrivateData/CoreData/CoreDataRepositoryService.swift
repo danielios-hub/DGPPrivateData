@@ -17,7 +17,6 @@ public protocol RepositoryService {
     func getAllCategories() -> [Category]
     func createCategory(category: Category) throws -> Category
     func getAllEntries(filters: [FilterType]) -> [Entry]
-    func createEntry(with title: String, username: String?, password: String?, notes: String?, isFavorite: Bool, category: Category) throws -> Entry
     func createEntry(_ entry: Entry) throws -> Entry
     func updateEntry(_ entry: Entry) throws -> Entry
 }
@@ -92,39 +91,24 @@ public class CoreDataRepositoryService: RepositoryService {
     public func getAllEntries(filters: [FilterType]) -> [Entry] {
         let (categories, order, search, isFavorite) = mapFilters(filters: filters)
         
-        let predicate = NSCompoundPredicate(
-            andPredicateWithSubpredicates: getPredicates(
-                categories: categories,
-                search: search,
-                isFavorite: isFavorite))
+        let predicates = getPredicates(
+            categories: categories,
+            search: search,
+            isFavorite: isFavorite)
+        
+        
+        let combinePredicates: NSCompoundPredicate? = predicates.isEmpty ? nil : NSCompoundPredicate(
+            orPredicateWithSubpredicates: predicates)
         
         let descriptors = getSortDescriptors(order: order)
         
-        let result = mainWork.entryRepository.get(predicate: predicate,
+        let result = mainWork.entryRepository.get(predicate: combinePredicates,
                                                   sortDescriptors: descriptors)
         switch result {
         case let .success(entries):
             return entries
         case .failure(_):
             return []
-        }
-    }
-    
-    @discardableResult
-    public func createEntry(with title: String,
-                     username: String?,
-                     password: String?,
-                     notes: String?,
-                     isFavorite: Bool,
-                     category: Category) throws -> Entry {
-        let entry = Entry(title: title, username: username , password: password, url: "", notes: notes, favorite: isFavorite, icon: "default_icon", category: category)
-        let result = mainWork.entryRepository.create(entry: entry)
-        mainWork.saveChanges()
-        switch result {
-        case let .success(updatedEntry):
-            return updatedEntry
-        case let .failure(error):
-            throw error
         }
     }
     
@@ -189,13 +173,13 @@ public class CoreDataRepositoryService: RepositoryService {
     private func getPredicates(categories: [String], search: String, isFavorite: Bool) -> [NSPredicate] {
         var predicates: [NSPredicate] = []
         
-        if categories.isNotEmpty {
-            predicates.append(NSPredicate(format: "relationCategory.name in %@", categories))
+        if search.isNotEmpty {
+            return [NSPredicate(format: "title CONTAINS[cd] %@", search)]
         }
         
-        if search.isNotEmpty {
-            predicates.append(
-                NSPredicate(format: "title CONTAINS[cd] %@", search))
+        
+        if categories.isNotEmpty {
+            predicates.append(NSPredicate(format: "relationCategory.name in %@", categories))
         }
         
         if isFavorite {
