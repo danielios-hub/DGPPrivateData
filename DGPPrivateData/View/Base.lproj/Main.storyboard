@@ -61,28 +61,20 @@
                                                             <constraint firstAttribute="width" constant="20" id="oCw-of-6ag"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87p-Ot-lBB">
-                                                        <rect key="frame" x="35" y="34" width="7" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bO5-qr-dVJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="60"/>
-                                                    </button>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKC-RX-FKl">
+                                                        <rect key="frame" x="35" y="26" width="32" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="bO5-qr-dVJ" firstAttribute="top" secondItem="VRN-0X-suH" secondAttribute="top" id="3pC-yW-a9e"/>
+                                                    <constraint firstItem="CKC-RX-FKl" firstAttribute="leading" secondItem="Xzb-Yk-wZb" secondAttribute="trailing" constant="15" id="0tq-vb-SBu"/>
                                                     <constraint firstAttribute="height" constant="60" id="C43-Eu-JrM"/>
                                                     <constraint firstItem="Xzb-Yk-wZb" firstAttribute="leading" secondItem="VRN-0X-suH" secondAttribute="leading" id="EIU-2F-fUX"/>
                                                     <constraint firstItem="Xzb-Yk-wZb" firstAttribute="top" secondItem="7q0-uK-pow" secondAttribute="bottom" constant="15" id="I07-KT-9UI"/>
-                                                    <constraint firstAttribute="trailing" secondItem="bO5-qr-dVJ" secondAttribute="trailing" id="IKM-sz-H61"/>
-                                                    <constraint firstAttribute="bottom" secondItem="bO5-qr-dVJ" secondAttribute="bottom" id="Rbj-Oa-6Sq"/>
-                                                    <constraint firstItem="87p-Ot-lBB" firstAttribute="centerY" secondItem="Xzb-Yk-wZb" secondAttribute="centerY" id="Wz9-0r-zza"/>
-                                                    <constraint firstItem="87p-Ot-lBB" firstAttribute="leading" secondItem="Xzb-Yk-wZb" secondAttribute="trailing" constant="15" id="awF-p7-YKU"/>
+                                                    <constraint firstItem="CKC-RX-FKl" firstAttribute="centerY" secondItem="Xzb-Yk-wZb" secondAttribute="centerY" id="OVq-Wc-PHE"/>
                                                     <constraint firstItem="7q0-uK-pow" firstAttribute="leading" secondItem="VRN-0X-suH" secondAttribute="leading" id="gTW-WP-9Fc"/>
                                                     <constraint firstItem="7q0-uK-pow" firstAttribute="top" secondItem="VRN-0X-suH" secondAttribute="top" id="m9X-gV-cZU"/>
-                                                    <constraint firstItem="bO5-qr-dVJ" firstAttribute="leading" secondItem="VRN-0X-suH" secondAttribute="leading" id="r1T-tB-lxg"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XtE-Ka-utC">
@@ -148,13 +140,12 @@
                             <constraint firstItem="fmQ-7l-8Ah" firstAttribute="leading" secondItem="htI-r9-ivi" secondAttribute="leading" id="p7b-e8-0XY"/>
                         </constraints>
                         <connections>
-                            <outlet property="buttonCategory" destination="bO5-qr-dVJ" id="ihF-6F-Qbf"/>
                             <outlet property="favoriteButton" destination="oXs-yl-tSL" id="Kmt-DR-nBF"/>
                             <outlet property="iconCategory" destination="Xzb-Yk-wZb" id="mJb-4v-2Gh"/>
                             <outlet property="labelCategoryTitle" destination="7q0-uK-pow" id="4bX-5V-LeI"/>
                             <outlet property="scrollView" destination="fmQ-7l-8Ah" id="ILd-Un-NZS"/>
+                            <outlet property="textFieldCategory" destination="CKC-RX-FKl" id="579-BT-mEN"/>
                             <outlet property="textViewNotes" destination="OTm-SO-2P0" id="NHo-jb-vdV"/>
-                            <outlet property="valueCategory" destination="87p-Ot-lBB" id="oat-Xi-w6A"/>
                             <outlet property="viewPassword" destination="9td-OB-Dkh" id="iRV-wH-xEX"/>
                             <outlet property="viewTitle" destination="XiC-gr-pEQ" id="BvZ-OB-tve"/>
                             <outlet property="viewUsername" destination="Z70-ep-tgU" id="u4i-AO-Rj9"/>

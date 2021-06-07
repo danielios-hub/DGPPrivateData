@@ -27,17 +27,8 @@ class DGPPickerView: UIView {
     private var cancelButton: UIButton!
     
     private var bottomConstraint: NSLayoutConstraint?
- 
-    public var setCancelButton: Bool = false {
-        didSet {
-            if oldValue != setCancelButton {
-                setButtonActions()
-            }
-        }
-    }
     
-    public var heightToolbar: CGFloat = 40
-    public var heightView: CGFloat = 250
+    public var heightView: CGFloat = 150
     
     public var okClosure: (() -> Void)?
     public var cancelClosure: (() -> Void)?
@@ -87,20 +78,14 @@ class DGPPickerView: UIView {
             stackView.topAnchor.constraint(equalTo: self.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackView.heightAnchor.constraint(equalToConstant: heightToolbar),
+            
             
             pickerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             pickerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             pickerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             pickerView.topAnchor.constraint(equalTo: stackView.bottomAnchor),
         ])
-        
-        okButton.addTarget(self, action: #selector(actionOk), for: .touchUpInside)
-        cancelButton .addTarget(self, action: #selector(actionCancel), for: .touchUpInside)
-        
-        okButton.setTitle("OK", for: .normal)
-        cancelButton.setTitle("Cancel", for: .normal)
-        setButtonActions()
+
         
         stackView.axis = .horizontal
         stackView.alignment = .trailing
@@ -113,28 +98,6 @@ class DGPPickerView: UIView {
         
         pickerView.dataSource = self
         pickerView.delegate = self
-    }
-    
-    func setButtonActions() {
-      
-        if setCancelButton {
-            stackView.addArrangedSubview(cancelButton)
-            stackView.addArrangedSubview(okButton)
-        } else {
-            stackView.addArrangedSubview(okButton)
-        }
-    }
-    
-    
-    //MARK: - Actions
-    
-    @objc func actionOk() {
-        okClosure?()
-        dismiss()
-    }
-    
-    @objc func actionCancel() {
-        cancelClosure?()
     }
     
 }

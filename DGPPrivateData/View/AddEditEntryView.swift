@@ -20,8 +20,8 @@ public class AddEditEntryView: UIView {
     
     @IBOutlet var labelCategoryTitle: UILabel!
     @IBOutlet var iconCategory: UIImageView!
-    @IBOutlet var valueCategory: UILabel!
-    @IBOutlet var buttonCategory: UIButton!
+    @IBOutlet var textFieldCategory: UITextField!
+    
     @IBOutlet var favoriteButton: NeumorphismButton!
     
     //MARK: - Instance properties
@@ -56,7 +56,7 @@ public class AddEditEntryView: UIView {
         textViewNotes.font = valueFont
         
         labelCategoryTitle.font = titleFont
-        valueCategory.font = valueFont
+        textFieldCategory.font = valueFont
         
         viewPassword.setButtonsPassword(target: target,
                                         actionEdit: actionEdit,
@@ -66,7 +66,7 @@ public class AddEditEntryView: UIView {
     }
     
     func updateCategory(name: String, icon: String) {
-        valueCategory.text = name
+        textFieldCategory.text = name
         iconCategory.image = UIImage(named: icon)
     }
     

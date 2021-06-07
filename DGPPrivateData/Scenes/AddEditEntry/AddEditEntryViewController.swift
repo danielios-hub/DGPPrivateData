@@ -112,7 +112,10 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         addEntryView.textViewNotes.delegate = self
         isEnabledButton(true)
         
-        addEntryView.buttonCategory.addTarget(self, action: #selector(selectCategory), for: .touchUpInside)
+//        addEntryView.buttonCategory.addTarget(self, action: #selector(selectCategory), for: .touchUpInside)
+        let picker = DGPPickerView(frame: .zero, viewModel: self)
+        addEntryView.textFieldCategory.inputView = picker
+        addEntryView.textFieldCategory.addToolbar()
         addEntryView.favoriteButton.addTarget(self, action: #selector(toggleIsFavorite), for: .touchUpInside)
         
         configureTagView()
@@ -180,17 +183,6 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     
     @objc func saveEntry() {
         interactor?.save(request: AddEditEntryScene.Save.Request())
-    }
-    
-    @objc func selectCategory() {
-        if isSelectingCategory {
-            view.endEditing(false)
-            return
-        }
-        
-        isSelectingCategory = true
-        let picker = DGPPickerView(frame: .zero, viewModel: self)
-        picker.show(in: view)
     }
     
     @objc func editPassword() {

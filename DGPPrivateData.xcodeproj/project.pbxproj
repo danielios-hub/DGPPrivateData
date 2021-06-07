@@ -418,6 +418,13 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		C7785730266E7E4C003E884D /* AddEditEntry */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddEditEntry;
+			sourceTree = "<group>";
+		};
 		C782163D265166E900323093 /* Neumorphism */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +537,7 @@
 		C7D9AE8D2663ACCF005009A6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C7785730266E7E4C003E884D /* AddEditEntry */,
 				C74861152667F18B002E9846 /* ListEntrys */,
 				C7D9AE8E2663AD04005009A6 /* Filter */,
 			);

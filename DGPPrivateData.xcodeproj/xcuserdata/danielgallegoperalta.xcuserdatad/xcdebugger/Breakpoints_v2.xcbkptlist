@@ -94,8 +94,8 @@
             filePath = "DGPPrivateData/Library/DGPPickerView/DGPPickerView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "viewModel"
             landmarkType = "24">
          </BreakpointContent>
