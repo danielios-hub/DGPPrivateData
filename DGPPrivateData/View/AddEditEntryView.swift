@@ -78,6 +78,11 @@ public class AddEditEntryView: UIView {
         }
     }
     
+    func setupCategoryTextField(with inputView: UIView) {
+        textFieldCategory.inputView = inputView
+        textFieldCategory.addToolbar()
+    }
+    
     
 }
 
