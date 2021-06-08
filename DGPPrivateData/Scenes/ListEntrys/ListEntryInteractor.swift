@@ -14,6 +14,7 @@ import UIKit
 
 protocol ListEntryBusinessLogic {
     func doLoadInitialData(request: ListEntryScene.Load.Request)
+    func doFilterByText(request: ListEntryScene.FilterBy.Request)
 }
 
 protocol ListEntryDataStore {
@@ -41,10 +42,21 @@ class ListEntryInteractor: ListEntryBusinessLogic, ListEntryDataStore {
     // MARK: Do something
     
     func doLoadInitialData(request: ListEntryScene.Load.Request) {
-        worker.fetchEntrys() { entrys in
-            self.entries = entrys
-            let response = ListEntryScene.Load.Response(entrys: entrys)
-            self.presenter?.presentInitialData(response: response)
+        worker.fetchEntrys() { [weak self] entries in
+            self?.entries = entries
+            self?.callPresentResults()
         }
+    }
+    
+    func doFilterByText(request: ListEntryScene.FilterBy.Request) {
+        worker.fetchEntrys(textSearch: request.text) { [weak self] entries in
+            self?.entries = entries
+            self?.callPresentResults()
+        }
+    }
+    
+    private func callPresentResults() {
+        let response = ListEntryScene.Load.Response(entrys: self.entries)
+        self.presenter?.presentInitialData(response: response)
     }
 }

@@ -51,6 +51,7 @@
 		C75B17F22663F5AA0030DD51 /* FilterOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F12663F5AA0030DD51 /* FilterOptionViewModel.swift */; };
 		C75B17F62663F6150030DD51 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F52663F6150030DD51 /* Filter.swift */; };
 		C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */; };
+		C7785733266E861C003E884D /* ListEntryViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */; };
 		C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */; };
 		C77BB3B826583158009C591C /* PasswordGeneratorComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77BB3B726583158009C591C /* PasswordGeneratorComposer.swift */; };
 		C782163F265166FF00323093 /* NeumorphismButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782163E265166FF00323093 /* NeumorphismButton.swift */; };
@@ -179,6 +180,7 @@
 		C75B17F12663F5AA0030DD51 /* FilterOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionViewModel.swift; sourceTree = "<group>"; };
 		C75B17F52663F6150030DD51 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryServiceTest.swift; sourceTree = "<group>"; };
+		C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryViewControllerTest.swift; sourceTree = "<group>"; };
 		C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
 		C77BB3B726583158009C591C /* PasswordGeneratorComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorComposer.swift; sourceTree = "<group>"; };
 		C782163E265166FF00323093 /* NeumorphismButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphismButton.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				C74861162667F1BB002E9846 /* ListEntryWorkerTest.swift */,
+				C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */,
 			);
 			path = ListEntrys;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 			files = (
 				C74861172667F1BB002E9846 /* ListEntryWorkerTest.swift in Sources */,
 				C7D9AE932663AD22005009A6 /* FilterViewControllerTests.swift in Sources */,
+				C7785733266E861C003E884D /* ListEntryViewControllerTest.swift in Sources */,
 				C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */,
 				C7D9AE9E2663C0C5005009A6 /* TableViewHelpers.swift in Sources */,
 				C759827B266CEB75002520E4 /* XCTestCaseExtension.swift in Sources */,

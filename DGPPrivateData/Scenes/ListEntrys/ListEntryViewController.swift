@@ -172,4 +172,8 @@ extension ListEntryViewController: UISearchBarDelegate {
         //searchBar.showsCancelButton = false
         return true
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        interactor?.doFilterByText(request: ListEntryScene.FilterBy.Request(text: searchText))
+    }
 }

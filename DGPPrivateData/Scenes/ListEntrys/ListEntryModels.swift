@@ -25,4 +25,16 @@ enum ListEntryScene {
             let cellsModel: [ListEntryCellViewModel]
         }
     }
+    
+    enum FilterBy {
+        struct Request {
+            let text: String
+        }
+        struct Response {
+            let entrys : [Entry]
+        }
+        struct ViewModel {
+            let cellsModel: [ListEntryCellViewModel]
+        }
+    }
 }
