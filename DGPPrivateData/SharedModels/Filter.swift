@@ -22,6 +22,9 @@ public class Filter: Codable {
     public static var favoriteFilterName = "Favorites"
     public static var favoriteFilterIcon = "default_icon"
     
+    public static var alphabetically = "Alphabetically"
+    public static var groupByCategories = "Group by Categories"
+    
     init(title: String, icon: String, state: Bool) {
         self.title = title
         self.icon = icon

@@ -11,6 +11,14 @@ import UIKit
 
 extension UITableView {
     
+    func numberOfSecctions() -> Int {
+        return dataSource?.numberOfSections?(in: self) ?? 0
+    }
+    
+    func numberOfRows(section: Int = 0) -> Int {
+        return dataSource?.tableView(self, numberOfRowsInSection: section) ?? 0
+    }
+    
     func cell(at row: Int, section: Int = 0) -> UITableViewCell? {
         let indexPath = IndexPath(row: row, section: section)
         return dataSource?.tableView(self, cellForRowAt: indexPath)

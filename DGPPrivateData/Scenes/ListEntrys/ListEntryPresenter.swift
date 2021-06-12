@@ -16,17 +16,50 @@ protocol ListEntryPresentationLogic {
     func presentInitialData(response: ListEntryScene.Load.Response)
 }
 
-class ListEntryPresenter: ListEntryPresentationLogic {
+public class ListEntryPresenter: ListEntryPresentationLogic {
     weak var viewController: ListEntryDisplayLogic?
     
-    // MARK: Do something
+    public init() {}
     
-    func presentInitialData(response: ListEntryScene.Load.Response) {
-        let cellsViewModel: [ListEntryCellViewModel] = response.entrys.map { model in
-            let category = model.category.name ?? ""
+     func presentInitialData(response: ListEntryScene.Load.Response) {
+        var sections: [ListEntrySection] = []
+        if response.isGroupedCategories {
+            let categories =  getCategories(from: response.entries)
+            
+            for category in categories {
+                let entries = response.entries.filter { $0.category == category}
+                let section = createSection(name: category.name, entries: entries)
+                sections.append(section)
+            }
+        } else if response.entries.isNotEmpty {
+            sections = [createSection(name: "Alls", entries: response.entries)]
+        }
+        
+        let viewModel = ListEntryScene.Load.ViewModel(sections: sections)
+        viewController?.displayListEntries(viewModel: viewModel)
+    }
+    
+    //MARK: - Helpers
+    
+    func createSection(name: String, icon: String = "", entries: [Entry]) -> ListEntrySection {
+        let cellsViewModel = getCellsViewModels(from: entries)
+        return ListEntrySection(name: name, icon: icon, cellsModel: cellsViewModel)
+    }
+    
+    func getCellsViewModels(from entries: [Entry]) -> [ListEntryCellViewModel] {
+        let cellsViewModel: [ListEntryCellViewModel] = entries.map { model in
+            let category = model.category.name
             return ListEntryCellViewModel(title: model.title, icon: model.icon, categoryDescription: category)
         }
-        let viewModel = ListEntryScene.Load.ViewModel(cellsModel: cellsViewModel)
-        viewController?.displayListEntrys(viewModel: viewModel)
+        
+        return cellsViewModel
+    }
+    
+    func getCategories(from entries: [Entry]) -> [Category] {
+        return entries.reduce(into: [Category]()) { (acc, new) in
+            if !acc.contains(new.category) {
+                acc.append(new.category)
+            }
+        }
     }
 }

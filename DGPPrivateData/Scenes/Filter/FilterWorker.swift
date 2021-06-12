@@ -37,8 +37,8 @@ class FilterWorker {
         
         if orderList.isEmpty {
             orderList = [
-                Filter(title: "Group by Categories", icon: "", state: true),
-                Filter(title: "Alphabetically", icon: "", state: false),
+                Filter(title: Filter.groupByCategories, icon: "", state: true),
+                Filter(title: Filter.alphabetically, icon: "", state: false),
             ]
             
             dataStore.orderList = orderList

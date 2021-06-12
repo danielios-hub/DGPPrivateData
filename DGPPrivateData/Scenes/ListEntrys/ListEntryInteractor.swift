@@ -56,7 +56,9 @@ class ListEntryInteractor: ListEntryBusinessLogic, ListEntryDataStore {
     }
     
     private func callPresentResults() {
-        let response = ListEntryScene.Load.Response(entrys: self.entries)
+        let response = ListEntryScene.Load.Response(
+            entries: self.entries,
+            isGroupedCategories: preferences.isGroupedByCategories)
         self.presenter?.presentInitialData(response: response)
     }
 }

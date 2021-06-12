@@ -31,6 +31,7 @@
 		C71BF30B25F6322B002239BE /* DefaultStyleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71BF30A25F6322B002239BE /* DefaultStyleElement.swift */; };
 		C71BF30D25F63945002239BE /* ConfigSliderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71BF30C25F63945002239BE /* ConfigSliderViewCell.swift */; };
 		C71BF30F25F639A1002239BE /* ConfigStepperViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71BF30E25F639A1002239BE /* ConfigStepperViewCell.swift */; };
+		C722C67B2673CDBC00ABD322 /* ListEntryPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722C67A2673CDBC00ABD322 /* ListEntryPresenterTest.swift */; };
 		C72D8AF825DFEB1C0069C72E /* AddEditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D8AF725DFEB1C0069C72E /* AddEditEntryView.swift */; };
 		C72D8AFA25E01E3E0069C72E /* FieldEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D8AF925E01E3E0069C72E /* FieldEntryView.swift */; };
 		C72D8AFD25E024FB0069C72E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D8AFC25E024FB0069C72E /* Colors.swift */; };
@@ -160,6 +161,7 @@
 		C71BF30A25F6322B002239BE /* DefaultStyleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleElement.swift; sourceTree = "<group>"; };
 		C71BF30C25F63945002239BE /* ConfigSliderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSliderViewCell.swift; sourceTree = "<group>"; };
 		C71BF30E25F639A1002239BE /* ConfigStepperViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStepperViewCell.swift; sourceTree = "<group>"; };
+		C722C67A2673CDBC00ABD322 /* ListEntryPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryPresenterTest.swift; sourceTree = "<group>"; };
 		C72D8AF725DFEB1C0069C72E /* AddEditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEntryView.swift; sourceTree = "<group>"; };
 		C72D8AF925E01E3E0069C72E /* FieldEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldEntryView.swift; sourceTree = "<group>"; };
 		C72D8AFC25E024FB0069C72E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			children = (
 				C74861162667F1BB002E9846 /* ListEntryWorkerTest.swift */,
 				C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */,
+				C722C67A2673CDBC00ABD322 /* ListEntryPresenterTest.swift */,
 			);
 			path = ListEntrys;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				C7785733266E861C003E884D /* ListEntryViewControllerTest.swift in Sources */,
 				C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */,
 				C7D9AE9E2663C0C5005009A6 /* TableViewHelpers.swift in Sources */,
+				C722C67B2673CDBC00ABD322 /* ListEntryPresenterTest.swift in Sources */,
 				C759827B266CEB75002520E4 /* XCTestCaseExtension.swift in Sources */,
 				C794C9B22659727800E6AC1F /* PasswordManagerTest.swift in Sources */,
 			);

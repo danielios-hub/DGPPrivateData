@@ -10,6 +10,7 @@ import Foundation
 protocol PreferencesService {
     var filterList: [Filter] { get set }
     var orderList: [Filter] { get set }
+    var isGroupedByCategories: Bool { get }
 }
 
 class UserDefaultPreferencesService: PreferencesService {
@@ -55,5 +56,12 @@ class UserDefaultPreferencesService: PreferencesService {
                 UserDefaults.standard.set(data, forKey: Constants.orders)
             }
         }
+    }
+    
+    public var isGroupedByCategories: Bool {
+        return orderList.filter {
+            $0.title == Filter.groupByCategories
+            
+        }.first?.state ?? false
     }
 }

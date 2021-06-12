@@ -232,6 +232,8 @@ class ListEntryWorkerTest: XCTestCase {
     }
     
     class DataStoreMock: PreferencesService {
+        var isGroupedByCategories: Bool = false
+        
         var filterList: [Filter] = []
         var orderList: [Filter] = []
     }

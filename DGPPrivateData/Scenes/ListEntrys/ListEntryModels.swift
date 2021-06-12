@@ -19,10 +19,11 @@ enum ListEntryScene {
         struct Request {
         }
         struct Response {
-            let entrys : [Entry]
+            let entries : [Entry]
+            let isGroupedCategories: Bool
         }
         struct ViewModel {
-            let cellsModel: [ListEntryCellViewModel]
+            let sections: [ListEntrySection]
         }
     }
     
@@ -37,4 +38,10 @@ enum ListEntryScene {
             let cellsModel: [ListEntryCellViewModel]
         }
     }
+}
+
+struct ListEntrySection {
+    let name: String
+    let icon: String
+    var cellsModel: [ListEntryCellViewModel]
 }

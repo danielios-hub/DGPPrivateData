@@ -14,7 +14,7 @@ import UIKit
 
 
 protocol ListEntryDisplayLogic: class {
-    func displayListEntrys(viewModel: ListEntryScene.Load.ViewModel)
+    func displayListEntries(viewModel: ListEntryScene.Load.ViewModel)
 }
 
 class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboarded {
@@ -22,13 +22,17 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
     var interactor: ListEntryBusinessLogic?
     var router: (NSObjectProtocol & ListEntryRoutingLogic & ListEntryDataPassing)?
     
-    private var cellViewModels: [ListEntryCellViewModel] = []
+    private var sections: [ListEntrySection] = []
     
     var listView: ListEntryView! {
         guard isViewLoaded else {
             return nil
         }
         return (view as! ListEntryView)
+    }
+    
+    var tableView: UITableView {
+        return listView.tableView
     }
     
     var selectedRow: Int? {
@@ -120,8 +124,8 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
         interactor?.doLoadInitialData(request: request)
     }
     
-    func displayListEntrys(viewModel: ListEntryScene.Load.ViewModel) {
-        self.cellViewModels = viewModel.cellsModel
+    func displayListEntries(viewModel: ListEntryScene.Load.ViewModel) {
+        self.sections = viewModel.sections
         self.listView.tableView.reloadData()
     }
     
@@ -140,13 +144,18 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
 
 extension ListEntryViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellViewModels.count
+        return sections[section].cellsModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListEntryViewCell.getIdentifier(), for: indexPath) as! ListEntryViewCell
-        cell.viewModel = cellViewModels[indexPath.row]
+        let model = sections[indexPath.section].cellsModel[indexPath.row]
+        cell.viewModel = model
         return cell
     }
     
