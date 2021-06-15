@@ -28,28 +28,30 @@ public class ListEntryPresenter: ListEntryPresentationLogic {
             
             for category in categories {
                 let entries = response.entries.filter { $0.category == category}
-                let section = createSection(name: category.name, entries: entries)
+                let section = createSection(name: category.name, showCategoryNameInCell: false, entries: entries)
                 sections.append(section)
             }
         } else if response.entries.isNotEmpty {
-            sections = [createSection(name: "Alls", entries: response.entries)]
+            sections = [createSection(name: "", showCategoryNameInCell: true, entries: response.entries)]
         }
         
-        let viewModel = ListEntryScene.Load.ViewModel(sections: sections)
+        let viewModel = ListEntryScene.Load.ViewModel(
+            sections: sections,
+            displaySections: response.isGroupedCategories)
         viewController?.displayListEntries(viewModel: viewModel)
     }
     
     //MARK: - Helpers
     
-    func createSection(name: String, icon: String = "", entries: [Entry]) -> ListEntrySection {
-        let cellsViewModel = getCellsViewModels(from: entries)
+    func createSection(name: String, icon: String = "", showCategoryNameInCell: Bool, entries: [Entry]) -> ListEntrySection {
+        let cellsViewModel = getCellsViewModels(from: entries, showCategoryName: showCategoryNameInCell)
         return ListEntrySection(name: name, icon: icon, cellsModel: cellsViewModel)
     }
     
-    func getCellsViewModels(from entries: [Entry]) -> [ListEntryCellViewModel] {
+    func getCellsViewModels(from entries: [Entry], showCategoryName: Bool) -> [ListEntryCellViewModel] {
         let cellsViewModel: [ListEntryCellViewModel] = entries.map { model in
-            let category = model.category.name
-            return ListEntryCellViewModel(title: model.title, icon: model.icon, categoryDescription: category)
+            let category = showCategoryName ? model.category.name : ""
+            return ListEntryCellViewModel(title: model.title, icon: model.category.icon, categoryDescription: category)
         }
         
         return cellsViewModel

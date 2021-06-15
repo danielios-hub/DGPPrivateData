@@ -10,7 +10,6 @@ import UIKit
 class ListEntryView: UIView {
 
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var searchBar: UISearchBar!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,6 +21,7 @@ class ListEntryView: UIView {
     
     public func setup() {
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.backgroundColor = .systemGroupedBackground
     }
 
 }

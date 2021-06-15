@@ -24,6 +24,7 @@ enum ListEntryScene {
         }
         struct ViewModel {
             let sections: [ListEntrySection]
+            let displaySections: Bool
         }
     }
     

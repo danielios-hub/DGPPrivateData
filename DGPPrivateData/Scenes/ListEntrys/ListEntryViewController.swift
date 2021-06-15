@@ -13,7 +13,7 @@
 import UIKit
 
 
-protocol ListEntryDisplayLogic: class {
+protocol ListEntryDisplayLogic: AnyObject {
     func displayListEntries(viewModel: ListEntryScene.Load.ViewModel)
 }
 
@@ -23,6 +23,7 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
     var router: (NSObjectProtocol & ListEntryRoutingLogic & ListEntryDataPassing)?
     
     private var sections: [ListEntrySection] = []
+    private var displaySections: Bool = false
     
     var listView: ListEntryView! {
         guard isViewLoaded else {
@@ -126,6 +127,7 @@ class ListEntryViewController: UIViewController, ListEntryDisplayLogic, Storyboa
     
     func displayListEntries(viewModel: ListEntryScene.Load.ViewModel) {
         self.sections = viewModel.sections
+        self.displaySections = viewModel.displaySections
         self.listView.tableView.reloadData()
     }
     
@@ -164,9 +166,36 @@ extension ListEntryViewController: UITableViewDataSource {
 //MARK: - UITableView Delegate
 
 extension ListEntryViewController: UITableViewDelegate {
+   
+    var headerHeight: CGFloat {
+        35.0
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.routeToEditEntry()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return displaySections ? headerHeight : CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard displaySections else {
+            return nil
+        }
+        
+        let offset: CGFloat = 16
+        let categoryName = sections[section].name
+        let frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: headerHeight)
+        let view = UIView(frame: frame)
+        
+        view.backgroundColor = .clear
+        
+        let label = UILabel(frame: CGRect(origin: CGPoint(x: offset, y: 0), size: CGSize(width: frame.width - offset, height: headerHeight)))
+        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        view.addSubview(label)
+        label.text = categoryName
+        return view
     }
 }
 
