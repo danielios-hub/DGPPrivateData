@@ -88,12 +88,17 @@ class AuthenticationUseCaseTests: XCTestCase {
     
     //MARK: - Helpers
     
-    func makeSUT() -> (sut: AuthenticationService, store: AuthenticationStore) {
-        let store = AuthenticationStore()
+    func makeSUT() -> (sut: AuthenticationService, store: SecureStore) {
+        let store = KeyChainStore()
+        try! store.deleteAll()
         let sut = AuthenticationManager(store: store, passwordService: PasswordManager())
         
         trackForMemoryLeaks(sut)
         trackForMemoryLeaks(store)
+        
+        addTeardownBlock { [weak store] in
+            try! store?.deleteAll()
+        }
         
         return (sut, store)
     }

@@ -56,6 +56,7 @@
 		C75B17F62663F6150030DD51 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F52663F6150030DD51 /* Filter.swift */; };
 		C75DF5F7267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DF5F6267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift */; };
 		C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */; };
+		C773D6DC2685029F00E78220 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C773D6DB2685029F00E78220 /* SecureStore.swift */; };
 		C7785733266E861C003E884D /* ListEntryViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */; };
 		C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */; };
 		C77BB3B826583158009C591C /* PasswordGeneratorComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77BB3B726583158009C591C /* PasswordGeneratorComposer.swift */; };
@@ -190,6 +191,7 @@
 		C75B17F52663F6150030DD51 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		C75DF5F6267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEntryUseCaseTests.swift; sourceTree = "<group>"; };
 		C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryServiceTest.swift; sourceTree = "<group>"; };
+		C773D6DB2685029F00E78220 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryViewControllerTest.swift; sourceTree = "<group>"; };
 		C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
 		C77BB3B726583158009C591C /* PasswordGeneratorComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGeneratorComposer.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				C7B9A1FA25F54F1900725F3F /* PasswordManager.swift */,
 				C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */,
 				C74BC2BC2683A4EB00CD01D9 /* AuthenticationService.swift */,
+				C773D6DB2685029F00E78220 /* SecureStore.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -938,6 +941,7 @@
 				C7EB5D0625DE76FA00FB1AE8 /* DGPPrivateModel.xcdatamodeld in Sources */,
 				C710206825F13CD60085535B /* AddEditEntryModels.swift in Sources */,
 				C7AE5DFA25FD1CC400C4C4D7 /* FilterWorker.swift in Sources */,
+				C773D6DC2685029F00E78220 /* SecureStore.swift in Sources */,
 				C7331AC025F291D000CDE439 /* AuthenticationPresenter.swift in Sources */,
 				C7AE5DFE25FD1CC500C4C4D7 /* FilterInteractor.swift in Sources */,
 				C7D03C8B25DE8491008303C6 /* ListEntryView.swift in Sources */,

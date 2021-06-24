@@ -13,52 +13,60 @@ class SecureItemUseCaseTests: XCTestCase {
     //MARK: - save
     
     func test_save_emptyKey_returnNil() {
-        let store = AuthenticationStore()
-        
-        let result = store.save(key: "", value: anyValue())
-        let expectedError = StoreError.emptyKey
-        XCTAssertEqual(result, .failure(expectedError))
-    }
-    
-    func test_save_emptyValue() {
-        let store = AuthenticationStore()
-        let result = store.save(key: anyKey(), value: "")
-        let expectedError = StoreError.emptyValue
+        let store = makeSUT()
+        let result = store.set(anyValue(), forKey: "")
+        let expectedError = KeyChainError.noKey
         XCTAssertEqual(result, .failure(expectedError))
     }
     
     func test_save_emptyKeyAndValue() {
-        let store = AuthenticationStore()
-        let result = store.save(key: "", value: "")
-        let expectedError = StoreError.emptyKey
+        let store = makeSUT()
+        let result = store.set("", forKey: "")
+        let expectedError = KeyChainError.noKey
         XCTAssertEqual(result, .failure(expectedError))
     }
-    
-    func test_save_withKeyAndValue_storeValues() {
-        let store = AuthenticationStore()
+     
+     func test_save_emptyValue_removeKey() {
+        let store = makeSUT()
         let (key, value) = (anyKey(), anyValue())
-        let result = store.save(key: key, value: value)
+        let result = store.set(value, forKey: key)
         XCTAssertEqual(result, .success)
-        XCTAssertEqual(store.get(key), value)
-    }
+        XCTAssertEqual(store.get(key: key, withType: String.self), value)
+     }
     
     //MARK: - Get
     
     func test_get_withEmptyKey_returnNil() {
-        let store = AuthenticationStore()
-        XCTAssertEqual(store.get(""), nil)
+        let store = makeSUT()
+        XCTAssertEqual(store.get(key: "", withType: String.self), nil)
     }
     
+    
     func test_get_withKey_andNoValue_returnNil() {
-        let store = AuthenticationStore()
-        XCTAssertEqual(store.get(anyKey()), nil)
+        let store = makeSUT()
+        XCTAssertEqual(store.get(key: anyKey(), withType: String.self), nil)
     }
     
     func test_get_withKey_andValue_returnValue() {
-        let store = AuthenticationStore()
+        let store = makeSUT()
         let (key, value) = (anyKey(), anyValue())
-        _ = store.save(key: key, value: value)
-        XCTAssertEqual(store.get(key), value)
+        let result = store.set(value, forKey: key)
+        XCTAssertEqual(result, .success)
+        XCTAssertEqual(store.get(key: key, withType: String.self), value)
+    }
+    
+    //MARK: - Helpers
+    
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> SecureStore {
+        let store = KeyChainStore()
+        try! store.deleteAll()
+        
+        addTeardownBlock { [weak store] in
+            try! store?.deleteAll()
+        }
+        
+        trackForMemoryLeaks(store, file: file, line: line)
+        return store
     }
     
     func anyKey() -> String {
