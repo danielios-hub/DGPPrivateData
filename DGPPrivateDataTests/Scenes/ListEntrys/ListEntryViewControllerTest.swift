@@ -16,7 +16,7 @@ class ListEntryViewControllerTest: XCTestCase {
     func test_displayListEntries_withZeroSections_doesNotRenderSections() {
         let (sut, _) = makeSUT()
         
-        let viewModel = ListEntryScene.Load.ViewModel(sections: [])
+        let viewModel = ListEntryScene.Load.ViewModel(sections: [], displaySections: true)
         sut.displayListEntries(viewModel: viewModel)
         XCTAssertEqual(sut.tableView.numberOfSections, 0)
     }
@@ -25,7 +25,7 @@ class ListEntryViewControllerTest: XCTestCase {
         let (sut, _) = makeSUT()
         
         let section = ListEntrySection(name: "", icon: "", cellsModel: [])
-        let viewModel = ListEntryScene.Load.ViewModel(sections: [section])
+        let viewModel = ListEntryScene.Load.ViewModel(sections: [section], displaySections: true)
         
         sut.displayListEntries(viewModel: viewModel)
         XCTAssertEqual(sut.tableView.numberOfSections, 1)
@@ -39,7 +39,7 @@ class ListEntryViewControllerTest: XCTestCase {
             ListEntryCellViewModel(title: "", icon: "", categoryDescription: "")
         ])
         
-        let viewModel = ListEntryScene.Load.ViewModel(sections: [section])
+        let viewModel = ListEntryScene.Load.ViewModel(sections: [section], displaySections: true)
         
         sut.displayListEntries(viewModel: viewModel)
         XCTAssertEqual(sut.tableView.numberOfSections, 1)
@@ -60,7 +60,7 @@ class ListEntryViewControllerTest: XCTestCase {
         
         
         
-        let viewModel = ListEntryScene.Load.ViewModel(sections: [section, section2])
+        let viewModel = ListEntryScene.Load.ViewModel(sections: [section, section2], displaySections: true)
         sut.displayListEntries(viewModel: viewModel)
         XCTAssertEqual(sut.tableView.numberOfSections, 2)
         XCTAssertEqual(sut.tableView.numberOfRows(section: 0), 1)

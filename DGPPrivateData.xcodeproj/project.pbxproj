@@ -43,14 +43,18 @@
 		C7331AC425F291D000CDE439 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABE25F291D000CDE439 /* AuthenticationViewController.swift */; };
 		C7331AC525F291D000CDE439 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */; };
 		C7331AC725F2933800CDE439 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331AC625F2933800CDE439 /* AuthenticationView.swift */; };
+		C73733E42680FD5B0017F569 /* AuthenticationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73733E32680FD5B0017F569 /* AuthenticationUseCaseTests.swift */; };
 		C738A52E265AB0A000B63AF8 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A52D265AB0A000B63AF8 /* Entry.swift */; };
 		C738A53D265AC58B00B63AF8 /* EntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A53C265AC58B00B63AF8 /* EntryRepository.swift */; };
 		C738A540265AC92600B63AF8 /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A53F265AC92600B63AF8 /* UnitOfWork.swift */; };
 		C74861172667F1BB002E9846 /* ListEntryWorkerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74861162667F1BB002E9846 /* ListEntryWorkerTest.swift */; };
+		C74BC2BD2683A4EC00CD01D9 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BC2BC2683A4EB00CD01D9 /* AuthenticationService.swift */; };
+		C74BC2BF2683A95A00CD01D9 /* SecureItemUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BC2BE2683A95A00CD01D9 /* SecureItemUseCaseTests.swift */; };
 		C7501902264EDA98003E34D8 /* UserDefaultPreferencesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */; };
 		C759827B266CEB75002520E4 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759827A266CEB75002520E4 /* XCTestCaseExtension.swift */; };
 		C75B17F22663F5AA0030DD51 /* FilterOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F12663F5AA0030DD51 /* FilterOptionViewModel.swift */; };
 		C75B17F62663F6150030DD51 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F52663F6150030DD51 /* Filter.swift */; };
+		C75DF5F7267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DF5F6267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift */; };
 		C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */; };
 		C7785733266E861C003E884D /* ListEntryViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */; };
 		C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */; };
@@ -173,14 +177,18 @@
 		C7331ABE25F291D000CDE439 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInteractor.swift; sourceTree = "<group>"; };
 		C7331AC625F2933800CDE439 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		C73733E32680FD5B0017F569 /* AuthenticationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCaseTests.swift; sourceTree = "<group>"; };
 		C738A52D265AB0A000B63AF8 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		C738A53C265AC58B00B63AF8 /* EntryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRepository.swift; sourceTree = "<group>"; };
 		C738A53F265AC92600B63AF8 /* UnitOfWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
 		C74861162667F1BB002E9846 /* ListEntryWorkerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryWorkerTest.swift; sourceTree = "<group>"; };
+		C74BC2BC2683A4EB00CD01D9 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		C74BC2BE2683A95A00CD01D9 /* SecureItemUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureItemUseCaseTests.swift; sourceTree = "<group>"; };
 		C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultPreferencesService.swift; sourceTree = "<group>"; };
 		C759827A266CEB75002520E4 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
 		C75B17F12663F5AA0030DD51 /* FilterOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionViewModel.swift; sourceTree = "<group>"; };
 		C75B17F52663F6150030DD51 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		C75DF5F6267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEntryUseCaseTests.swift; sourceTree = "<group>"; };
 		C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryServiceTest.swift; sourceTree = "<group>"; };
 		C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryViewControllerTest.swift; sourceTree = "<group>"; };
 		C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
@@ -373,6 +381,13 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		C73733E22680FD490017F569 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		C738A530265AB0A900B63AF8 /* Entry */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +427,8 @@
 			isa = PBXGroup;
 			children = (
 				C794C9B12659727800E6AC1F /* PasswordManagerTest.swift */,
+				C73733E32680FD5B0017F569 /* AuthenticationUseCaseTests.swift */,
+				C74BC2BE2683A95A00CD01D9 /* SecureItemUseCaseTests.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -427,6 +444,7 @@
 		C7785730266E7E4C003E884D /* AddEditEntry */ = {
 			isa = PBXGroup;
 			children = (
+				C75DF5F6267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift */,
 			);
 			path = AddEditEntry;
 			sourceTree = "<group>";
@@ -496,6 +514,7 @@
 			children = (
 				C7B9A1FA25F54F1900725F3F /* PasswordManager.swift */,
 				C7501901264EDA98003E34D8 /* UserDefaultPreferencesService.swift */,
+				C74BC2BC2683A4EB00CD01D9 /* AuthenticationService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -543,6 +562,7 @@
 		C7D9AE8D2663ACCF005009A6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C73733E22680FD490017F569 /* Authentication */,
 				C7785730266E7E4C003E884D /* AddEditEntry */,
 				C74861152667F18B002E9846 /* ListEntrys */,
 				C7D9AE8E2663AD04005009A6 /* Filter */,
@@ -835,9 +855,12 @@
 				C7D9AE932663AD22005009A6 /* FilterViewControllerTests.swift in Sources */,
 				C7785733266E861C003E884D /* ListEntryViewControllerTest.swift in Sources */,
 				C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */,
+				C74BC2BF2683A95A00CD01D9 /* SecureItemUseCaseTests.swift in Sources */,
+				C75DF5F7267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift in Sources */,
 				C7D9AE9E2663C0C5005009A6 /* TableViewHelpers.swift in Sources */,
 				C722C67B2673CDBC00ABD322 /* ListEntryPresenterTest.swift in Sources */,
 				C759827B266CEB75002520E4 /* XCTestCaseExtension.swift in Sources */,
+				C73733E42680FD5B0017F569 /* AuthenticationUseCaseTests.swift in Sources */,
 				C794C9B22659727800E6AC1F /* PasswordManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -899,6 +922,7 @@
 				C71BF30D25F63945002239BE /* ConfigSliderViewCell.swift in Sources */,
 				C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */,
 				C7EB5CEF25DE72A800FB1AE8 /* AppDelegate.swift in Sources */,
+				C74BC2BD2683A4EC00CD01D9 /* AuthenticationService.swift in Sources */,
 				C72D8AFD25E024FB0069C72E /* Colors.swift in Sources */,
 				C710206725F13CD60085535B /* AddEditEntryRouter.swift in Sources */,
 				C7CA214125E4146300EB8ACE /* Storyboarded.swift in Sources */,

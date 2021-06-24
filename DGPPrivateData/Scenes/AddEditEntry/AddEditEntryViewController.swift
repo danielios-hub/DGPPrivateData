@@ -114,11 +114,11 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
         
         let picker = DGPPickerView(frame: .zero, viewModel: self)
         addEntryView.setupCategoryTextField(with: picker)
-        
+
         addEntryView.favoriteButton.addTarget(self, action: #selector(toggleIsFavorite), for: .touchUpInside)
-        
+
         configureTagView()
-        
+
         addObserver(addEntryView.viewTitle.textField)
         addObserver(addEntryView.viewUsername.textField)
         addObserver(addEntryView.viewPassword.textField)

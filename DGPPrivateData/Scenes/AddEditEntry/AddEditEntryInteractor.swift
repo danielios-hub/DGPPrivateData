@@ -35,13 +35,17 @@ protocol AddEditEntryDataStore {
 
 class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     var presenter: AddEditEntryPresentationLogic?
-    var worker: AddEditEntryWorker?
+    var worker: AddEditEntryWorker!
     
     var entry: Entry?
     var categories = [Category]()
     let masterService: RepositoryService
     let passwordService: PasswordGenerator
     var selectedIndex: Int = 0
+    
+    enum EntryError: Error {
+        case titleRequired(String)
+    }
     
     init(service: RepositoryService = CoreDataRepositoryService.shared,
          passwordService: PasswordGenerator = PasswordManager.shared) {
@@ -70,7 +74,18 @@ class AddEditEntryInteractor: AddEditEntryBusinessLogic, AddEditEntryDataStore {
     }
     
     func save(request: AddEditEntryScene.Save.Request) {
-        let result = worker!.save(entry: self.entry!)
+        guard let entry = entry else {
+            return
+        }
+        
+        guard self.isValid else {
+            let errorMessage = NSLocalizedString("Introduce a title for the entry", comment: "Error message for empty title in entry")
+            let error = EntryError.titleRequired(errorMessage)
+            self.presenter?.presentError(error: error)
+            return
+        }
+        
+        let result = worker.save(entry: entry)
         
         switch result {
         case .success(let entry):

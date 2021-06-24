@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol DGPPickerViewModel {
+public protocol DGPPickerViewModel: AnyObject {
     var selectedIndex: Int { get }
     func numberOfComponents() -> Int
     func numberOfItems() -> Int
@@ -33,7 +33,7 @@ class DGPPickerView: UIView {
     public var okClosure: (() -> Void)?
     public var cancelClosure: (() -> Void)?
     
-    public var viewModel: DGPPickerViewModel! {
+    public weak var viewModel: DGPPickerViewModel! {
         didSet {
             pickerView.reloadAllComponents()
             pickerView.selectRow(viewModel.selectedIndex, inComponent: 1, animated: false)

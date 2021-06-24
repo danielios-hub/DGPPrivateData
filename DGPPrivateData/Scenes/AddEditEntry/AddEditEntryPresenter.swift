@@ -56,8 +56,15 @@ class AddEditEntryPresenter: AddEditEntryPresentationLogic {
     }
     
     func presentError(error: Error) {
-        let alertMessage = NSLocalizedString("try_again", comment: "error message something went wrong")
-        viewController?.displayError(viewModel: ErrorViewModel(msg: alertMessage))
+        var descriptionError = NSLocalizedString("try_again", comment: "error message something went wrong")
+        if let entryError = error as? AddEditEntryInteractor.EntryError {
+            switch entryError {
+            case .titleRequired(let message):
+                descriptionError = message
+            }
+        }
+
+        viewController?.displayError(viewModel: ErrorViewModel(msg: descriptionError))
     }
     
     func presentCopySuccess(response: AddEditEntryScene.Copy.Response) {

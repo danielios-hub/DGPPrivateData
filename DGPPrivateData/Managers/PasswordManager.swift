@@ -15,9 +15,10 @@ public struct PasswordConfig {
     static let maximumCharacterForType: Int = 12
 }
 
-protocol PasswordGenerator {
+public protocol PasswordGenerator {
     func generatePassword() -> String
     func setConfig(_ config: PasswordConfig)
+    func isValidPassword(password: String) -> Bool
 }
 
 public final class PasswordManager: PasswordGenerator {
@@ -43,11 +44,11 @@ public final class PasswordManager: PasswordGenerator {
         self.config = config
     }
     
-    func setConfig(_ config: PasswordConfig) {
+    public func setConfig(_ config: PasswordConfig) {
         self.config = config
     }
     
-    func generatePassword() -> String {
+    public func generatePassword() -> String {
         let rndSymbols = String((0..<config.symbolCount).compactMap { _ in
             return symbols.randomElement()
         })
@@ -66,5 +67,13 @@ public final class PasswordManager: PasswordGenerator {
         
         let combinedString = rndSymbols + rndDigit + rndUppercase + rndLowercase
         return String(combinedString.shuffled())
+    }
+    
+    public func isValidPassword(password: String) -> Bool {
+        if password.count > 8 {
+            return true
+        } else {
+            return false
+        }
     }
 }
