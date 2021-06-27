@@ -70,7 +70,7 @@ public final class PasswordManager: PasswordGenerator {
     }
     
     public func isValidPassword(password: String) -> Bool {
-        if password.count > 8 {
+        if password.count >= 8 {
             return true
         } else {
             return false

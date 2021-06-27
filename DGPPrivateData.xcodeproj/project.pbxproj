@@ -56,6 +56,11 @@
 		C75B17F62663F6150030DD51 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B17F52663F6150030DD51 /* Filter.swift */; };
 		C75DF5F7267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DF5F6267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift */; };
 		C763B586266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */; };
+		C76740C126887C14007F126C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740C026887C14007F126C /* LoginView.swift */; };
+		C76740C42688C20E007F126C /* DGPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740C32688C20E007F126C /* DGPTextField.swift */; };
+		C76740C62688C22D007F126C /* DGPButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740C52688C22D007F126C /* DGPButtonModifier.swift */; };
+		C76740C82688C29E007F126C /* NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740C72688C29E007F126C /* NavigationBarColor.swift */; };
+		C76740CA2688C573007F126C /* LoginViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740C92688C573007F126C /* LoginViewUseCase.swift */; };
 		C773D6DC2685029F00E78220 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C773D6DB2685029F00E78220 /* SecureStore.swift */; };
 		C7785733266E861C003E884D /* ListEntryViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */; };
 		C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */; };
@@ -191,6 +196,11 @@
 		C75B17F52663F6150030DD51 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		C75DF5F6267F60FF0073D3D0 /* AddEditEntryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEntryUseCaseTests.swift; sourceTree = "<group>"; };
 		C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryServiceTest.swift; sourceTree = "<group>"; };
+		C76740C026887C14007F126C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C76740C32688C20E007F126C /* DGPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGPTextField.swift; sourceTree = "<group>"; };
+		C76740C52688C22D007F126C /* DGPButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGPButtonModifier.swift; sourceTree = "<group>"; };
+		C76740C72688C29E007F126C /* NavigationBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarColor.swift; sourceTree = "<group>"; };
+		C76740C92688C573007F126C /* LoginViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUseCase.swift; sourceTree = "<group>"; };
 		C773D6DB2685029F00E78220 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryViewControllerTest.swift; sourceTree = "<group>"; };
 		C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
@@ -379,6 +389,7 @@
 				C7331ABD25F291D000CDE439 /* AuthenticationModels.swift */,
 				C7331ABE25F291D000CDE439 /* AuthenticationViewController.swift */,
 				C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */,
+				C76740C92688C573007F126C /* LoginViewUseCase.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -441,6 +452,25 @@
 				C763B585266BC08E002C8FB4 /* CoreDataRepositoryServiceTest.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C76740BC26887BDD007F126C /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				C76740C22688C1F6007F126C /* Modifiers */,
+				C76740C026887C14007F126C /* LoginView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		C76740C22688C1F6007F126C /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C76740C32688C20E007F126C /* DGPTextField.swift */,
+				C76740C52688C22D007F126C /* DGPButtonModifier.swift */,
+				C76740C72688C29E007F126C /* NavigationBarColor.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		C7785730266E7E4C003E884D /* AddEditEntry */ = {
@@ -621,6 +651,7 @@
 				C7B9A1F925F54EFF00725F3F /* Managers */,
 				C7CA213A25E3D6CA00EB8ACE /* Protocol */,
 				C7D03C9925DE8E8C008303C6 /* Resources */,
+				C76740BC26887BDD007F126C /* SwiftUI */,
 				C7EB5CF025DE72A800FB1AE8 /* SceneDelegate.swift */,
 				C710204D25F12AEF0085535B /* Scenes */,
 				C75B17F42663F5F50030DD51 /* SharedModels */,
@@ -888,6 +919,7 @@
 				C794C9CB2659A77B00E6AC1F /* EntryMO+CoreDataProperties.swift in Sources */,
 				C710206525F13CD60085535B /* AddEditEntryPresenter.swift in Sources */,
 				C7D03C9725DE89CC008303C6 /* CoreDataRepositoryService.swift in Sources */,
+				C76740C62688C22D007F126C /* DGPButtonModifier.swift in Sources */,
 				C7331AC225F291D000CDE439 /* AuthenticationRouter.swift in Sources */,
 				C794C9C62659A77B00E6AC1F /* CategoryMO+CoreDataClass.swift in Sources */,
 				C794C9BC2659A4F700E6AC1F /* CategoryRepository.swift in Sources */,
@@ -925,6 +957,7 @@
 				C71BF30D25F63945002239BE /* ConfigSliderViewCell.swift in Sources */,
 				C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */,
 				C7EB5CEF25DE72A800FB1AE8 /* AppDelegate.swift in Sources */,
+				C76740CA2688C573007F126C /* LoginViewUseCase.swift in Sources */,
 				C74BC2BD2683A4EC00CD01D9 /* AuthenticationService.swift in Sources */,
 				C72D8AFD25E024FB0069C72E /* Colors.swift in Sources */,
 				C710206725F13CD60085535B /* AddEditEntryRouter.swift in Sources */,
@@ -938,6 +971,7 @@
 				C75B17F62663F6150030DD51 /* Filter.swift in Sources */,
 				C7AE5DFC25FD1CC400C4C4D7 /* FilterModels.swift in Sources */,
 				C7AE5DFD25FD1CC500C4C4D7 /* FilterViewController.swift in Sources */,
+				C76740C42688C20E007F126C /* DGPTextField.swift in Sources */,
 				C7EB5D0625DE76FA00FB1AE8 /* DGPPrivateModel.xcdatamodeld in Sources */,
 				C710206825F13CD60085535B /* AddEditEntryModels.swift in Sources */,
 				C7AE5DFA25FD1CC400C4C4D7 /* FilterWorker.swift in Sources */,
@@ -950,10 +984,12 @@
 				C77BB3B826583158009C591C /* PasswordGeneratorComposer.swift in Sources */,
 				C7AE5DF925FD1CC400C4C4D7 /* FilterPresenter.swift in Sources */,
 				C738A52E265AB0A000B63AF8 /* Entry.swift in Sources */,
+				C76740C126887C14007F126C /* LoginView.swift in Sources */,
 				C710205925F12B320085535B /* ListEntryViewController.swift in Sources */,
 				C7B9A1FB25F54F1900725F3F /* PasswordManager.swift in Sources */,
 				C7AE5DFB25FD1CC400C4C4D7 /* FilterRouter.swift in Sources */,
 				C710205525F12B320085535B /* ListEntryPresenter.swift in Sources */,
+				C76740C82688C29E007F126C /* NavigationBarColor.swift in Sources */,
 				C710205A25F12B320085535B /* ListEntryInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

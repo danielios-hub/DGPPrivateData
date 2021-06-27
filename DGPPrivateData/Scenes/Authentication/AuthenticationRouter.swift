@@ -11,7 +11,7 @@
 //
 
 import UIKit
-
+/*
 @objc protocol AuthenticationRoutingLogic {
     func routeToListEntry()
 }
@@ -59,3 +59,4 @@ class AuthenticationRouter: NSObject, AuthenticationRoutingLogic, Authentication
     //  destination.name = source.name
     //}
 }
+*/

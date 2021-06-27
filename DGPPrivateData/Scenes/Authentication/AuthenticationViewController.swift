@@ -9,7 +9,7 @@
 //  you can apply clean architecture to your iOS and Mac projects,
 //  see http://clean-swift.com
 //
-
+/*
 import UIKit
 import LocalAuthentication
 import DGPLibrary
@@ -81,7 +81,7 @@ class AuthenticationViewController: UIViewController, AuthenticationDisplayLogic
         super.viewWillAppear(animated)
         #if BETA
             print("beta")
-        router?.routeToListEntry()
+        //router?.routeToListEntry()
         #endif
     }
     
@@ -120,3 +120,4 @@ class AuthenticationViewController: UIViewController, AuthenticationDisplayLogic
         doLogin()
     }
 }
+*/

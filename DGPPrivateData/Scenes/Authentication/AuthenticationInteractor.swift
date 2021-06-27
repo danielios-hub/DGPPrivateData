@@ -9,7 +9,7 @@
 //  you can apply clean architecture to your iOS and Mac projects,
 //  see http://clean-swift.com
 //
-
+/*
 import UIKit
 import LocalAuthentication
 
@@ -45,3 +45,4 @@ class AuthenticationInteractor: AuthenticationBusinessLogic, AuthenticationDataS
         }
     }
 }
+*/

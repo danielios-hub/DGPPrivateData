@@ -11,7 +11,7 @@
 //
 
 import UIKit
-
+/*
 protocol AuthenticationPresentationLogic {
     func presentLogin(response: AuthenticationScene.Login.Response)
     func presentError(error: AuthenticationScene.AuthenticationError)
@@ -43,3 +43,4 @@ class AuthenticationPresenter: AuthenticationPresentationLogic {
         }
     }
 }
+*/
