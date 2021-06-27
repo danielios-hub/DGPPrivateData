@@ -11,6 +11,8 @@
 //
 
 import UIKit
+import DGPLibrary
+import DGPExtensionCore
 
 protocol PasswordGeneratorDisplayLogic: class {
     func displayPassword(viewModel: PasswordGeneratorScene.Show.ViewModel)

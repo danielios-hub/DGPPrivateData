@@ -342,36 +342,6 @@
             </objects>
             <point key="canvasLocation" x="771.01449275362324" y="119.86607142857142"/>
         </scene>
-        <!--Authentication View Controller-->
-        <scene sceneID="BB3-9Q-ggR">
-            <objects>
-                <viewController storyboardIdentifier="AuthenticationViewController" id="8xE-26-soy" customClass="AuthenticationViewController" customModule="DGPPrivateData" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rXX-ht-W1U" customClass="AuthenticationView" customModule="DGPPrivateData" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGD-VF-OeY">
-                                <rect key="frame" x="128" y="423" width="158" height="50"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <inset key="contentEdgeInsets" minX="30" minY="15" maxX="30" maxY="15"/>
-                                <state key="normal" title="Authenticate"/>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="wSx-H0-dJb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="hGD-VF-OeY" firstAttribute="centerX" secondItem="rXX-ht-W1U" secondAttribute="centerX" id="8Z7-az-Jen"/>
-                            <constraint firstItem="hGD-VF-OeY" firstAttribute="centerY" secondItem="rXX-ht-W1U" secondAttribute="centerY" id="nsd-qN-d5H"/>
-                        </constraints>
-                        <connections>
-                            <outlet property="authButton" destination="hGD-VF-OeY" id="vXN-c4-CKF"/>
-                        </connections>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RjF-E6-0gw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-904" y="-543"/>
-        </scene>
         <!--List Entry View Controller-->
         <scene sceneID="KhJ-aN-4yn">
             <objects>

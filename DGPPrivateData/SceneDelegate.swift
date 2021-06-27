@@ -17,11 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-        /*
-        let authVC = AuthenticationViewController.instantiate()
-        let navVC = UINavigationController(rootViewController: authVC)
-    */
-        
         let store = KeyChainStore()
         
         #if BETA
@@ -39,7 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
   
         let loginHostingView = UIHostingController(rootView: loginView)
-        //let navVC = UINavigationController(rootViewController: loginView)
         
         window?.rootViewController = loginHostingView
         window?.makeKeyAndVisible()

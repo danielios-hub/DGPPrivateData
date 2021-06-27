@@ -44,9 +44,10 @@ struct LoginView: View {
                 }
                 
                 Spacer()
-                
                 if stateView.isPasswordVisible {
-                    let textButton = authenticationService.containsPreviousSession() == .password ? "Sign In"  : "Sign Up"
+                    let signInText = NSLocalizedString("Sign In", comment: "Sign In Button")
+                    let signUpText = NSLocalizedString("Sign Un", comment: "Sign Up Button")
+                    let textButton = authenticationService.containsPreviousSession() == .password ? signInText  : signUpText
                     let placeholder = NSLocalizedString("password...", comment: "Placeholder for password textField")
                     
                     VStack {
@@ -88,8 +89,6 @@ struct LoginView: View {
         .onAppear {
             updateState()
         }
-        
-        
     }
     
     //MARK: - Helpers

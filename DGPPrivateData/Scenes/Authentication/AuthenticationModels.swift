@@ -13,11 +13,6 @@
 import UIKit
 
 enum AuthenticationScene {
-    // MARK: Use cases
-    enum AuthenticationState {
-        case loggenIn
-        case loggedOut
-    }
     
     enum AuthenticationError: Error {
         case noDevice(String)

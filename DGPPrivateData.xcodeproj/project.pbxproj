@@ -36,12 +36,8 @@
 		C72D8AFA25E01E3E0069C72E /* FieldEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D8AF925E01E3E0069C72E /* FieldEntryView.swift */; };
 		C72D8AFD25E024FB0069C72E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D8AFC25E024FB0069C72E /* Colors.swift */; };
 		C7331AB025F234FF00CDE439 /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331AAF25F234FF00CDE439 /* ErrorViewModel.swift */; };
-		C7331AC025F291D000CDE439 /* AuthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABA25F291D000CDE439 /* AuthenticationPresenter.swift */; };
 		C7331AC125F291D000CDE439 /* AuthenticationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABB25F291D000CDE439 /* AuthenticationWorker.swift */; };
-		C7331AC225F291D000CDE439 /* AuthenticationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABC25F291D000CDE439 /* AuthenticationRouter.swift */; };
 		C7331AC325F291D000CDE439 /* AuthenticationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABD25F291D000CDE439 /* AuthenticationModels.swift */; };
-		C7331AC425F291D000CDE439 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABE25F291D000CDE439 /* AuthenticationViewController.swift */; };
-		C7331AC525F291D000CDE439 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */; };
 		C7331AC725F2933800CDE439 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7331AC625F2933800CDE439 /* AuthenticationView.swift */; };
 		C73733E42680FD5B0017F569 /* AuthenticationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73733E32680FD5B0017F569 /* AuthenticationUseCaseTests.swift */; };
 		C738A52E265AB0A000B63AF8 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738A52D265AB0A000B63AF8 /* Entry.swift */; };
@@ -176,12 +172,8 @@
 		C72D8AF925E01E3E0069C72E /* FieldEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldEntryView.swift; sourceTree = "<group>"; };
 		C72D8AFC25E024FB0069C72E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C7331AAF25F234FF00CDE439 /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
-		C7331ABA25F291D000CDE439 /* AuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPresenter.swift; sourceTree = "<group>"; };
 		C7331ABB25F291D000CDE439 /* AuthenticationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationWorker.swift; sourceTree = "<group>"; };
-		C7331ABC25F291D000CDE439 /* AuthenticationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRouter.swift; sourceTree = "<group>"; };
 		C7331ABD25F291D000CDE439 /* AuthenticationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModels.swift; sourceTree = "<group>"; };
-		C7331ABE25F291D000CDE439 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInteractor.swift; sourceTree = "<group>"; };
 		C7331AC625F2933800CDE439 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		C73733E32680FD5B0017F569 /* AuthenticationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCaseTests.swift; sourceTree = "<group>"; };
 		C738A52D265AB0A000B63AF8 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -383,12 +375,9 @@
 		C7331AB925F2919800CDE439 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				C7331ABA25F291D000CDE439 /* AuthenticationPresenter.swift */,
+				C76740C026887C14007F126C /* LoginView.swift */,
 				C7331ABB25F291D000CDE439 /* AuthenticationWorker.swift */,
-				C7331ABC25F291D000CDE439 /* AuthenticationRouter.swift */,
 				C7331ABD25F291D000CDE439 /* AuthenticationModels.swift */,
-				C7331ABE25F291D000CDE439 /* AuthenticationViewController.swift */,
-				C7331ABF25F291D000CDE439 /* AuthenticationInteractor.swift */,
 				C76740C92688C573007F126C /* LoginViewUseCase.swift */,
 			);
 			path = Authentication;
@@ -458,7 +447,6 @@
 			isa = PBXGroup;
 			children = (
 				C76740C22688C1F6007F126C /* Modifiers */,
-				C76740C026887C14007F126C /* LoginView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -651,10 +639,10 @@
 				C7B9A1F925F54EFF00725F3F /* Managers */,
 				C7CA213A25E3D6CA00EB8ACE /* Protocol */,
 				C7D03C9925DE8E8C008303C6 /* Resources */,
-				C76740BC26887BDD007F126C /* SwiftUI */,
 				C7EB5CF025DE72A800FB1AE8 /* SceneDelegate.swift */,
 				C710204D25F12AEF0085535B /* Scenes */,
 				C75B17F42663F5F50030DD51 /* SharedModels */,
+				C76740BC26887BDD007F126C /* SwiftUI */,
 				C7D03C8725DE833E008303C6 /* View */,
 			);
 			path = DGPPrivateData;
@@ -914,13 +902,11 @@
 				C71BF30125F61E4C002239BE /* PasswordGeneratorWorker.swift in Sources */,
 				C72D8AF825DFEB1C0069C72E /* AddEditEntryView.swift in Sources */,
 				C7FD51332655889900FED18E /* Constants.swift in Sources */,
-				C7331AC525F291D000CDE439 /* AuthenticationInteractor.swift in Sources */,
 				C794C9C92659A77B00E6AC1F /* MasterUserMO+CoreDataProperties.swift in Sources */,
 				C794C9CB2659A77B00E6AC1F /* EntryMO+CoreDataProperties.swift in Sources */,
 				C710206525F13CD60085535B /* AddEditEntryPresenter.swift in Sources */,
 				C7D03C9725DE89CC008303C6 /* CoreDataRepositoryService.swift in Sources */,
 				C76740C62688C22D007F126C /* DGPButtonModifier.swift in Sources */,
-				C7331AC225F291D000CDE439 /* AuthenticationRouter.swift in Sources */,
 				C794C9C62659A77B00E6AC1F /* CategoryMO+CoreDataClass.swift in Sources */,
 				C794C9BC2659A4F700E6AC1F /* CategoryRepository.swift in Sources */,
 				C71BF30725F61F5C002239BE /* PasswordGeneratorView.swift in Sources */,
@@ -962,7 +948,6 @@
 				C72D8AFD25E024FB0069C72E /* Colors.swift in Sources */,
 				C710206725F13CD60085535B /* AddEditEntryRouter.swift in Sources */,
 				C7CA214125E4146300EB8ACE /* Storyboarded.swift in Sources */,
-				C7331AC425F291D000CDE439 /* AuthenticationViewController.swift in Sources */,
 				C7AE5E0025FD210400C4C4D7 /* FilterView.swift in Sources */,
 				C7EB5CF125DE72A800FB1AE8 /* SceneDelegate.swift in Sources */,
 				C794C9D22659AA1100E6AC1F /* DomainModel.swift in Sources */,
@@ -976,7 +961,6 @@
 				C710206825F13CD60085535B /* AddEditEntryModels.swift in Sources */,
 				C7AE5DFA25FD1CC400C4C4D7 /* FilterWorker.swift in Sources */,
 				C773D6DC2685029F00E78220 /* SecureStore.swift in Sources */,
-				C7331AC025F291D000CDE439 /* AuthenticationPresenter.swift in Sources */,
 				C7AE5DFE25FD1CC500C4C4D7 /* FilterInteractor.swift in Sources */,
 				C7D03C8B25DE8491008303C6 /* ListEntryView.swift in Sources */,
 				C710205625F12B320085535B /* ListEntryWorker.swift in Sources */,
