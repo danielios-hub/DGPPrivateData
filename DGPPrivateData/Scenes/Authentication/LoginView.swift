@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var password: String = ""
+    
     var authenticationService: AuthenticationService
     var successNavigateClosure: () -> Void
-    
-    var isFaceIDVisible: Bool = true
-    var isPasswordVisible: Bool = true
     
     class StateView {
         var isFaceIDVisible: Bool = true
@@ -27,7 +24,9 @@ struct LoginView: View {
     
     @State var stateView = StateView()
     @State var isErrorVisible = false
-    @State var errorDescription: String = "Something went wrong"
+    @State var errorDescription: String = ""
+    @State var password: String = ""
+    
     var loginUseCase = LoginViewUseCase()
     
     var body: some View {
@@ -37,7 +36,8 @@ struct LoginView: View {
                     Button(action: {
                         performLoginFaceID()
                     }, label: {
-                        Text("Login with Face ID")
+                        let textBiometrics = NSLocalizedString("Sign In with biometric identification", comment: "Button for login with FaceId or Touch ID")
+                        Text(textBiometrics)
                         Image(systemName: "faceid")
                     })
                     .dgpButton()
@@ -128,11 +128,11 @@ struct LoginView: View {
         case .failure(let error):
             switch error {
             case .invalidCredentials:
-                errorDescription = "Wrong credentials"
+                errorDescription = NSLocalizedString("Wrong credentials", comment: "Bad credentials error message")
             case .minimumPasswordNotValid:
-                errorDescription = "Minimum requirements for password not valid"
+                errorDescription = NSLocalizedString("Minimum requirements for password not valid", comment: "error moessage for password not strong enough")
             default:
-                errorDescription = "Something went wrong, please try again"
+                errorDescription = NSLocalizedString("Something went wrong, please try again", comment: "error message default")
             }
             self.isErrorVisible = true
         }

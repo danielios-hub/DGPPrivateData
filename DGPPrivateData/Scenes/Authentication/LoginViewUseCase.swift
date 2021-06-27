@@ -21,7 +21,7 @@ class LoginViewUseCase {
         
         switch session {
         case .none:
-            return (true, true)
+            return (faceIDWorker.isBiometricsAvailable(), true)
         case .faceID:
             return (true, false)
         case .password:

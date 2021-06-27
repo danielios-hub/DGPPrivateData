@@ -14,6 +14,7 @@ import UIKit
 import LocalAuthentication
 
 class AuthenticationWorker {
+    
     func doAuthentication(completionHandler: @escaping (Result<Bool, AuthenticationScene.AuthenticationError>) -> Void) {
         let context = LAContext()
         context.localizedCancelTitle = NSLocalizedString("Cancel", comment: "cancel text for buttons")
@@ -33,5 +34,18 @@ class AuthenticationWorker {
             let msgError = NSLocalizedString("No biometrics device available", comment: "error description when the device has no biometrics device available")
             completionHandler(.failure(AuthenticationScene.AuthenticationError.noDevice(msgError)))
         }
+    }
+    
+    func isBiometricsAvailable() -> Bool {
+        var error: NSError?
+        let policy : LAPolicy = .deviceOwnerAuthenticationWithBiometrics
+        
+        let context = LAContext()
+        if context.canEvaluatePolicy(policy, error: &error) {
+            return true
+        } else {
+            return false
+        }
+        
     }
 }
