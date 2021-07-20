@@ -56,7 +56,7 @@ class AddEditEntryPresenter: AddEditEntryPresentationLogic {
     }
     
     func presentError(error: Error) {
-        var descriptionError = NSLocalizedString("try_again", comment: "error message something went wrong")
+        var descriptionError = NSLocalizedString("Something went wrong, please try again", comment: "")
         if let entryError = error as? AddEditEntryInteractor.EntryError {
             switch entryError {
             case .titleRequired(let message):

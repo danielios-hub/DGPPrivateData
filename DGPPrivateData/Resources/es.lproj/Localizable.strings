@@ -5,3 +5,116 @@
   Created by Daniel Gallego Peralta on 22/2/21.
   
 */
+
+/* digits */
+"0-9" = "0-9";
+
+/* Uppercase letters */
+"A-Z" = "A-Z";
+
+/* Lowercase */
+"a-z" = "a-z";
+
+/* About Us title page */
+"About Us" = "Sobre Nosotros";
+
+/* title of the add entry screen */
+"Add an Item" = "Nuevo item";
+
+/* placeholder for the notes textView */
+"Add anything you want to save" = "Añade algo que quieras guardar";
+
+/* button for update password */
+"Apply changes" = "Aplicar cambios";
+
+/* title for authentication screen */
+"Authentication" = "Autentificación";
+
+/* cancel text for buttons */
+"Cancel" = "Cancelar";
+
+/* Close button title */
+"Close" = "Cerrar";
+
+/* button title for copy password to clipboard
+   message when copy text to clipboard success */
+"Copy to clipboard" = "Copiar al portapapeles";
+
+/* Credits option text in menu */
+"Credits" = "Creditos";
+
+/* Wrong authentication message */
+"Failed to authenticate" = "Fallo de autentificación";
+
+/* Filters title */
+"Filters" = "Filtros";
+
+/* button title for generate password */
+"Generate New" = "Generar nuevo";
+
+/* title for generate password screen */
+"Generate Password" = "Generar contraseña";
+
+/* Error message for empty title in entry */
+"Introduce a title for the entry" = "Introduce un titulo";
+
+/* error moessage for password not strong enough */
+"Minimum requirements for password not valid" = "Mínimos requerimientos para la contraseña no válidos";
+
+/* error description when the device has no biometrics device available */
+"No biometrics device available" = "Dispositivos biométricos no disponibles";
+
+/* Header password generate options */
+"Options" = "Opciones";
+
+/* title of the password */
+"Password" = "Contraseña";
+
+/* Placeholder for password textField */
+"password..." = "contraseña...";
+
+/* Privacy option text in menu */
+"Privacy" = "Privacidad";
+
+/* Sign In Button */
+"Sign In" = "Iniciar sesión";
+
+/* Button for login with FaceId or Touch ID */
+"Sign In with biometric identification" = "Iniciar sesión con dispositivos biométricos";
+
+/* Sign Up Button */
+"Sign Un" = "Registrar";
+
+/* something went wrong title alert */
+"Something went wrong" = "Algo ha ido mal, vuelve a intentarlo";
+
+/* error message default */
+"Something went wrong, please try again" = "Algo ha ido mal, vuelve a intentarlo";
+
+/* digits */
+"Symbols" = "Símbolos";
+
+/* Privacy policy */
+"There is no recollection of data of any type. All data are keep in the device and there is no comunication with any service" = "No hay recollección de datos de ningún tipo. Todos los datos son mantenidos en el dispositivo y no hay comunicación con ningún servicio.";
+
+/* title of the entry */
+"Title" = "Título";
+
+/* title of the username */
+"Username" = "Usuario";
+
+/* default placeholder for uitextview */
+"What are you thinking?" = "¿En qué estás pensando?";
+
+/* placeholder of the title of the entry */
+"Write a title" = "Escribe un título";
+
+/* placeholder for the field username */
+"Write an username" = "Escribe un nombre de usuario";
+
+/* Bad credentials error message */
+"Wrong credentials" = "Credenciales incorrectas";
+
+/* description faceID authentication */
+"You need to identify to access tour database" = "Necesitas identificarte para acceder";
+
