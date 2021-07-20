@@ -3,7 +3,6 @@ platform :ios, '13.0'
 use_frameworks!
 
 def app_pods
-  pod 'Kingfisher', '~> 5.0'	
 end 
 
 target 'DGPPrivateData' do

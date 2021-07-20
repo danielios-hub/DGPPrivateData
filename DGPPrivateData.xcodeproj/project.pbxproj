@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5AAA048297CAE13FA3C66BBC /* Pods_DGPPrivateData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841B5D729FAF67188FD843C3 /* Pods_DGPPrivateData.framework */; };
+		AC32D85F74DE2EFABE488650 /* Pods_DGPPrivateData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E38BE156D42FF4D26224B28C /* Pods_DGPPrivateData.framework */; };
 		C709A02C25E51633006DCAAE /* DGPPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709A02B25E51633006DCAAE /* DGPPickerView.swift */; };
 		C710205525F12B320085535B /* ListEntryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710204F25F12B320085535B /* ListEntryPresenter.swift */; };
 		C710205625F12B320085535B /* ListEntryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C710205025F12B320085535B /* ListEntryWorker.swift */; };
@@ -57,6 +57,9 @@
 		C76740C62688C22D007F126C /* DGPButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740C52688C22D007F126C /* DGPButtonModifier.swift */; };
 		C76740C82688C29E007F126C /* NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740C72688C29E007F126C /* NavigationBarColor.swift */; };
 		C76740CA2688C573007F126C /* LoginViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740C92688C573007F126C /* LoginViewUseCase.swift */; };
+		C76740CE2688D02B007F126C /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740CC2688D003007F126C /* AboutUsView.swift */; };
+		C76740D02688DC32007F126C /* AboutUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740CF2688DC32007F126C /* AboutUsViewModel.swift */; };
+		C76740D22688E1B1007F126C /* AboutUsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76740D12688E1B1007F126C /* AboutUsDetailView.swift */; };
 		C773D6DC2685029F00E78220 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C773D6DB2685029F00E78220 /* SecureStore.swift */; };
 		C7785733266E861C003E884D /* ListEntryViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */; };
 		C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */; };
@@ -141,9 +144,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4BA934F49CC201650C496CBB /* Pods-DGPPrivateData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.debug.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.debug.xcconfig"; sourceTree = "<group>"; };
-		841B5D729FAF67188FD843C3 /* Pods_DGPPrivateData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DGPPrivateData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3126E80869860E5357A6475 /* Pods-DGPPrivateData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.release.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.release.xcconfig"; sourceTree = "<group>"; };
+		009C118F889A5EA5D13DD650 /* Pods-DGPPrivateData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.release.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.release.xcconfig"; sourceTree = "<group>"; };
+		4BC8E9D917D0FA78F69900CC /* Pods-DGPPrivateData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGPPrivateData.debug.xcconfig"; path = "Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData.debug.xcconfig"; sourceTree = "<group>"; };
 		C709A02B25E51633006DCAAE /* DGPPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGPPickerView.swift; sourceTree = "<group>"; };
 		C710204F25F12B320085535B /* ListEntryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryPresenter.swift; sourceTree = "<group>"; };
 		C710205025F12B320085535B /* ListEntryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryWorker.swift; sourceTree = "<group>"; };
@@ -193,6 +195,9 @@
 		C76740C52688C22D007F126C /* DGPButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGPButtonModifier.swift; sourceTree = "<group>"; };
 		C76740C72688C29E007F126C /* NavigationBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarColor.swift; sourceTree = "<group>"; };
 		C76740C92688C573007F126C /* LoginViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUseCase.swift; sourceTree = "<group>"; };
+		C76740CC2688D003007F126C /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		C76740CF2688DC32007F126C /* AboutUsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewModel.swift; sourceTree = "<group>"; };
+		C76740D12688E1B1007F126C /* AboutUsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDetailView.swift; sourceTree = "<group>"; };
 		C773D6DB2685029F00E78220 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		C7785732266E861C003E884D /* ListEntryViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntryViewControllerTest.swift; sourceTree = "<group>"; };
 		C77A398E264EDF3A00ACB630 /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
@@ -250,6 +255,7 @@
 		C7EB5D0925DE793B00FB1AE8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C7F55A3C26655E0500662D27 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C7FD51322655889900FED18E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E38BE156D42FF4D26224B28C /* Pods_DGPPrivateData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DGPPrivateData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,7 +273,7 @@
 				C7D03CAC25DEBDCA008303C6 /* DGPExtensionCore in Frameworks */,
 				C7D03CA725DEBC93008303C6 /* DGPLibrary in Frameworks */,
 				C7EB5D2525DE7E7200FB1AE8 /* CoreData.framework in Frameworks */,
-				5AAA048297CAE13FA3C66BBC /* Pods_DGPPrivateData.framework in Frameworks */,
+				AC32D85F74DE2EFABE488650 /* Pods_DGPPrivateData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +291,7 @@
 		C710204D25F12AEF0085535B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C76740CB2688CFF1007F126C /* AboutUs */,
 				C7AE5DF225FD1CA300C4C4D7 /* Filter */,
 				C71BF2F925F61E24002239BE /* Password */,
 				C7331AB925F2919800CDE439 /* Authentication */,
@@ -459,6 +466,16 @@
 				C76740C72688C29E007F126C /* NavigationBarColor.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		C76740CB2688CFF1007F126C /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				C76740CC2688D003007F126C /* AboutUsView.swift */,
+				C76740CF2688DC32007F126C /* AboutUsViewModel.swift */,
+				C76740D12688E1B1007F126C /* AboutUsDetailView.swift */,
+			);
+			path = AboutUs;
 			sourceTree = "<group>";
 		};
 		C7785730266E7E4C003E884D /* AddEditEntry */ = {
@@ -664,7 +681,7 @@
 			isa = PBXGroup;
 			children = (
 				C7EB5D0925DE793B00FB1AE8 /* CoreData.framework */,
-				841B5D729FAF67188FD843C3 /* Pods_DGPPrivateData.framework */,
+				E38BE156D42FF4D26224B28C /* Pods_DGPPrivateData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -710,8 +727,8 @@
 		F7C6E9897FA3FB0A08170A1C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4BA934F49CC201650C496CBB /* Pods-DGPPrivateData.debug.xcconfig */,
-				B3126E80869860E5357A6475 /* Pods-DGPPrivateData.release.xcconfig */,
+				4BC8E9D917D0FA78F69900CC /* Pods-DGPPrivateData.debug.xcconfig */,
+				009C118F889A5EA5D13DD650 /* Pods-DGPPrivateData.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -741,12 +758,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7EB5CFF25DE72AA00FB1AE8 /* Build configuration list for PBXNativeTarget "DGPPrivateData" */;
 			buildPhases = (
-				368E280C364F494001285C84 /* [CP] Check Pods Manifest.lock */,
+				5033836AE0A8D1B153ECE8E5 /* [CP] Check Pods Manifest.lock */,
 				C7EB5CE725DE72A800FB1AE8 /* Sources */,
 				C7EB5CE825DE72A800FB1AE8 /* Frameworks */,
 				C7EB5CE925DE72A800FB1AE8 /* Resources */,
 				C7D03CA925DEBC93008303C6 /* Embed Frameworks */,
-				1B5E1488E651784B58BEEB50 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -827,24 +843,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1B5E1488E651784B58BEEB50 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DGPPrivateData/Pods-DGPPrivateData-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		368E280C364F494001285C84 /* [CP] Check Pods Manifest.lock */ = {
+		5033836AE0A8D1B153ECE8E5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -929,10 +928,12 @@
 				C7B9A1F825F528B400725F3F /* ListEntryCellViewModel.swift in Sources */,
 				C78DFF922660109600DD8298 /* UITextfieldTextview.swift in Sources */,
 				C78216412651671F00323093 /* NeumorphismExtensions.swift in Sources */,
+				C76740D02688DC32007F126C /* AboutUsViewModel.swift in Sources */,
 				C71BF30325F61E4C002239BE /* PasswordGeneratorModels.swift in Sources */,
 				C71BF30225F61E4C002239BE /* PasswordGeneratorRouter.swift in Sources */,
 				C7D03CA225DEBB85008303C6 /* ListEntryViewCell.swift in Sources */,
 				C794C9B626599AFC00E6AC1F /* Repository.swift in Sources */,
+				C76740D22688E1B1007F126C /* AboutUsDetailView.swift in Sources */,
 				C72D8AFA25E01E3E0069C72E /* FieldEntryView.swift in Sources */,
 				C7AE5E0625FD441B00C4C4D7 /* CollectionViewCellExtensions.swift in Sources */,
 				C709A02C25E51633006DCAAE /* DGPPickerView.swift in Sources */,
@@ -942,6 +943,7 @@
 				C7331AC125F291D000CDE439 /* AuthenticationWorker.swift in Sources */,
 				C71BF30D25F63945002239BE /* ConfigSliderViewCell.swift in Sources */,
 				C77A398F264EDF3A00ACB630 /* SequenceExtension.swift in Sources */,
+				C76740CE2688D02B007F126C /* AboutUsView.swift in Sources */,
 				C7EB5CEF25DE72A800FB1AE8 /* AppDelegate.swift in Sources */,
 				C76740CA2688C573007F126C /* LoginViewUseCase.swift in Sources */,
 				C74BC2BD2683A4EC00CD01D9 /* AuthenticationService.swift in Sources */,
@@ -1180,7 +1182,7 @@
 		};
 		C7EB5D0025DE72AA00FB1AE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BA934F49CC201650C496CBB /* Pods-DGPPrivateData.debug.xcconfig */;
+			baseConfigurationReference = 4BC8E9D917D0FA78F69900CC /* Pods-DGPPrivateData.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1201,7 +1203,7 @@
 		};
 		C7EB5D0125DE72AA00FB1AE8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3126E80869860E5357A6475 /* Pods-DGPPrivateData.release.xcconfig */;
+			baseConfigurationReference = 009C118F889A5EA5D13DD650 /* Pods-DGPPrivateData.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -21,7 +21,7 @@ class AuthenticationWorker {
         var error: NSError?
         let policy : LAPolicy = .deviceOwnerAuthenticationWithBiometrics
         if context.canEvaluatePolicy(policy, error: &error) {
-            let reason = NSLocalizedString("Ypu need to identify to access tour database", comment: "description faceID authentication")
+            let reason = NSLocalizedString("You need to identify to access tour database", comment: "description faceID authentication")
             context.evaluatePolicy(policy, localizedReason: reason) { (result, error) in
                 if result {
                     completionHandler(.success(true))

@@ -24,6 +24,7 @@ struct LoginView: View {
     
     @State var stateView = StateView()
     @State var isErrorVisible = false
+    @State var isAboutUsVisible = false
     @State var errorDescription: String = ""
     @State var password: String = ""
     
@@ -72,9 +73,12 @@ struct LoginView: View {
                                                   comment: "title for authentication screen")))
             .toolbar(content: {
                 Button(action: {
-                    
+                    isAboutUsVisible = true
                 }, label: {
                     Image(systemName: "info.circle.fill")
+                })
+                .sheet(isPresented: $isAboutUsVisible, content: {
+                    AboutUsView(showModal: $isAboutUsVisible)
                 })
             })
             .alert(isPresented: $isErrorVisible, content: {
