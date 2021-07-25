@@ -28,7 +28,7 @@ class FilterInteractor: FilterBusinessLogic, FilterDataStore {
     var filters: [Filter] = []
     var orderFilters: [Filter] = []
     
-    var storeDataSource: PreferencesService = UserDefaultPreferencesService()
+    var storeDataSource: PreferencesService = UserDefaultPreferencesService(defaults: UserDefaults.standard)
     lazy var worker = FilterWorker(dataStore: storeDataSource)
     
     func doLoadFilters(request: FilterScene.Load.Request) {

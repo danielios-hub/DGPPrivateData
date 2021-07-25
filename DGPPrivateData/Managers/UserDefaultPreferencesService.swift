@@ -17,15 +17,27 @@ class UserDefaultPreferencesService: PreferencesService {
     
     let encoder: JSONEncoder
     let decoder: JSONDecoder
+    let defaults: UserDefaults
     
-    init() {
+    init(defaults: UserDefaults) {
         encoder = JSONEncoder()
         decoder = JSONDecoder()
+        self.defaults = defaults
     }
     
     struct Constants {
         static let filters = "filterList"
         static let orders = "orderList"
+        static let isLaunchBefore = "isLaunchBefore"
+    }
+    
+    var isLaunchBefore: Bool {
+        get {
+            defaults.bool(forKey: Constants.isLaunchBefore)
+        }
+        set {
+            defaults.set(newValue, forKey: Constants.isLaunchBefore)
+        }
     }
     
     var filterList: [Filter] {
@@ -63,5 +75,14 @@ class UserDefaultPreferencesService: PreferencesService {
             $0.title == Filter.groupByCategories
             
         }.first?.state ?? false
+    }
+    
+    //MARK: - Functions
+    
+    func executeOnFirstLaunch(completion: () -> Void) {
+        if self.isLaunchBefore == false {
+            self.isLaunchBefore = true
+            completion()
+        }
     }
 }

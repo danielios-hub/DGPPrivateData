@@ -13,7 +13,7 @@
 import UIKit
 import DGPExtensionCore
 
-protocol AddEditEntryDisplayLogic: class {
+protocol AddEditEntryDisplayLogic: AnyObject {
     func displayInitialData(viewModel: AddEditEntryScene.Load.ViewModel)
     func displayEntryCreated(viewModel: AddEditEntryScene.Save.ViewModel)
     func displaySelectedCategory(viewModel: AddEditEntryScene.UpdateCategory.ViewModel)
@@ -95,9 +95,16 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupObservers()
         setPlaceholder()
         loadInitialData()
         loadCategory()
+    }
+    
+    private func setupObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupView() {
@@ -196,6 +203,14 @@ class AddEditEntryViewController: UIViewController, AddEditEntryDisplayLogic, St
     @objc func toggleIsFavorite() {
         let request = AddEditEntryScene.UpdateFavorite.Request()
         interactor?.toggleIsFavorite(request: request)
+    }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardEndFrame = keyboardValue.cgRectValue
+        let keyboardFrame = view.convert(keyboardEndFrame, from: view.window)
+        
+        self.addEntryView.scrollView.contentInset.bottom = notification.name == UIResponder.keyboardWillHideNotification ? .zero : keyboardFrame.height
     }
     
     //MARK: - Utils

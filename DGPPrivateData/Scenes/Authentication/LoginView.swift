@@ -47,7 +47,7 @@ struct LoginView: View {
                 Spacer()
                 if stateView.isPasswordVisible {
                     let signInText = NSLocalizedString("Sign In", comment: "Sign In Button")
-                    let signUpText = NSLocalizedString("Sign Un", comment: "Sign Up Button")
+                    let signUpText = NSLocalizedString("Sign Up", comment: "Sign Up Button")
                     let textButton = authenticationService.containsPreviousSession() == .password ? signInText  : signUpText
                     let placeholder = NSLocalizedString("password...", comment: "Placeholder for password textField")
                     

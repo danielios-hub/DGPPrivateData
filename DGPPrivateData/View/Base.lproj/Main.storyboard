@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19142.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19129"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -207,7 +208,7 @@
                                 <rect key="frame" x="0.0" y="199" width="414" height="663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Z7v-zZ-McZ">
-                                    <rect key="frame" x="0.0" y="179.00000034679067" width="414" height="80"/>
+                                    <rect key="frame" x="0.0" y="208" width="414" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MN5-vk-uZq">
@@ -227,7 +228,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConfigSliderViewCell" id="K3c-jB-FUr" customClass="ConfigSliderViewCell" customModule="DGPPrivateData" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="65"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K3c-jB-FUr" id="rWt-gb-90l">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
@@ -270,7 +271,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConfigStepperViewCell" id="3dm-Ie-Hrd" customClass="ConfigStepperViewCell" customModule="DGPPrivateData" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="89.5" width="414" height="65"/>
+                                        <rect key="frame" x="0.0" y="115" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3dm-Ie-Hrd" id="Yd9-kH-s39">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
@@ -351,11 +352,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ozx-In-jGr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListEntryViewCell" rowHeight="55" id="Qgl-ye-NtN" customClass="ListEntryViewCell" customModule="DGPPrivateData" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="414" height="55"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qgl-ye-NtN" id="MJZ-G0-2Io">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
@@ -410,7 +411,7 @@
                             <constraint firstItem="Ozx-In-jGr" firstAttribute="top" secondItem="ZGg-9p-tei" secondAttribute="top" id="GNC-Vr-xMo"/>
                             <constraint firstItem="Ozx-In-jGr" firstAttribute="leading" secondItem="ZGg-9p-tei" secondAttribute="leading" id="TQc-gV-kQL"/>
                             <constraint firstItem="ZGg-9p-tei" firstAttribute="trailing" secondItem="Ozx-In-jGr" secondAttribute="trailing" id="XXY-co-k5P"/>
-                            <constraint firstItem="ZGg-9p-tei" firstAttribute="bottom" secondItem="Ozx-In-jGr" secondAttribute="bottom" id="nD7-d8-BZb"/>
+                            <constraint firstItem="Ozx-In-jGr" firstAttribute="bottom" secondItem="0N7-cg-gAe" secondAttribute="bottom" id="Yi7-G1-mmc"/>
                         </constraints>
                         <connections>
                             <outlet property="tableView" destination="Ozx-In-jGr" id="BoP-Kc-Tja"/>

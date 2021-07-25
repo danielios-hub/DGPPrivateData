@@ -11,6 +11,8 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+     var preferences: UserDefaultPreferencesService = UserDefaultPreferencesService(defaults: UserDefaults.standard)
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
     }
@@ -38,8 +40,10 @@ extension ListEntryViewController {
     
     static func makeListEntryViewController() -> ListEntryViewController {
         let viewController = ListEntryViewController.instantiate()
+        let preferences = (UIApplication.shared.delegate as! AppDelegate).preferences
         let dataStore = viewController.router!.dataStore
-        dataStore?.setDependencies(preferencesService: UserDefaultPreferencesService(), repositoryService: CoreDataRepositoryService.shared)
+        dataStore?.setDependencies(preferencesService: preferences,
+                                   repositoryService: CoreDataRepositoryService.shared)
         
         return viewController
     }

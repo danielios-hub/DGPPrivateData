@@ -18,7 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         
         let store = KeyChainStore()
+        let preferences = (UIApplication.shared.delegate as! AppDelegate).preferences
         
+        preferences.executeOnFirstLaunch {
+            try? store.deleteAll()
+        }
+        //try? store.deleteAll()
         #if BETA
             //try? store.deleteAll()
         #endif
@@ -38,6 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = loginHostingView
         window?.makeKeyAndVisible()
     }
+    
 
 }
 

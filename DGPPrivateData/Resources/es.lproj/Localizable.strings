@@ -38,7 +38,7 @@
 
 /* button title for copy password to clipboard
    message when copy text to clipboard success */
-"Copy to clipboard" = "Copiar al portapapeles";
+"Copy to clipboard" = "Copiar";
 
 /* Credits option text in menu */
 "Credits" = "Creditos";
@@ -83,7 +83,7 @@
 "Sign In with biometric identification" = "Iniciar sesión con dispositivos biométricos";
 
 /* Sign Up Button */
-"Sign Un" = "Registrar";
+"Sign Up" = "Registrar";
 
 /* something went wrong title alert */
 "Something went wrong" = "Algo ha ido mal, vuelve a intentarlo";
